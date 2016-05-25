@@ -1,4 +1,4 @@
-package cn.cug.laboratory.controller;
+package cn.cug.laboratory.controller.teacher;
 
 import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.UserService;

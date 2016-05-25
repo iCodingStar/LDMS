@@ -40,6 +40,7 @@
         <shiro.version>1.2.4</shiro.version>
         <mockito.version>1.10.19</mockito.version>
         <derby.version>10.7.1.1</derby.version>
+        <jackson.version>1.9.11</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -200,6 +201,19 @@
                 <artifactId>spring-oxm</artifactId>
                 <version>4.0.2.RELEASE</version>
             </dependency>
+
+            <!--用于json数据与Java对象之间的转换-->
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
 
             <!-- provided -->
             <dependency>

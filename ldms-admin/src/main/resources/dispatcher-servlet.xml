@@ -15,9 +15,9 @@
 
     <mvc:annotation-driven/>
 
-    <!--配置视图解析器-->
-    <context:component-scan base-package="cn.cug.laboratory"></context:component-scan>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
+    <!--配置视图解析器-->
     <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -28,9 +28,27 @@
         </property>
     </bean>
 
-
-    <!--静态资源处理-->
-    <!-- 如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理 -->
+    <!-- 静态资源处理:如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理 -->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+
+    <!--StringToDate类型转换-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!--转换器-->
+        <property name="converters">
+            <list>
+                <!--日期类型转换-->
+                <bean class="cn.cug.laboratory.convertor.StringToDateConvertor"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传最大文件大小为5M-->
+        <property name="maxUploadSize">
+            <value>5242880</value>
+        </property>
+    </bean>
 
 </beans>

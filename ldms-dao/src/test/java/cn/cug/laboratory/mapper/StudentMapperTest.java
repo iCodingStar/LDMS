@@ -16,7 +16,6 @@
 package cn.cug.laboratory.mapper;
 
 import cn.cug.laboratory.mapper.extend.UserExtendMapper;
-import cn.cug.laboratory.model.persistent.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
