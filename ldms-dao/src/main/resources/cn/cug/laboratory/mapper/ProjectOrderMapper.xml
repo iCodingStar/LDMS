@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.ProjectOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="pro_id" property="proId" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pro_id, stu_id, score
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_order
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_order
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    insert into project_order (id, pro_id, stu_id, 
+      score)
+    values (#{id,jdbcType=CHAR}, #{proId,jdbcType=VARCHAR}, #{stuId,jdbcType=VARCHAR}, 
+      #{score,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    insert into project_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="proId != null" >
+        pro_id,
+      </if>
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    update project_order
+    <set >
+      <if test="proId != null" >
+        pro_id = #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    update project_order
+    set pro_id = #{proId,jdbcType=VARCHAR},
+      stu_id = #{stuId,jdbcType=VARCHAR},
+      score = #{score,jdbcType=REAL}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

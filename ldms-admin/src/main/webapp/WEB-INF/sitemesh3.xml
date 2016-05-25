@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <mapping path="/WEB-INF/jsp/teacher/*" decorator="/decorator/teacher/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/student/*" decorator="/decorator/student/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/admin/*" decorator="/decorator/admin/decorator.jsp"/>
+</sitemesh>

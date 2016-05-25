@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.extend.ProjectExtendMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Project" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="lab_id" property="labId" jdbcType="CHAR" />
+    <result column="tea_id" property="teaId" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="credit" property="credit" jdbcType="REAL" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="pass_time" property="passTime" jdbcType="TIMESTAMP" />
+    <result column="devices" property="devices" jdbcType="VARCHAR" />
+    <result column="files" property="files" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
+    pass_time, devices, files
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.extend.ProjectOrderExtendMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.ProjectOrder" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="pro_id" property="proId" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pro_id, stu_id, score
+  </sql>
+
+</mapper>

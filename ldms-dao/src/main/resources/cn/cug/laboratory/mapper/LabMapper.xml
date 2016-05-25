@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.LabMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Lab" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="size" property="size" jdbcType="INTEGER" />
+    <result column="open_way" property="openWay" jdbcType="CHAR" />
+    <result column="manager" property="manager" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Lab" extends="BaseResultMap" >
+    <result column="use_way" property="useWay" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, size, open_way, manager
+  </sql>
+  <sql id="Blob_Column_List" >
+    use_way
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lab
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from lab
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.cug.laboratory.model.persistent.Lab" >
+    insert into lab (id, name, size, 
+      open_way, manager, use_way
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, 
+      #{openWay,jdbcType=CHAR}, #{manager,jdbcType=CHAR}, #{useWay,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.Lab" >
+    insert into lab
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="openWay != null" >
+        open_way,
+      </if>
+      <if test="manager != null" >
+        manager,
+      </if>
+      <if test="useWay != null" >
+        use_way,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="openWay != null" >
+        #{openWay,jdbcType=CHAR},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=CHAR},
+      </if>
+      <if test="useWay != null" >
+        #{useWay,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cug.laboratory.model.persistent.Lab" >
+    update lab
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="openWay != null" >
+        open_way = #{openWay,jdbcType=CHAR},
+      </if>
+      <if test="manager != null" >
+        manager = #{manager,jdbcType=CHAR},
+      </if>
+      <if test="useWay != null" >
+        use_way = #{useWay,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.cug.laboratory.model.persistent.Lab" >
+    update lab
+    set name = #{name,jdbcType=VARCHAR},
+      size = #{size,jdbcType=INTEGER},
+      open_way = #{openWay,jdbcType=CHAR},
+      manager = #{manager,jdbcType=CHAR},
+      use_way = #{useWay,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cug.laboratory.model.persistent.Lab" >
+    update lab
+    set name = #{name,jdbcType=VARCHAR},
+      size = #{size,jdbcType=INTEGER},
+      open_way = #{openWay,jdbcType=CHAR},
+      manager = #{manager,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

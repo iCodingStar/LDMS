@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Project" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="lab_id" property="labId" jdbcType="CHAR" />
+    <result column="tea_id" property="teaId" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="credit" property="credit" jdbcType="REAL" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="pass_time" property="passTime" jdbcType="TIMESTAMP" />
+    <result column="devices" property="devices" jdbcType="VARCHAR" />
+    <result column="files" property="files" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
+    pass_time, devices, files
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.cug.laboratory.model.persistent.Project" >
+    insert into project (id, lab_id, tea_id, name, 
+      start_time, end_time, capacity, 
+      state, credit, submit_time, 
+      pass_time, devices, files, 
+      description)
+    values (#{id,jdbcType=VARCHAR}, #{labId,jdbcType=CHAR}, #{teaId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{capacity,jdbcType=INTEGER}, 
+      #{state,jdbcType=SMALLINT}, #{credit,jdbcType=REAL}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{passTime,jdbcType=TIMESTAMP}, #{devices,jdbcType=VARCHAR}, #{files,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.Project" >
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="labId != null" >
+        lab_id,
+      </if>
+      <if test="teaId != null" >
+        tea_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="capacity != null" >
+        capacity,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="credit != null" >
+        credit,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="passTime != null" >
+        pass_time,
+      </if>
+      <if test="devices != null" >
+        devices,
+      </if>
+      <if test="files != null" >
+        files,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="labId != null" >
+        #{labId,jdbcType=CHAR},
+      </if>
+      <if test="teaId != null" >
+        #{teaId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="capacity != null" >
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="credit != null" >
+        #{credit,jdbcType=REAL},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passTime != null" >
+        #{passTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="devices != null" >
+        #{devices,jdbcType=VARCHAR},
+      </if>
+      <if test="files != null" >
+        #{files,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cug.laboratory.model.persistent.Project" >
+    update project
+    <set >
+      <if test="labId != null" >
+        lab_id = #{labId,jdbcType=CHAR},
+      </if>
+      <if test="teaId != null" >
+        tea_id = #{teaId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="capacity != null" >
+        capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="credit != null" >
+        credit = #{credit,jdbcType=REAL},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passTime != null" >
+        pass_time = #{passTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="devices != null" >
+        devices = #{devices,jdbcType=VARCHAR},
+      </if>
+      <if test="files != null" >
+        files = #{files,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.cug.laboratory.model.persistent.Project" >
+    update project
+    set lab_id = #{labId,jdbcType=CHAR},
+      tea_id = #{teaId,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      capacity = #{capacity,jdbcType=INTEGER},
+      state = #{state,jdbcType=SMALLINT},
+      credit = #{credit,jdbcType=REAL},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      pass_time = #{passTime,jdbcType=TIMESTAMP},
+      devices = #{devices,jdbcType=VARCHAR},
+      files = #{files,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cug.laboratory.model.persistent.Project" >
+    update project
+    set lab_id = #{labId,jdbcType=CHAR},
+      tea_id = #{teaId,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      capacity = #{capacity,jdbcType=INTEGER},
+      state = #{state,jdbcType=SMALLINT},
+      credit = #{credit,jdbcType=REAL},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      pass_time = #{passTime,jdbcType=TIMESTAMP},
+      devices = #{devices,jdbcType=VARCHAR},
+      files = #{files,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

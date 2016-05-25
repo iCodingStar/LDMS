@@ -1,0 +1,75 @@
+#add_Btn {
+    margin-top: -50px;
+    float: left;
+    font-weight: bold;
+    border: solid gray;
+    padding: 2px;
+    width: 50px;
+    border-radius: 5px;
+    margin-left: 50px;
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+h4{
+	margin-bottom: 5px;
+}
+#add_Btn:hover {
+    background-color: #C2BFBF
+}
+
+#add_Btn:active {
+    color: white;
+    background-color: #9A9595
+}
+
+#apply_Device div {
+    width: 100%;
+    text-align: right;
+}
+
+#apply_Device ul {
+    width: 100%;
+    right: 80px;
+    list-style: none;
+    right: 60px;
+}
+
+#apply_Device select {
+    width: 240px;
+    overflow: auto;
+    height: 2em;
+}
+
+#apply_Device span {
+    padding: 5px;
+    font-size: 0.7em;
+}
+
+#apply_Device input {
+    text-align: center;
+    width: 50px;
+}
+
+.cter_Left {
+    float: left;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cter_Right {
+    text-align: center;
+    float: left;
+    width: 50%;
+    margin: 0 auto;
+}
+
+form {
+    border: solid gray;
+    width: 50%;
+}

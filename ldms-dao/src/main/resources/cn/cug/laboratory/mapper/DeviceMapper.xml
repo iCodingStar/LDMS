@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cug.laboratory.mapper.DeviceMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Device" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="lab_id" property="labId" jdbcType="CHAR" />
+    <result column="tea_id" property="teaId" jdbcType="CHAR" />
+    <result column="dev_id" property="devId" jdbcType="CHAR" />
+    <result column="sub_id" property="subId" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="english_name" property="englishName" jdbcType="CHAR" />
+    <result column="model_id" property="modelId" jdbcType="CHAR" />
+    <result column="brand" property="brand" jdbcType="CHAR" />
+    <result column="subject_type" property="subjectType" jdbcType="CHAR" />
+    <result column="purchase_time" property="purchaseTime" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="amount_used" property="amountUsed" jdbcType="INTEGER" />
+    <result column="per_price" property="perPrice" jdbcType="REAL" />
+    <result column="sum_price" property="sumPrice" jdbcType="REAL" />
+    <result column="price_type" property="priceType" jdbcType="CHAR" />
+    <result column="bill" property="bill" jdbcType="CHAR" />
+    <result column="unit_of_measurement" property="unitOfMeasurement" jdbcType="CHAR" />
+    <result column="fund_from" property="fundFrom" jdbcType="CHAR" />
+    <result column="property_from" property="propertyFrom" jdbcType="CHAR" />
+    <result column="account_type" property="accountType" jdbcType="CHAR" />
+    <result column="purchase_type" property="purchaseType" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Device" extends="BaseResultMap" >
+    <result column="ps" property="ps" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, lab_id, tea_id, dev_id, sub_id, name, english_name, model_id, brand, subject_type, 
+    purchase_time, amount, amount_used, per_price, sum_price, price_type, bill, unit_of_measurement, 
+    fund_from, property_from, account_type, purchase_type
+  </sql>
+  <sql id="Blob_Column_List" >
+    ps
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from device
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from device
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.cug.laboratory.model.persistent.Device" >
+    insert into device (id, lab_id, tea_id, dev_id, 
+      sub_id, name, english_name, model_id, 
+      brand, subject_type, purchase_time, 
+      amount, amount_used, per_price, 
+      sum_price, price_type, bill, unit_of_measurement, 
+      fund_from, property_from, account_type, 
+      purchase_type, ps)
+    values (#{id,jdbcType=CHAR}, #{labId,jdbcType=CHAR}, #{teaId,jdbcType=CHAR}, #{devId,jdbcType=CHAR}, 
+      #{subId,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{englishName,jdbcType=CHAR}, #{modelId,jdbcType=CHAR}, 
+      #{brand,jdbcType=CHAR}, #{subjectType,jdbcType=CHAR}, #{purchaseTime,jdbcType=TIMESTAMP}, 
+      #{amount,jdbcType=INTEGER}, #{amountUsed,jdbcType=INTEGER}, #{perPrice,jdbcType=REAL}, 
+      #{sumPrice,jdbcType=REAL}, #{priceType,jdbcType=CHAR}, #{bill,jdbcType=CHAR}, #{unitOfMeasurement,jdbcType=CHAR}, 
+      #{fundFrom,jdbcType=CHAR}, #{propertyFrom,jdbcType=CHAR}, #{accountType,jdbcType=CHAR}, 
+      #{purchaseType,jdbcType=CHAR}, #{ps,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.Device" >
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="labId != null" >
+        lab_id,
+      </if>
+      <if test="teaId != null" >
+        tea_id,
+      </if>
+      <if test="devId != null" >
+        dev_id,
+      </if>
+      <if test="subId != null" >
+        sub_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="modelId != null" >
+        model_id,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="subjectType != null" >
+        subject_type,
+      </if>
+      <if test="purchaseTime != null" >
+        purchase_time,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="amountUsed != null" >
+        amount_used,
+      </if>
+      <if test="perPrice != null" >
+        per_price,
+      </if>
+      <if test="sumPrice != null" >
+        sum_price,
+      </if>
+      <if test="priceType != null" >
+        price_type,
+      </if>
+      <if test="bill != null" >
+        bill,
+      </if>
+      <if test="unitOfMeasurement != null" >
+        unit_of_measurement,
+      </if>
+      <if test="fundFrom != null" >
+        fund_from,
+      </if>
+      <if test="propertyFrom != null" >
+        property_from,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="purchaseType != null" >
+        purchase_type,
+      </if>
+      <if test="ps != null" >
+        ps,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="labId != null" >
+        #{labId,jdbcType=CHAR},
+      </if>
+      <if test="teaId != null" >
+        #{teaId,jdbcType=CHAR},
+      </if>
+      <if test="devId != null" >
+        #{devId,jdbcType=CHAR},
+      </if>
+      <if test="subId != null" >
+        #{subId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=CHAR},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=CHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=CHAR},
+      </if>
+      <if test="subjectType != null" >
+        #{subjectType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseTime != null" >
+        #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="amountUsed != null" >
+        #{amountUsed,jdbcType=INTEGER},
+      </if>
+      <if test="perPrice != null" >
+        #{perPrice,jdbcType=REAL},
+      </if>
+      <if test="sumPrice != null" >
+        #{sumPrice,jdbcType=REAL},
+      </if>
+      <if test="priceType != null" >
+        #{priceType,jdbcType=CHAR},
+      </if>
+      <if test="bill != null" >
+        #{bill,jdbcType=CHAR},
+      </if>
+      <if test="unitOfMeasurement != null" >
+        #{unitOfMeasurement,jdbcType=CHAR},
+      </if>
+      <if test="fundFrom != null" >
+        #{fundFrom,jdbcType=CHAR},
+      </if>
+      <if test="propertyFrom != null" >
+        #{propertyFrom,jdbcType=CHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseType != null" >
+        #{purchaseType,jdbcType=CHAR},
+      </if>
+      <if test="ps != null" >
+        #{ps,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.cug.laboratory.model.persistent.Device" >
+    update device
+    <set >
+      <if test="labId != null" >
+        lab_id = #{labId,jdbcType=CHAR},
+      </if>
+      <if test="teaId != null" >
+        tea_id = #{teaId,jdbcType=CHAR},
+      </if>
+      <if test="devId != null" >
+        dev_id = #{devId,jdbcType=CHAR},
+      </if>
+      <if test="subId != null" >
+        sub_id = #{subId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="englishName != null" >
+        english_name = #{englishName,jdbcType=CHAR},
+      </if>
+      <if test="modelId != null" >
+        model_id = #{modelId,jdbcType=CHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=CHAR},
+      </if>
+      <if test="subjectType != null" >
+        subject_type = #{subjectType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseTime != null" >
+        purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="amountUsed != null" >
+        amount_used = #{amountUsed,jdbcType=INTEGER},
+      </if>
+      <if test="perPrice != null" >
+        per_price = #{perPrice,jdbcType=REAL},
+      </if>
+      <if test="sumPrice != null" >
+        sum_price = #{sumPrice,jdbcType=REAL},
+      </if>
+      <if test="priceType != null" >
+        price_type = #{priceType,jdbcType=CHAR},
+      </if>
+      <if test="bill != null" >
+        bill = #{bill,jdbcType=CHAR},
+      </if>
+      <if test="unitOfMeasurement != null" >
+        unit_of_measurement = #{unitOfMeasurement,jdbcType=CHAR},
+      </if>
+      <if test="fundFrom != null" >
+        fund_from = #{fundFrom,jdbcType=CHAR},
+      </if>
+      <if test="propertyFrom != null" >
+        property_from = #{propertyFrom,jdbcType=CHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="purchaseType != null" >
+        purchase_type = #{purchaseType,jdbcType=CHAR},
+      </if>
+      <if test="ps != null" >
+        ps = #{ps,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.cug.laboratory.model.persistent.Device" >
+    update device
+    set lab_id = #{labId,jdbcType=CHAR},
+      tea_id = #{teaId,jdbcType=CHAR},
+      dev_id = #{devId,jdbcType=CHAR},
+      sub_id = #{subId,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      english_name = #{englishName,jdbcType=CHAR},
+      model_id = #{modelId,jdbcType=CHAR},
+      brand = #{brand,jdbcType=CHAR},
+      subject_type = #{subjectType,jdbcType=CHAR},
+      purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=INTEGER},
+      amount_used = #{amountUsed,jdbcType=INTEGER},
+      per_price = #{perPrice,jdbcType=REAL},
+      sum_price = #{sumPrice,jdbcType=REAL},
+      price_type = #{priceType,jdbcType=CHAR},
+      bill = #{bill,jdbcType=CHAR},
+      unit_of_measurement = #{unitOfMeasurement,jdbcType=CHAR},
+      fund_from = #{fundFrom,jdbcType=CHAR},
+      property_from = #{propertyFrom,jdbcType=CHAR},
+      account_type = #{accountType,jdbcType=CHAR},
+      purchase_type = #{purchaseType,jdbcType=CHAR},
+      ps = #{ps,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.cug.laboratory.model.persistent.Device" >
+    update device
+    set lab_id = #{labId,jdbcType=CHAR},
+      tea_id = #{teaId,jdbcType=CHAR},
+      dev_id = #{devId,jdbcType=CHAR},
+      sub_id = #{subId,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      english_name = #{englishName,jdbcType=CHAR},
+      model_id = #{modelId,jdbcType=CHAR},
+      brand = #{brand,jdbcType=CHAR},
+      subject_type = #{subjectType,jdbcType=CHAR},
+      purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=INTEGER},
+      amount_used = #{amountUsed,jdbcType=INTEGER},
+      per_price = #{perPrice,jdbcType=REAL},
+      sum_price = #{sumPrice,jdbcType=REAL},
+      price_type = #{priceType,jdbcType=CHAR},
+      bill = #{bill,jdbcType=CHAR},
+      unit_of_measurement = #{unitOfMeasurement,jdbcType=CHAR},
+      fund_from = #{fundFrom,jdbcType=CHAR},
+      property_from = #{propertyFrom,jdbcType=CHAR},
+      account_type = #{accountType,jdbcType=CHAR},
+      purchase_type = #{purchaseType,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
