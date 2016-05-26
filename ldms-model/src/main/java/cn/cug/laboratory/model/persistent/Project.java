@@ -3,33 +3,33 @@ package cn.cug.laboratory.model.persistent;
 import java.util.Date;
 
 public class Project {
-    private String id;
+    private String id;//项目编号
 
-    private String labId;
+    private String labId;//实验编号
 
-    private String teaId;
+    private String teaId;//教师编号
 
-    private String name;
+    private String name;//项目名称
 
-    private Date startTime;
+    private Date startTime;//项目开始时间
 
-    private Date endTime;
+    private Date endTime;//项目结束时间
 
     private Integer capacity;
 
-    private Short state;
+    private Integer state = 0;//项目状态
 
     private Float credit;
 
-    private Date submitTime;
+    private Date submitTime;//项目提交时间
 
-    private Date passTime;
+    private Date passTime;//项目通过时间
 
-    private String devices;
+    private String devices;//设备名称
 
-    private String files;
+    private String files;//项目文件名称
 
-    private String description;
+    private String description;//项目描述
 
     public String getId() {
         return id;
@@ -87,11 +87,11 @@ public class Project {
         this.capacity = capacity;
     }
 
-    public Short getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Short state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
