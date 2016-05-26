@@ -10,5 +10,25 @@
   <sql id="Base_Column_List" >
     id, pro_id, stu_id, score
   </sql>
+  <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
+  <select id="selectLastId" resultMap="IDResultMap">
+    select id
+    from project_order
+    ORDER BY id desc
+    limit 1
+  </select>
 
+  <select id="selectByStuId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_order
+    where stu_id = #{stuId}
+    order by id
+    limit #{startSite},#{pageNum}
+  </select>
+  <select id="selectCountByStuId" resultType="java.lang.Integer">
+    select COUNT(*)
+    from project_order
+    where stu_id = #{stuId}
+  </select>
 </mapper>

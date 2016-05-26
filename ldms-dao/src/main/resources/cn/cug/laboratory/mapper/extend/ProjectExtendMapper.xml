@@ -27,4 +27,47 @@
     description
   </sql>
 
+  <select id="selectByTeaId" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    where tea_id= #{teaId,jdbcType=CHAR}
+    order by id
+    limit #{startSite},#{pageNum}
+  </select>
+  <select id="selectCountByTeaId" resultType="java.lang.Integer">
+    select count(*)
+    from project
+    where tea_id= #{teaId,jdbcType=CHAR}
+  </select>
+
+  <select id="selectByName" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    where name = #{name,jdbcType=VARCHAR}
+    order by id
+    limit #{startSite},#{pageNum}
+  </select>
+  <select id="selectCountByName" resultType="java.lang.Integer">
+    select count(*)
+    from project
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="reduceLeft"  parameterType="java.lang.String">
+    update project
+    set left_capacity=left_capacity-1
+    where id= #{id}
+  </select>
+  <select id="addLeft"  parameterType="java.lang.String">
+    update project
+    set left_capacity=left_capacity+1
+    where id= #{id}
+  </select>
 </mapper>
