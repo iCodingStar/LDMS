@@ -1,110 +1,222 @@
-<%@page language="java" contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=utf-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+<head lang="en">
     <meta charset="UTF-8">
-    <title>实验室</title>
-    <script type="text/javascript" src="${cacheUrl}/assets/applyproject/js/jquery-1.12.0.min.js"></script>
-    <link rel="stylesheet" href="${cacheUrl}/assets/applyproject/css/jquery.popup.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="${cacheUrl}/assets/applyproject/css/style.css">
-</head>
+    <title></title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="${cacheUrl}/assets/applyproject/css/style.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <link href="${cacheUrl}/assets/applyproject/fileup/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${cacheUrl}/assets/applyproject/fileup/default.css">
+    <link href="${cacheUrl}/assets/applyproject/fileup/fileinput.css" media="all" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+    <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+
+</head>
 <body>
-    <form method="post" enctype=" multipart/form-data">
-        <div class="cter_Left">
-            <h4>选择实验室</h4>
-            <select id="select_Lab" style="width:130px;height:1.6em;">
-            </select>
-            <button id="search_lab">查询</button>
-        </div>
-        <div class="cter_Right">
-            <h4>所申请实验名称</h4>
-            <input type="text" name="name_Lab">
-        </div>
-        <div class="cter_Left">
-            <h4> 开始时间</h4>
-            <input type="datetime-local" name="startTime">
-        </div>
-        <div class="cter_Right">
-            <h4>结束时间</h4>
-            <input type="datetime-local" name="endTime">
-        </div>
-        <div class="cter_Left">
-            <h4> 学分</h4>
-            <input type="text" name="score">
-            <h4> 上传资料</h4>
-            <input type="file" name="upload_Info" value=" ">
-        </div>
-        <div class="cter_Right">
-            <h4>容量</h4>
-            <input type="number" name="storage">
-            <h4> 添加设备</h4>
-            <input type="text" name="Device">
-            <button id="add_Device" class="lal js__p_start">添加设备</button>
-        </div>
-        <div style="float:left; width:100%;height:20px;"></div>
-        <br>
-        <br>
-        <h4 style=" float:left; margin-left:10%;margin-top:5px;padding-top:50px;">备注：</h4>
-        <textarea name="remarks" style="position: relative; width:50%;height:150px;left:1%;"></textarea>
-    </form>
-    <div style="width:50%;text-align:center;">
-        <h3>所申请的设备</h3>
-        <table id="table_1" class="date_table" border='1' cellspacing="0" cellpadding="0" style="margin:0 auto;">
-            <tr>
-                <th width="200">名称</th>
-                <th width="200">数量</th>
-            </tr>
-            <tr>
-                <td>3D打印机</td>
-                <td>200</td>
-            </tr>
-        </table>
-    </div>
-    <div class="popup js__popup js__slide_top">
-        <a href="#" class="p_close js__p_close" title="关闭">
-            <span></span><span></span>
-        </a>
-        <div class="p_content">
-            <p>添加设备</p>
-            <div id="add_Btn">+</div>
-            <div id="apply_Device">
-                <ul>
-                </ul>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <!--面板-->
+        <div class="panel panel-info">
+            <div class="panel-heading">试验申请信息填写</div>
+            <div class="panel-body row">
+                <div class="col-md-6">
+                    <div class="input-group"  id="chose_lab">
+                        <span class="input-group-addon" style="padding:0;border:0;">
+                             <button style="background-color: #ededed" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">实验室<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-left">
+                                <li><a href="#">信息楼805</a></li>
+                                <li><a href="#">mac笔记本</a></li>
+                                <li><a href="#">SSD固态硬盘</a></li>
+                            </ul></span>
+                        <input id="input_lab_name" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="input_lab_theme">输入实验主题</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="lab_score">学分</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="lab_capacity">容量</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="lab_start_time">开始时间</span>
+                        <input type="date" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="lab_end_time">结束时间</span>
+                        <input type="date" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-md-12">
+                    <form enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-lg-12">
+                    <button type="button" id="chose_device"data-toggle="modal" data-target="#adddevice" class="btn btn-primary btn-lg">选择实验所需设备</button>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-lg">
+                        <div class="col-lg-12" style="margin-right: 5px">
+                            <textarea style="height: 200px" class="form-control" type="" id="" placeholder="备注信息"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body row">
+                <div class="col-lg-12">
+                    <button type="button"class="btn btn-success btn-lg" value="下一步"><a href="/jump/applyproject3">下一步</a></button>
+                </div>
             </div>
         </div>
     </div>
-    <script>
-    $(function() {
-        $(".js__p_start, .js__p_another_start").simplePopup();
-    });
-    </script>
-    <script>
-    var Lab_Num=0;
-    function addLab(name) {
-    	Lab_Num++;
-        var addDom = "<option value='" + Lab_Num + "'>" + name + "</option>";
-        $("#select_Lab").append(addDom);
-    }
-    $("#add_Btn").click(function() {
-        addDevice();
-    })
+    <div class="col-md-2"></div>
+</div>
 
-    function addApplyDevice(name, number) {
-        var addDom = " <tr><td>" + name + "</td><td>" + number + "</td></tr>"
-        $("#table_1").append(addDom);
-    }
+<!--设备添加-->
+<div id="adddevice" class="modal fade" style="display:none;margin-top: 20%;position: absolute" role="dialog" aria-labelledby="...">
+    <div class="modal-dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">选择实验所需设备</h4><div id="add_Btn" onclick="addDevice();">+</div>
+            </div>
+            <div class="modal-body">
+                <!--添加设备-->
+                <table class="table table-striped" id="bo">
+                    <thead>
+                    <th>
+                        <tr>
+                            <td style="width: 50%">&nbsp;&nbsp;设备类型</td>
+                            <td style="width: 25%">&nbsp;&nbsp;余量</td>
+                            <td style="width: 25%">&nbsp;&nbsp;输入数量</td>
+                        </tr>
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr class="base_add">
+                        <td>
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="...">
+                                <div class="input-group-btn myshow">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设备类型<span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right" onclick="showLiText(event);">
+                                        <li><a href="#">戴尔服务器</a></li>
+                                        <li><a href="#">mac笔记本</a></li>
+                                        <li><a href="#">SSD固态硬盘</a></li>
+                                    </ul>
+                                </div><!-- /btn-group -->
+                            </div><!-- /input-group -->
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" disabled="disabled">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">选定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script src="${cacheUrl}/assets/applyproject/fileup/jquery.min.js"></script>
+<script src="${cacheUrl}/assets/applyproject/fileup/fileinput.js" type="text/javascript"></script>
+<script src="${cacheUrl}/assets/applyproject/fileup/fileinput_locale_zh.js" type="text/javascript"></script>
+<script src="${cacheUrl}/assets/applyproject/fileup/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    $("#chose_lab ul li").each(function(){
+        $(this).on("click",function(){
+            var liValue = this.firstChild.innerHTML;
+            document.querySelector("#input_lab_name").value= liValue;
+        })
+    })
+</script>
+<script>
+    <!--adddevice start-->
+    //    $(function() {
+    //        $(".js__p_start, .js__p_another_start").simplePopup();
+    //    });
+</script>
+<script>
+    //    $("#add_Btn").click(function() {
+    //        addDevice();
+    //    })
 
     function addDevice() {
-        var addDom = "<li><select><option></option></select><span> 余量: </span><input type=\"text\" name=\"rest_1\"><span> 数目: </span><input type=\"text\" name=\"apply_1\"></li>"
-        $("#apply_Device ul").append(addDom);
+        var temp = document.getElementsByClassName("base_add")[0].innerHTML,//.clone(true)
+                table = document.getElementById("bo").childNodes[3];
+
+        var _tablerow = '<tr class="base_add"><td><div class="input-group"><input type="text" class="form-control" aria-label="..."><div class="input-group-btn myshow"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设备类型<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right" onclick="showLiText(event);"><li><a href="#">戴尔服务器</a></li><li><a href="#">mac笔记本</a></li><li><a href="#">SSD固态硬盘</a></li></ul></div><!-- /btn-group --></div><!-- /input-group --></td><td><div class="form-group"><input type="email" class="form-control" placeholder="Email" disabled="disabled"></div></td><td><div class="form-group"><input type="email" class="form-control" placeholder="Email"></div></td></tr>';
+        console.log(temp.outerHTML);
+        //_tablerow += temp;
+        //_tablerow += '</tr>';
+        //$("#bo").append(temp);
+        console.log(table.childNodes[3]);
+        table.innerHTML += _tablerow;
+
     }
 
-    addApplyDevice("原子对撞机", 200);
-    addLab("GIS工程试验中心")
-    </script>
-    <script type="text/javascript" src="${cacheUrl}/assets/applyproject/js/jquery.popup.js"></script>
-</body>
-
+    function showLiText() {
+        var that = this.event.target,
+                _text = that.innerHTML;
+        //console.log(_text,that.parentNode.parentNode.parentNode.parentNode.firstElementChild.value);
+        that.parentNode.parentNode.parentNode.parentNode.firstElementChild.value = _text;
+        //console.log("0",that.parentNode.parentNode.parentNode.parentNode.firstElementChild.value);
+    }
+    $("#adddevice").display="none";
+    $("#file-3").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+    });
+</script></body>
 </html>
