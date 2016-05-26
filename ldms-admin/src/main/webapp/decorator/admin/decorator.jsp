@@ -27,28 +27,9 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -60,7 +41,7 @@ desired effect
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini">LDMS</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>CUG实验室管理中心</b></span>
+            <span class="logo-lg"><b>信工学院实验中心</b></span>
         </a>
 
 
@@ -231,11 +212,10 @@ desired effect
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar" style="font-family: 微软雅黑;font-size: 20px">
 
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
@@ -262,12 +242,52 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header"></i>主菜单</li>
+                <li class="header">
+                <li style="color: lemonchiffon;font-size: 18px;width: 100%;text-align: center;display: block;">
+                    功能导航
+                </li>
+                </i>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
+                <li>
                     <a href="#">
                         <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
-                        <span>实验管理</span>
+                        <span>日常办公</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;公告管理</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;课件管理</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;在线答疑</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;在线资源</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
+                        <span>教学实验</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验查询</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;成绩报表</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
+                        </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
+                        <span>开放实验</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -295,33 +315,23 @@ desired effect
                         </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-cc-paypal fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申购</a>
                         </li>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
-                        <span>用户管理</span>
+                        <span>人员管理</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
                         </li>
                         <li><a href="#" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
                         </li>
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-cube fa-lg" style="margin-right: 30px"></i>
-                        <span>数据管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-home fa-lg"></i>实验室管理</a></li>
-
-                        <li><a href="#" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
+                        <li><a href="#" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
                         </li>
                     </ul>
                 </li>
@@ -386,7 +396,7 @@ desired effect
                 <h3 class="control-sidebar-heading">最近活动</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="#">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
