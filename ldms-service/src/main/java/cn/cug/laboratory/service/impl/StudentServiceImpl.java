@@ -36,10 +36,23 @@ public class StudentServiceImpl implements StudentService {
     private StudentExtendMapper studentMapper;
     private DBUtils dbUtils;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Student selectByPrimaryKey(String id){
         return studentMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     *
+     * @param name
+     * @param major
+     * @param classId
+     * @param academy
+     * @param sex
+     */
     public void insert(String name,String major,Integer classId,String academy,String sex){
         String lastID=studentMapper.selectLastId();
         System.out.print(lastID);

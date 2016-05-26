@@ -13,7 +13,7 @@
     id, name, major, class_id, academy, sex
   </sql>
   <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
-  <select id="selectLastId" resultMap="IDResultMap">
+  <select id="selectLastId" resultMap="java.lang.String">
     select id
     from student
     ORDER BY id desc

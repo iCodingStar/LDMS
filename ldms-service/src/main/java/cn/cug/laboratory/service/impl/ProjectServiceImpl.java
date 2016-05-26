@@ -21,10 +21,24 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectExtendMapper projectMapper;
 
+    /**
+     *
+     * @param id
+     * @return
+     * 根据主键获取实验
+     */
     public Project selectByPrimaryKey(String id){
         return projectMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     *
+     * @param teaId
+     * @param pageNo
+     * @param pageNum
+     * @return
+     *
+     */
     //pageNo表示第几页，从1开始，pageNum表示每页的记录数目
     public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
@@ -33,6 +47,13 @@ public class ProjectServiceImpl implements ProjectService {
         return new RetuValueClass<Project>(projectList,projectCount);
     }
 
+    /**
+     *
+     * @param name
+     * @param pageNo
+     * @param pageNum
+     * @return
+     */
     public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
         List<Project> projectList=projectMapper.selectByName(name,startSite,pageNum);

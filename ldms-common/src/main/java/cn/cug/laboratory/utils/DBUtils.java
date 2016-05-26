@@ -2,6 +2,7 @@ package cn.cug.laboratory.utils;
 
 /**
  * Created by PP on 2016/5/20.
+ * String加1工具类
  */
 public class DBUtils {
     /**
