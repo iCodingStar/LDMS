@@ -8,4 +8,5 @@ import cn.cug.laboratory.model.persistent.User;
 
 public interface UserService {
     public String getAuth(User user);
+    public void updatePassword(String stuId,String newPwd);
 }

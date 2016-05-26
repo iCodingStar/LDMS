@@ -262,68 +262,37 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header"></i>主菜单</li>
+                <li class="header"></i>学生系统主菜单</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
+                <li class="">
                     <a href="#">
                         <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
-                        <span>实验管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <span>预约实验</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验查询</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;成绩报表</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
-                        <span>设备管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <span>查看已预约实验</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"> <i class="fa fa-list fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申请</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"> <i class="fa fa-wrench fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备报修</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"> <i class="fa fa-cc-paypal fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申购</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
-                        <span>用户管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <span>查询成绩</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
-                        </li>
-                    </ul>
                 </li>
-
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cube fa-lg" style="margin-right: 30px"></i>
-                        <span>数据管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <span>设置</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-home fa-lg"></i>实验室管理</a></li>
-
-                        <li><a href="#" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
-                        </li>
-                    </ul>
                 </li>
 
             </ul>

@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService{
         }
         return "-1";
     }
+
+    @Override
+    public void updatePassword(String stuId, String newPwd) {
+        mapper.updatePassword(stuId,newPwd);
+    }
 }
