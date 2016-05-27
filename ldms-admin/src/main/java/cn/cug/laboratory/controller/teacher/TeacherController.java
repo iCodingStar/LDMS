@@ -35,7 +35,7 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public ModelAndView login(HttpSession session, User user) {
+    public String login(HttpSession session, User user) {
         ModelAndView mav = new ModelAndView();
         switch (user.getAuth()) {
             case "学生":
@@ -50,7 +50,7 @@ public class TeacherController {
                 break;
         }
         session.setAttribute("user",user);
-        return mav;
+        return "redirect:student/home";
     }
 
 

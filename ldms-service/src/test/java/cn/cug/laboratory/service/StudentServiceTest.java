@@ -1,5 +1,6 @@
 package cn.cug.laboratory.service;
 
+import cn.cug.laboratory.model.persistent.Student;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,6 @@ public class StudentServiceTest extends AbstarctSpringTest {
 
     @Test
     public void SelectByPrimaryKeyTest() throws Exception {
-        studentService.selectByPrimaryKey("2013100");
+        System.out.println( studentService.selectByPrimaryKey("20131000007").toString());
     }
 }

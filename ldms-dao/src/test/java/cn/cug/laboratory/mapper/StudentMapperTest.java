@@ -33,7 +33,7 @@ public class StudentMapperTest extends AbstarctSpringTest {
 
     @Test
     public void getAuthTest(){
-        studentMapper.selectByPrimaryKey("");
+//        studentMapper.selectByPrimaryKey("");
     }
 
     @Test
