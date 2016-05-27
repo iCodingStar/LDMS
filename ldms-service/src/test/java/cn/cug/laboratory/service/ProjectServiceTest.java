@@ -16,6 +16,8 @@
 package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.persistent.Project;
+import cn.cug.laboratory.utils.RetuValueClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,10 +34,30 @@ public class ProjectServiceTest extends AbstarctSpringTest {
     private ProjectService projectService;
 
     @Test
-    public void testSelectByMultipleInfo(){
-        ProjectExtend projectExtend = new ProjectExtend();
-        List<ProjectExtend> list = projectService.selectByMultipleInfo(projectExtend);
-        System.out.println(list);
+    public void selectByPrimaryKeyTest()throws Exception{
+        String id="P1605230";
+        Project project=projectService.selectByPrimaryKey(id);
+        System.out.println(project.toString());
+    }
+
+    @Test
+    public void selectByTeaIdTest()throws Exception{
+        String tea_id="050002";
+        RetuValueClass<Project> projectRetuValueClass=projectService.selectByTeaId(tea_id,1,2);
+        for(Project project: projectRetuValueClass.getRetuList()){
+            System.out.println(project.toString());
+        }
+        System.out.println(projectRetuValueClass.getCount());
+    }
+
+    @Test
+    public void selectByNameTest()throws Exception{
+        String name="数据结构";
+        RetuValueClass<Project> projectRetuValueClass=projectService.selectByName(name,1,3);
+        for(Project project: projectRetuValueClass.getRetuList()){
+            System.out.println(project.toString());
+        }
+        System.out.println(projectRetuValueClass.getCount());
     }
 
 }
