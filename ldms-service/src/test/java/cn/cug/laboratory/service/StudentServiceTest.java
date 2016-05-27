@@ -3,6 +3,7 @@ package cn.cug.laboratory.service;
 import cn.cug.laboratory.model.persistent.Student;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.Test;
 
 /**
  * Created by HXY on 2016/5/27.
@@ -18,6 +19,6 @@ public class StudentServiceTest extends AbstarctSpringTest {
 
     @Test
     public void SelectByPrimaryKeyTest() throws Exception {
-        System.out.println( studentService.selectByPrimaryKey("20131000007").toString());
+        System.out.println(studentService.selectByPrimaryKey("20131000007").toString());
     }
 }

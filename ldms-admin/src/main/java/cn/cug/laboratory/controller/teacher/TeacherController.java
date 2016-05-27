@@ -54,6 +54,12 @@ public class TeacherController {
     }
 
 
+    /**
+     *
+     * @param user
+     * @return
+     * 登录部分的ajax验证用户信息
+     */
     @RequestMapping(value = "validateuser", method = RequestMethod.GET)
     public
     @ResponseBody
@@ -82,12 +88,9 @@ public class TeacherController {
     @RequestMapping(value = "saveprojectinfo",method = RequestMethod.GET)
     public
     @ResponseBody
-    String saveprojectinfo(ProjectExtend project, HttpSession session, @Param("multipart")MultipartFile mfile
-                           ){
-//        project.setState(0);//设置实验状态
-        project.setTeaId(((Teacher)session.getAttribute("user")).getId());//获取老师ID
-        project.setTeaId(labService.getLabIdByName(project.getName()));//前台暂时将实验室名称防暑lab_id属性中
 
+    String saveprojectinfo(ProjectExtend project, HttpSession session,
+                           @Param("multipart")MultipartFile mfile){
         return "sucess";
     }
 }

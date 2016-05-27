@@ -32,10 +32,10 @@ public class StudentMapperTest extends AbstarctSpringTest {
     private UserExtendMapper userExtendMapper;
 
     @Test
-    public void getAuthTest(){
-//        studentMapper.selectByPrimaryKey("");
-    }
+    public void getAuthTest() {
+        studentMapper.selectByPrimaryKey("20100p");
 
+    }
     @Test
     public void testSelectByPrimaryKey(){
 
