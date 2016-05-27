@@ -26,7 +26,7 @@ import java.util.List;
  * @since 1.0.0
  */
 
-public class ProjectServiceTest extends AbstractSpringTest {
+public class ProjectServiceTest extends AbstarctSpringTest {
 
     @Autowired
     private ProjectService projectService;
