@@ -39,7 +39,7 @@ public class StudentMapperTest extends AbstarctSpringTest {
     @Test
     public void testSelectByPrimaryKey(){
 
-        studentMapper.deleteByPrimaryKey("2013100");
+        //studentMapper.selectByPrimaryKey("");
     }
 
 
