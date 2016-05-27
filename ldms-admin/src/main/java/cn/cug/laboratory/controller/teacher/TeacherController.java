@@ -40,7 +40,6 @@ public class TeacherController {
     }
 
 
-
     @RequestMapping(value = "validateuser", method = RequestMethod.GET)
     public
     @ResponseBody

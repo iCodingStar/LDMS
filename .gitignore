@@ -10,5 +10,6 @@ target/
 *.iml
 *.log
 *.zip
+/ldms-dao/src/main/resources/star-jdbc.properties
 *.txt
 *.bak

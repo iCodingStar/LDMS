@@ -15,22 +15,24 @@
  */
 package cn.cug.laboratory.controller.admin;
 
+import cn.cug.laboratory.model.extend.ProjectExtend;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Date;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @autor shixing
  * @since 1.0.0
  */
+
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
-    @RequestMapping(value = {"/home"})
-    public String go(Model model) {
-        model.addAttribute("msg", "Go ,Let's Go!");
-        return "admin/home";
+@RequestMapping("/project")
+public class ProjectController {
+
+    @RequestMapping(value = {},method = RequestMethod.GET)
+    public @ResponseBody String queryProjectInfo(ProjectExtend projectExtend){
+
+        return "";
     }
 }

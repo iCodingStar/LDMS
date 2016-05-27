@@ -21,6 +21,8 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectExtendMapper projectMapper;
 
+    @Autowired ProjectExtendMapper projectExtendMapper;
+
     /**
      *
      * @param id
@@ -59,5 +61,10 @@ public class ProjectServiceImpl implements ProjectService {
         List<Project> projectList=projectMapper.selectByName(name,startSite,pageNum);
         int projectCount=projectMapper.selectCountByTeaId(name);
         return new RetuValueClass<Project>(projectList,projectCount);
+    }
+
+    @Override
+    public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend) {
+        return projectExtendMapper.selectByMultipleInfo(projectExtend);
     }
 }
