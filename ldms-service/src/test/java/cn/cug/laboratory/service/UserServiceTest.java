@@ -12,9 +12,10 @@ public class UserServiceTest extends AbstarctSpringTest {
 
     @Test
     public void UpdatePasswordTest() throws Exception{
-        String stuId="2013101";
+        String stuId="20131000008";
+        String oldPwd="0";
         String newPwd="2";
 
-        userService.updatePassword(stuId,newPwd);
+        userService.updatePassword(stuId,oldPwd,newPwd);
     }
 }

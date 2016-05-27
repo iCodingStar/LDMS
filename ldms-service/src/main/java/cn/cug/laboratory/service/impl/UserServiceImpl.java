@@ -41,10 +41,11 @@ public class UserServiceImpl implements UserService{
      *
      * @param stuId
      * @param newPwd
-     * 更新密码
      */
-    @Override
-    public void updatePassword(String stuId, String newPwd) {
-        mapper.updatePassword(stuId,newPwd);
+    public void updatePassword(String stuId,String oldPwd,String newPwd) {
+        User user=mapper.selectByPrimaryKey(stuId);
+        if(user.getPassword().equalsIgnoreCase(oldPwd)){
+            mapper.updatePassword(stuId,newPwd);
+        }
     }
 }
