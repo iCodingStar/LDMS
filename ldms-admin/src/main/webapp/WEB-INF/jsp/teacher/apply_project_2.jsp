@@ -100,7 +100,7 @@
             </div>
             <div class="panel-body row">
                 <div class="col-lg-12">
-                    <button type="button"class="btn btn-success btn-lg" value="下一步"><a href="/jump/applyproject3">下一步</a></button>
+                    <button id="saveinfo" type="button"class="btn btn-success btn-lg" onclick="saveinfo()">提交信息</button>
                 </div>
             </div>
         </div>
@@ -177,10 +177,36 @@
     })
 </script>
 <script>
-    <!--adddevice start-->
-    //    $(function() {
-    //        $(".js__p_start, .js__p_another_start").simplePopup();
-    //    });
+    function getData(url,querydata,method,successbackcall) {
+        $.ajax({
+            url: url,
+            method: method,
+            data: querydata,
+            success: successbackcall,
+            error:function(){
+                alert("信息未提交成功,请尝试重新")
+            }
+        });
+    }
+</script>
+<script>
+    function saveinfo() {
+        var lab_name=$("#input_lan_name").val(),
+                pro_name=$("#input_lab_theme").val(),
+                pro_capacity=$("#lab_capacity").val(),
+                pro_score=$("#lab_score").val(),
+                pro_start_time=$("#lab_start_time").val(),
+                pro_end_time=$("#lab_end_time").val();
+
+        var querydata={lab_id:lab_name,name:pro_name,starttime:pro_start_time,endtime:pro_end_time,capacity:pro_capacity,credit:pro_score}
+
+        getData("/saveprojectinfo",querydata,"get",function (data) {
+            if(data=='sucess')
+                    window.location.href="/jump/applyproject3";
+            else
+                    alert("信息有误");
+        })
+    }
 </script>
 <script>
     //    $("#add_Btn").click(function() {

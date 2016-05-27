@@ -4,11 +4,13 @@ import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.Teacher;
 import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -48,6 +50,12 @@ public class TeacherController {
     }
 
 
+    /**
+     *
+     * @param user
+     * @return
+     * 登录部分的ajax验证用户信息
+     */
     @RequestMapping(value = "validateuser", method = RequestMethod.GET)
     public
     @ResponseBody
@@ -76,9 +84,9 @@ public class TeacherController {
     @RequestMapping(value = "saveprojectinfo",method = RequestMethod.GET)
     public
     @ResponseBody
-    String saveprojectinfo(ProjectExtend project,HttpSession session){
-        project.setState(0);
-        project.setTeaId(((Teacher)session.getAttribute("user")).getId());
+    String saveprojectinfo(ProjectExtend project, HttpSession session,
+                           @Param("multipart")MultipartFile mfile){
+
 
         return "sucess";
     }
