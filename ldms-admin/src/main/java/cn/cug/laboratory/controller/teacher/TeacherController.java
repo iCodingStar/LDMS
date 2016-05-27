@@ -20,10 +20,8 @@ import javax.servlet.http.HttpSession;
  * Created by HXY on 2016/5/22.
  */
 @Controller
+@RequestMapping("/teacher")
 public class TeacherController {
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private LabService labService;
@@ -35,7 +33,7 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public String login(HttpSession session, User user) {
+    public ModelAndView login(HttpSession session, User user) {
         ModelAndView mav = new ModelAndView();
         switch (user.getAuth()) {
             case "学生":
@@ -50,7 +48,7 @@ public class TeacherController {
                 break;
         }
         session.setAttribute("user",user);
-        return "redirect:student/home";
+        return mav;
     }
 
 
@@ -88,9 +86,9 @@ public class TeacherController {
     @RequestMapping(value = "saveprojectinfo",method = RequestMethod.GET)
     public
     @ResponseBody
-
     String saveprojectinfo(ProjectExtend project, HttpSession session,
                            @Param("multipart")MultipartFile mfile){
+
         return "sucess";
     }
 }
