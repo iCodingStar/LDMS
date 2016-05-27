@@ -15,6 +15,12 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserExtendMapper mapper;
 
+    /**
+     *
+     * @param user
+     * @return
+     * 返回用户权限
+     */
     @Override
     public String getAuth(User user) {
         String auth= mapper.getAuth(user);
@@ -31,6 +37,12 @@ public class UserServiceImpl implements UserService{
         return "-1";
     }
 
+    /**
+     *
+     * @param stuId
+     * @param newPwd
+     * 更新密码
+     */
     @Override
     public void updatePassword(String stuId, String newPwd) {
         mapper.updatePassword(stuId,newPwd);

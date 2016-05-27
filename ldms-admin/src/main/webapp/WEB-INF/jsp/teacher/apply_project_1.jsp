@@ -37,7 +37,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>信息工程学院试验申请条例</strong></h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="height: 300px;overflow-y: auto;font-size: 20px">
                     文华学院实验室设备维修及耗材使用管理暂行规定
 ,
                     （修订版）
@@ -139,7 +139,7 @@
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary btn-lg" id="next" onclick="applyproject()">下一步</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
                 </div>
             </div>
         </div>
@@ -148,6 +148,7 @@
 
 </div>
 <script>
+    document.getElementById("next").style("disabled:disabled")
     $("#next").attr("disabled",true);
     $("#agree").focus(function(){
         $("#next").attr("disabled",false);
@@ -157,7 +158,7 @@
     })
 
     function applyproject() {
-        window.location.href="/applyproject2";
+        window.location.href="/jump/applyproject2";
     }
 
 </script>

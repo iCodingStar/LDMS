@@ -39,14 +39,7 @@ public class TeacherController {
         return mav;
     }
 
-    @RequestMapping(value ={"/applyproject1"})
-    public String applyproject1(){
-        return "teacher/apply_project_1";
-    }
-    @RequestMapping(value ={"/applyproject2"})
-    public String applyproject2(){
-        return "teacher/apply_project_2";
-    }
+
 
     @RequestMapping(value = "validateuser", method = RequestMethod.GET)
     public

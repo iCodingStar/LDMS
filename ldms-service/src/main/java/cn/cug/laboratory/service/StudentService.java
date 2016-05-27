@@ -22,8 +22,21 @@ import cn.cug.laboratory.model.persistent.Student;
  */
 
 public interface StudentService {
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Student selectByPrimaryKey(String id);
 
+    /**
+     *
+     * @param name
+     * @param major
+     * @param classId
+     * @param academy
+     * @param sex
+     */
     public void insert(String name, String major, Integer classId, String academy, String sex);
 
 }

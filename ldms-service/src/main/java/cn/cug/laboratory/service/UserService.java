@@ -7,6 +7,17 @@ import cn.cug.laboratory.model.persistent.User;
  */
 
 public interface UserService {
+    /**
+     *
+     * @param user
+     * @return
+     */
     public String getAuth(User user);
+
+    /**
+     *
+     * @param stuId
+     * @param newPwd
+     */
     public void updatePassword(String stuId,String newPwd);
 }

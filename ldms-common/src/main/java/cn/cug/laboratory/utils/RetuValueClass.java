@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by PP on 2016/5/25.
+ * 模板包装类，返回一个List和Int类型
  */
 public class RetuValueClass<E> {
     public List<E> retuList;

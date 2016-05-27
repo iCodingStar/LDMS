@@ -6,5 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentExtendMapper extends StudentMapper{
+    /**
+     *
+     * @return
+     * 返回最后插入的一条学生记录的id
+     */
     String selectLastId();
 }

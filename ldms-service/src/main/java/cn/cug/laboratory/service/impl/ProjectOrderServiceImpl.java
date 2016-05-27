@@ -30,7 +30,13 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
     @Autowired
     private ProjectExtendMapper projectMapper;
 
-
+    /**
+     *
+     * @param proId
+     * @param stuId
+     * @param score
+     * 实验预约成功，插入一条记录
+     */
     public void insert(String proId,String stuId,Float score) {
         DBUtils dbUtils=new DBUtils();
         String lastID=projectOrderMapper.selectLastId();
@@ -42,6 +48,14 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
         projectMapper.reduceLeft(proId);
     }
 
+    /**
+     *
+     * @param stuId
+     * @param pageNo 当前页数
+     * @param pageNum 每页显示的条数
+     * @return
+     * 在页面上显示学生条目
+     */
     public RetuValueClass<ProjectOrder> selectByStuId(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
         List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
@@ -49,6 +63,11 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
         return new RetuValueClass<ProjectOrder>(projectOrderList,projectOrderCount);
     }
 
+    /**
+     *
+     * @param proOrderId 实验预约记录的ID
+     *                   根据预约的实验ID删除一条记录
+     */
     public void delete(String proOrderId){
         String proId=projectOrderMapper.selectByPrimaryKey(proOrderId).getProId();
 //        System.out.println(proId);
@@ -65,6 +84,14 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
         projectMapper.addLeft(proId);
     }
 
+    /**
+     *
+     * @param stuId
+     * @param pageNo
+     * @param pageNum
+     * @return
+     * 设置学生分数
+     */
     public RetuValueClass<ProjectOrder> selectScore(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
         List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
