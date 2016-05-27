@@ -3,12 +3,15 @@ package cn.cug.laboratory.controller.teacher;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.Teacher;
 import cn.cug.laboratory.model.persistent.User;
+import cn.cug.laboratory.service.LabService;
 import cn.cug.laboratory.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +24,9 @@ public class TeacherController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LabService labService;
 
     /**
      * session中保存用户参数为user
@@ -76,9 +82,11 @@ public class TeacherController {
     @RequestMapping(value = "saveprojectinfo",method = RequestMethod.GET)
     public
     @ResponseBody
-    String saveprojectinfo(ProjectExtend project,HttpSession session){
-        project.setState(0);
-        project.setTeaId(((Teacher)session.getAttribute("user")).getId());
+    String saveprojectinfo(ProjectExtend project, HttpSession session, @Param("multipart")MultipartFile mfile
+                           ){
+        project.setState(0);//设置实验状态
+        project.setTeaId(((Teacher)session.getAttribute("user")).getId());//获取老师ID
+        project.setTeaId(labService.getLabIdByName(project.getName()));//前台暂时将实验室名称防暑lab_id属性中
 
         return "sucess";
     }
