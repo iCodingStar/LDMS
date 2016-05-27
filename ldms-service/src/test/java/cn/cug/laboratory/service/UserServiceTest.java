@@ -5,9 +5,9 @@ import org.junit.Test;
 /**
  * Created by HXY on 2016/5/27.
  */
-public class UserServiceTest extends AbstarctSpringTest{ @Test
-public void test(){
-    System.out.println("test");
-}
-
+public class UserServiceTest extends AbstarctSpringTest {
+    @Test
+    public void test(){
+        System.out.println("test");
+    }
 }

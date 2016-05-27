@@ -3,6 +3,7 @@ package cn.cug.laboratory.controller.teacher;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.Teacher;
 import cn.cug.laboratory.model.persistent.User;
+import cn.cug.laboratory.service.LabService;
 import cn.cug.laboratory.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class TeacherController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LabService labService;
 
     /**
      * session中保存用户参数为user
@@ -86,7 +90,6 @@ public class TeacherController {
     @ResponseBody
     String saveprojectinfo(ProjectExtend project, HttpSession session,
                            @Param("multipart")MultipartFile mfile){
-
 
         return "sucess";
     }
