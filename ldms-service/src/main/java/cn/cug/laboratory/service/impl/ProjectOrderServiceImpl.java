@@ -58,7 +58,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      */
     public RetuValueClass<ProjectOrder> selectByStuId(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
+        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,startSite,pageNum);
         int projectOrderCount=projectOrderMapper.selectCountByStuId(stuId);
         return new RetuValueClass<ProjectOrder>(projectOrderList,projectOrderCount);
     }
@@ -94,7 +94,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      */
     public RetuValueClass<ProjectOrder> selectScore(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
+        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,startSite,pageNum);
         Iterator<ProjectOrder> it=projectOrderList.iterator();
         while(it.hasNext()){
             if(it.next().getScore()==0)

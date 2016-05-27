@@ -10,7 +10,6 @@ import java.util.List;
  * Created by PP on 2016/5/22.
  */
 public interface ProjectService {
-    public Project selectByPrimaryKey(String id);
 
     /**
      * 通过教师Id选择相应的实验记录，

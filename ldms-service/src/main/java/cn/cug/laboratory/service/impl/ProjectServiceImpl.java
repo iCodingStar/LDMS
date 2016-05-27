@@ -21,18 +21,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectExtendMapper projectMapper;
 
-    @Autowired ProjectExtendMapper projectExtendMapper;
-
-    /**
-     *
-     * @param id
-     * @return
-     * 根据主键获取实验
-     */
-    public Project selectByPrimaryKey(String id){
-        return projectMapper.selectByPrimaryKey(id);
-    }
-
     /**
      *
      * @param teaId
@@ -59,12 +47,11 @@ public class ProjectServiceImpl implements ProjectService {
     public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
         List<Project> projectList=projectMapper.selectByName(name,startSite,pageNum);
-        int projectCount=projectMapper.selectCountByTeaId(name);
+        int projectCount=projectMapper.selectCountByName(name);
         return new RetuValueClass<Project>(projectList,projectCount);
     }
 
-    @Override
     public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend) {
-        return projectExtendMapper.selectByMultipleInfo(projectExtend);
+        return projectMapper.selectByMultipleInfo(projectExtend);
     }
 }

@@ -3,6 +3,26 @@ package cn.cug.laboratory.model.persistent;
 import java.util.Date;
 
 public class Project {
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id='" + id + '\'' +
+                ", labId='" + labId + '\'' +
+                ", teaId='" + teaId + '\'' +
+                ", name='" + name + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", capacity=" + capacity +
+                ", state=" + state +
+                ", credit=" + credit +
+                ", submitTime=" + submitTime +
+                ", passTime=" + passTime +
+                ", devices='" + devices + '\'' +
+                ", files='" + files + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     private String id;//项目编号
 
     private String labId;//实验编号

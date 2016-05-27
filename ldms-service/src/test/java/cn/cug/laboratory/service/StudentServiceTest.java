@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.Test;
 
 /**
- * Created by HXY on 2016/5/27.
+ * Created by PP on 2016/5/27.
+ * 2个函数测试通过
  */
 public class StudentServiceTest extends AbstarctSpringTest {
     @Autowired
