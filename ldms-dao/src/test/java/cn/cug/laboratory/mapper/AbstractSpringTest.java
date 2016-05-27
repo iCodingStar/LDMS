@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.cug.laboratory.service;
+package cn.cug.laboratory.mapper;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-transaction.xml","classpath:application-context-service.xml"})
-public abstract class AbstarctSpringTest {
+@ContextConfiguration(locations = {"classpath:application-context-dao.xml"})
+public abstract class AbstractSpringTest {
 
 }

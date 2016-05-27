@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since 1.0.0
  */
 
-public class StudentMapperTest extends AbstarctSpringTest {
+public class StudentMapperTest extends AbstractSpringTest {
     @Autowired
     private StudentMapper studentMapper;
 
