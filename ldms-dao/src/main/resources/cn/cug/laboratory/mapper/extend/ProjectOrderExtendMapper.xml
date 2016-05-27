@@ -10,6 +10,7 @@
   <sql id="Base_Column_List" >
     id, pro_id, stu_id, score
   </sql>
+
   <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
   <select id="selectLastId" resultType="java.lang.String">
     select id

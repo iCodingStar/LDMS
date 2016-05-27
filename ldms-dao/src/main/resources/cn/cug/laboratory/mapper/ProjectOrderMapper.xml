@@ -26,6 +26,7 @@
     values (#{id,jdbcType=CHAR}, #{proId,jdbcType=VARCHAR}, #{stuId,jdbcType=VARCHAR}, 
       #{score,jdbcType=REAL})
   </insert>
+
   <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.ProjectOrder" >
     insert into project_order
     <trim prefix="(" suffix=")" suffixOverrides="," >

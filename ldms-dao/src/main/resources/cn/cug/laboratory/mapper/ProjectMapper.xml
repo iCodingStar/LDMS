@@ -26,6 +26,7 @@
   <sql id="Blob_Column_List" >
     description
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

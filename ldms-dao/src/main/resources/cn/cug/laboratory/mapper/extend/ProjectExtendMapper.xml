@@ -16,16 +16,54 @@
     <result column="devices" property="devices" jdbcType="VARCHAR" />
     <result column="files" property="files" jdbcType="VARCHAR" />
   </resultMap>
+
   <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
     pass_time, devices, files
   </sql>
+
   <sql id="Blob_Column_List" >
     description
   </sql>
+
+    <!-- 定义项目查询的sql片段，就是商品查询条件 -->
+    <sql id="project_query_lists">
+        <!---->
+        <if test="id != null">
+            AND project.`id` = #{id}
+        </if>
+        <if test="name != null">
+            AND project.`name` like '%${name}%'
+        </if>
+        <if test="teacherName != null">
+            AND teacher.`name`  like '%${teacherName}%'
+        </if>
+        AND state = #{state}
+        limit #{startSite},#{pageNum}
+    </sql>
+
+    <!-- 定义项目查询 -->
+    <select id="selectByMultipleInfo"
+            parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
+            resultType="cn.cug.laboratory.model.extend.ProjectExtend">
+        SELECT
+        project.`id` 'id',
+        project.`name` 'name',
+        project.`start_time` 'startTime',
+        teacher.`name` 'teacherName',
+        project.state 'state'
+        FROM
+        project,
+        teacher
+        <where>
+            <include refid="project_query_lists"></include>
+        </where>
+    </select>
+
 
   <select id="selectByTeaId" resultMap="ResultMapWithBLOBs" >
     select
@@ -37,6 +75,7 @@
     order by id
     limit #{startSite},#{pageNum}
   </select>
+
   <select id="selectCountByTeaId" resultType="java.lang.Integer">
     select count(*)
     from project
@@ -53,6 +92,7 @@
     order by id
     limit #{startSite},#{pageNum}
   </select>
+
   <select id="selectCountByName" resultType="java.lang.Integer">
     select count(*)
     from project
@@ -65,6 +105,7 @@
     set left_capacity=left_capacity-1
     where id= #{id}
   </select>
+
   <select id="addLeft"  parameterType="java.lang.String">
     update project
     set left_capacity=left_capacity+1

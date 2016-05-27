@@ -1,6 +1,7 @@
 package cn.cug.laboratory.mapper.extend;
 
 import cn.cug.laboratory.mapper.ProjectMapper;
+import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.Project;
 import org.apache.ibatis.annotations.Param;
 
@@ -56,4 +57,11 @@ public interface ProjectExtendMapper extends ProjectMapper{
      * 实验容量加1
      */
     void addLeft(String id);
+
+    /**
+     * @author: shixing
+     * @function:查询项目信息
+     * @since : 1.0.0
+     */
+    List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend);
 }

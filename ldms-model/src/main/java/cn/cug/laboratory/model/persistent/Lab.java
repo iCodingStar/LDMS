@@ -1,13 +1,13 @@
 package cn.cug.laboratory.model.persistent;
 
 public class Lab {
-    private String id;
+    private String id;//实验编号
 
-    private String name;
+    private String name;//实验名称
 
-    private Integer size;
+    private Integer size;//实验容量
 
-    private String openWay;
+    private String openWay;//实验开放方式
 
     private String manager;
 
