@@ -46,31 +46,34 @@
     <script src="${cacheUrl}/assets/login/js/jquery-1.11.1.min.js"></script>
     <!-- Favicon and touch icons -->
     <link rel="shortcut icon" href="${cacheUrl}/assets/login/ico/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${cacheUrl}/assets/login/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${cacheUrl}/assets/login/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${cacheUrl}/assets/login/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="${cacheUrl}/assets/login/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="${cacheUrl}/assets/login/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="${cacheUrl}/assets/login/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="${cacheUrl}/assets/login/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <style>
-    body{
+    body {
         background-image: url("${cacheUrl}/assets/login/img/backgrounds/1.jpg");
     }
 </style>
 
-    <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="${cacheUrl}/assets/login/ico/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="${cacheUrl}/assets/login/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="${cacheUrl}/assets/login/ico/apple-touchF-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="${cacheUrl}/assets/login/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="${cacheUrl}/assets/login/ico/apple-touch-icon-57-precomposed.png">
-    <style type="text/css">
-        body {
-            background-image: url("${cacheUrl}/assets/login/img/backgrounds/1.jpg");
-        }
-    </style>
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="${cacheUrl}/assets/login/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+      href="${cacheUrl}/assets/login/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+      href="${cacheUrl}/assets/login/ico/apple-touchF-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+      href="${cacheUrl}/assets/login/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="${cacheUrl}/assets/login/ico/apple-touch-icon-57-precomposed.png">
+<style type="text/css">
+    body {
+        background-image: url("${cacheUrl}/assets/login/img/backgrounds/1.jpg");
+    }
+</style>
 </head>
 
 <body>
@@ -102,34 +105,37 @@
                         <form id="loginform" role="form" action="login" method="post">
                             <div class="form-group">
                                 <label class="sr-only" for="username">用户名</label>
-                                <input type="text" id="loginusername" name="username" placeholder="Username..." class="form-username form-control" id="username">
+                                <input type="text" id="loginusername" name="username" placeholder="Username..."
+                                       class="form-username form-control" id="username">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="password">密码</label>
-                                <input type="password" id="loginpassword" name="password" placeholder="Password..." class="form-password form-control" id="password">
+                                <input type="password" id="loginpassword" name="password" placeholder="Password..."
+                                       class="form-password form-control" id="password">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="auth"></label>
-                                <input style="visibility: hidden" type="text" id="userauth" name="auth" placeholder="" class="form-username form-control" >
-                            <div class="form-group">
-                                <label>选择角色</label>
-                                <div class="input-group">
-                                    <input type="text" id="auth" class="form-control" aria-label="...">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            身份<span class="caret"></span></button>
-                                        <ul id="cc" class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="#">管理员</a></li>
-                                            <li><a href="#">教师</a></li>
-                                            <li><a href="#">学生</a></li>
-                                        </ul>
-                                    </div><!-- /btn-group -->
-                                </div><!-- /input-group -->
-                            </div>
-                            <button type="button" id="login" class="btn">登录</button>
-                            <button type="button" class="btn-primary btn-lg btn-block regist-btn">注册</button>
+                                <input style="visibility: hidden" type="text" id="userauth" name="auth" placeholder=""
+                                       class="form-username form-control">
+                                <div class="form-group">
+                                    <label>选择角色</label>
+                                    <div class="input-group">
+                                        <input type="text" id="auth" class="form-control" aria-label="...">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                身份<span class="caret"></span></button>
+                                            <ul id="cc" class="dropdown-menu dropdown-menu-right">
+                                                <li><a href="#">管理员</a></li>
+                                                <li><a href="#">教师</a></li>
+                                                <li><a href="#">学生</a></li>
+                                            </ul>
+                                        </div><!-- /btn-group -->
+                                    </div><!-- /input-group -->
                                 </div>
+                                <button type="button" id="login" class="btn">登录</button>
+                                <button type="button" class="btn-primary btn-lg btn-block regist-btn">注册</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -149,33 +155,31 @@
 <script src="${cacheUrl}/assets/login/js/placeholder.js"></script>
 <![endif]-->
 <script>
-    var a_s= document.getElementsByTagName("a");
-    for(var i=0;i<a_s.length;i++){
-        a_s[i].onclick=function(event){
+    var a_s = document.getElementsByTagName("a");
+    for (var i = 0; i < a_s.length; i++) {
+        a_s[i].onclick = function (event) {
             console.log(event.target.innerHTML)
-            document.getElementById("auth").value=event.target.innerHTML;
-            document.getElementById("userauth").value=event.target.innerHTML;
+            document.getElementById("auth").value = event.target.innerHTML;
+            document.getElementById("userauth").value = event.target.innerHTML;
         }
     }
 </script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#login").click(function(){
+    $(document).ready(function () {
+        $("#login").click(function () {
             crunchifyAjax();
         });
     });
     function crunchifyAjax() {
-        var username=$("#loginusername").val();
-        var password=$("#loginpassword").val();
-        var auth=$("#auth").val();
-
-
+        var username = $("#loginusername").val();
+        var password = $("#loginpassword").val();
+        var auth = $("#auth").val();
         $.ajax({
-            url : '/validateuser',
+            url: '/validateuser',
             method: 'GET',
-            data: {username:username,password:password,auth:auth},
-            success : function(data) {
-                if(data=='success')
+            data: {username: username, password: password, auth: auth},
+            success: function (data) {
+                if (data == 'success')
                     $("#loginform").submit();
                 else
                     alert("信息有误，请检查登录信息");

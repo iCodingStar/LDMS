@@ -3,4 +3,5 @@
     <mapping path="/WEB-INF/jsp/teacher/*" decorator="/decorator/teacher/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/student/*" decorator="/decorator/student/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/admin/*" decorator="/decorator/admin/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/admin/project/*" decorator="/decorator/admin/decorator.jsp"/>
 </sitemesh>

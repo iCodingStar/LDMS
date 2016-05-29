@@ -22,6 +22,9 @@
     -->
     <link rel="stylesheet" href="${cacheUrl}/css/skin-blue.min.css">
 
+    <!--checkProject-->
+    <link  rel="stylesheet" href="${cacheUrl}/css/admin/admin-base.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,6 +34,7 @@
     <![endif]-->
 </head>
 <body class="skin-blue sidebar-mini">
+
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -164,7 +168,7 @@
                             <!-- The user image in the navbar-->
                             <img src="${cacheUrl}/images/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">石星</span>
+                            <span class="hidden-xs">${user.username}</span>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -173,7 +177,7 @@
                                 <img src="${cacheUrl}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    石星 - 管理员
+                                    ${pageContext.session.getAttribute("user").username} - 管理员
                                     <small>会员注册时间 09. 2012</small>
                                 </p>
                             </li>
@@ -195,7 +199,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                    <a href="${pageContext.request.contextPath}/admin/logout" class="btn btn-default btn-flat">注销</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">修改</a>
@@ -222,7 +226,7 @@
                     <img src="${cacheUrl}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>石星</p>
+                    <p>${pageContext.session.getAttribute("user").username}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                 </div>
@@ -279,7 +283,7 @@
                         </li>
                         <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
                         </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/project/" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
                         </li>
                     </ul>
                 </li>
@@ -297,7 +301,7 @@
                         </li>
                         <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
                         </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/project/" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
                         </li>
                     </ul>
                 </li>
@@ -467,6 +471,9 @@
 <script src="${cacheUrl}/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
+
+<script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>
+<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

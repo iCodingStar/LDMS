@@ -3,175 +3,175 @@ package cn.cug.laboratory.model.persistent;
 import java.util.Date;
 
 public class Project {
+        private String id;//项目编号
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id='" + id + '\'' +
-                ", labId='" + labId + '\'' +
-                ", teaId='" + teaId + '\'' +
-                ", name='" + name + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", capacity=" + capacity +
-                ", leftCapacity=" + leftCapacity +
-                ", state=" + state +
-                ", credit=" + credit +
-                ", submitTime=" + submitTime +
-                ", passTime=" + passTime +
-                ", devices='" + devices + '\'' +
-                ", files='" + files + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+        private String labId;//实验编号
 
-    private String id;//项目编号
+        private String teaId;//教师编号
 
-    private String labId;//实验编号
+        private String name;//项目名称
 
-    private String teaId;//教师编号
+        private Date startTime;//项目开始时间
 
-    private String name;//项目名称
+        private Date endTime;//项目结束时间
 
-    private Date startTime;//项目开始时间
+        private Integer capacity;
 
-    private Date endTime;//项目结束时间
+        public Integer getLeftCapacity() {
+            return leftCapacity;
+        }
 
-    private Integer capacity;
+        public void setLeftCapacity(Integer leftCapacity) {
+            this.leftCapacity = leftCapacity;
+        }
 
-    public Integer getLeftCapacity() {
-        return leftCapacity;
-    }
+        private Integer leftCapacity;
 
-    public void setLeftCapacity(Integer leftCapacity) {
-        this.leftCapacity = leftCapacity;
-    }
+        private Integer state = 0;//项目状态
 
-    private Integer leftCapacity;
+        private Float credit;
 
-    private Integer state = 0;//项目状态
+        private Date submitTime;//项目提交时间
 
-    private Float credit;
+        private Date passTime;//项目通过时间
 
-    private Date submitTime;//项目提交时间
+        private String devices;//设备名称
 
-    private Date passTime;//项目通过时间
+        private String files;//项目文件名称
 
-    private String devices;//设备名称
+        private String description;//项目描述
 
-    private String files;//项目文件名称
+        public String getId() {
+            return id;
+        }
 
-    private String description;//项目描述
+        public void setId(String id) {
+            this.id = id == null ? null : id.trim();
+        }
 
-    public String getId() {
-        return id;
-    }
+        public String getLabId() {
+            return labId;
+        }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+        public void setLabId(String labId) {
+            this.labId = labId == null ? null : labId.trim();
+        }
 
-    public String getLabId() {
-        return labId;
-    }
+        public String getTeaId() {
+            return teaId;
+        }
 
-    public void setLabId(String labId) {
-        this.labId = labId == null ? null : labId.trim();
-    }
+        public void setTeaId(String teaId) {
+            this.teaId = teaId == null ? null : teaId.trim();
+        }
 
-    public String getTeaId() {
-        return teaId;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setTeaId(String teaId) {
-        this.teaId = teaId == null ? null : teaId.trim();
-    }
+        public void setName(String name) {
+            this.name = name == null ? null : name.trim();
+        }
 
-    public String getName() {
-        return name;
-    }
+        public Date getStartTime() {
+            return startTime;
+        }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+        public void setStartTime(Date startTime) {
+            this.startTime = startTime;
+        }
 
-    public Date getStartTime() {
-        return startTime;
-    }
+        public Date getEndTime() {
+            return endTime;
+        }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
+        public void setEndTime(Date endTime) {
+            this.endTime = endTime;
+        }
 
-    public Date getEndTime() {
-        return endTime;
-    }
+        public Integer getCapacity() {
+            return capacity;
+        }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
+        public void setCapacity(Integer capacity) {
+            this.capacity = capacity;
+        }
 
-    public Integer getCapacity() {
-        return capacity;
-    }
+        public Integer getState() {
+            return state;
+        }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
+        public void setState(Integer state) {
+            this.state = state;
+        }
 
-    public Integer getState() {
-        return state;
-    }
+        public Float getCredit() {
+            return credit;
+        }
 
-    public void setState(Integer state) {
-        this.state = state;
-    }
+        public void setCredit(Float credit) {
+            this.credit = credit;
+        }
 
-    public Float getCredit() {
-        return credit;
-    }
+        public Date getSubmitTime() {
+            return submitTime;
+        }
 
-    public void setCredit(Float credit) {
-        this.credit = credit;
-    }
+        public void setSubmitTime(Date submitTime) {
+            this.submitTime = submitTime;
+        }
 
-    public Date getSubmitTime() {
-        return submitTime;
-    }
+        public Date getPassTime() {
+            return passTime;
+        }
 
-    public void setSubmitTime(Date submitTime) {
-        this.submitTime = submitTime;
-    }
+        public void setPassTime(Date passTime) {
+            this.passTime = passTime;
+        }
 
-    public Date getPassTime() {
-        return passTime;
-    }
+        public String getDevices() {
+            return devices;
+        }
 
-    public void setPassTime(Date passTime) {
-        this.passTime = passTime;
-    }
+        public void setDevices(String devices) {
+            this.devices = devices == null ? null : devices.trim();
+        }
 
-    public String getDevices() {
-        return devices;
-    }
+        public String getFiles() {
+            return files;
+        }
 
-    public void setDevices(String devices) {
-        this.devices = devices == null ? null : devices.trim();
-    }
+        public void setFiles(String files) {
+            this.files = files == null ? null : files.trim();
+        }
 
-    public String getFiles() {
-        return files;
-    }
+        public String getDescription() {
+            return description;
+        }
 
-    public void setFiles(String files) {
-        this.files = files == null ? null : files.trim();
-    }
+        public void setDescription(String description) {
+            this.description = description == null ? null : description.trim();
+        }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        @Override
+        public String toString() {
+            return "Project{" +
+                    "id='" + id + '\'' +
+                    ", labId='" + labId + '\'' +
+                    ", teaId='" + teaId + '\'' +
+                    ", name='" + name + '\'' +
+                    ", startTime=" + startTime +
+                    ", endTime=" + endTime +
+                    ", capacity=" + capacity +
+                    ", leftCapacity=" + leftCapacity +
+                    ", state=" + state +
+                    ", credit=" + credit +
+                    ", submitTime=" + submitTime +
+                    ", passTime=" + passTime +
+                    ", devices='" + devices + '\'' +
+                    ", files='" + files + '\'' +
+                    ", description='" + description + '\'' +
+                    '}';
+        }
     }
 }
