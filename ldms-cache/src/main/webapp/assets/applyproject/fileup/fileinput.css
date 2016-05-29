@@ -9,6 +9,10 @@
  * Year: 2015
  * For more Yii related demos visit http://demos.krajee.com
  */
+element.style {
+    min-height: 600px;
+}
+
 .file-input {
     overflow-x: auto;
 }
@@ -21,7 +25,7 @@
     font-size: 999px;
     text-align: right;
     color: #fff;
-    background: transparent url('../img/loading.gif') top left no-repeat;
+    background: transparent url('loading.gif') top left no-repeat;
     border: none;
 }
 
@@ -112,6 +116,8 @@
     padding: 5px;
     width: 100%;
     margin-bottom: 5px;
+    height: 400px;
+    min-height: 300px;
 }
 
 .file-preview-frame {
@@ -164,7 +170,7 @@
 }
 
 .loading {
-    background: transparent url('../img/loading.gif') no-repeat scroll center center content-box !important;
+    background: transparent url('loading.gif') no-repeat scroll center center content-box !important;
 }
 
 .wrap-indicator {
@@ -220,7 +226,7 @@
 }
 
 .file-uploading {
-    background-image: url('../img/loading-sm.gif');
+    background-image: url('loading-sm.gif');
     background-position: center bottom 10px;
     background-repeat: no-repeat;
     opacity: 0.6;

@@ -64,4 +64,6 @@ public interface ProjectExtendMapper extends ProjectMapper{
      * @since : 1.0.0
      */
     List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend);
+
+    public String getLatId();
 }

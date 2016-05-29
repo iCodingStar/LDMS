@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,25 +8,25 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="${cacheUrl}/bootstrap/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="${cacheUrl}/bootstrap/css/bootstrap.min.css">--%>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="${cacheUrl}/css/ldms.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
     <link rel="stylesheet" href="${cacheUrl}/css/skin-blue.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="${cacheUrl}/assets/applyproject/fileup/default.css">
+    <link href="${cacheUrl}/assets/applyproject/fileup/fileinput.css" media="all" rel="stylesheet" type="text/css">
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -50,6 +49,8 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="skin-blue sidebar-mini">
+
+
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -417,9 +418,6 @@ desired effect
          immediately after the control sidebar -->
     <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.0 -->
 <script src="${cacheUrl}/js/jquery/jQuery-2.2.0.min.js"></script>
@@ -428,9 +426,5 @@ desired effect
 <!-- AdminLTE App -->
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
 </body>
 </html>

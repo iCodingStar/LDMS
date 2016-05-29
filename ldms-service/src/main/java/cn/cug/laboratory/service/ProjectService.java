@@ -36,4 +36,9 @@ public interface ProjectService {
      * @since : 1.0.0
      */
     public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend);
+
+
+    public String getNewId();
+
+    public int insert(Project project);
 }

@@ -1,5 +1,6 @@
 package cn.cug.laboratory.service;
 
+import cn.cug.laboratory.model.extend.UserExtend;
 import cn.cug.laboratory.model.persistent.User;
 
 /**
@@ -20,4 +21,6 @@ public interface UserService {
      * @param newPwd
      */
     public void updatePassword(String stuId,String newPwd);
+
+    public String getTeacherNameById(String name);
 }

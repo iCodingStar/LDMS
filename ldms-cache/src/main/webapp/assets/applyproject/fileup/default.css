@@ -1,11 +1,11 @@
 @import url(http://fonts.useso.com/css?family=Raleway:200,500,700,800);
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?rretjt');
-	src:url('../fonts/icomoon.eot?#iefixrretjt') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?rretjt') format('woff'),
-		url('../fonts/icomoon.ttf?rretjt') format('truetype'),
-		url('../fonts/icomoon.svg?rretjt#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?rretjt');
+	src:url('fonts/icomoon.eot?#iefixrretjt') format('embedded-opentype'),
+		url('fonts/icomoon.woff?rretjt') format('woff'),
+		url('fonts/icomoon.ttf?rretjt') format('truetype'),
+		url('fonts/icomoon.svg?rretjt#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

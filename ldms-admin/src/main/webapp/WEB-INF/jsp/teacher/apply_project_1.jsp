@@ -5,13 +5,13 @@
     <meta charset="utf-8" lang="en">
     <title>申请实验</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">--%>
 
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <%--<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->--%>
+    <%--<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>--%>
 
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <%--<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->--%>
+    <%--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--%>
     <style type="text/css">
         .panel{
             margin-top: 30%;
@@ -31,13 +31,13 @@
 <body>
 <div>
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>信息工程学院试验申请条例</strong></h3>
                 </div>
-                <div class="panel-body" style="height: 300px;overflow-y: auto;font-size: 20px">
+                <div class="panel-body" style="height: 350px;overflow-y: auto;font-size: 20px">
                     文华学院实验室设备维修及耗材使用管理暂行规定
 ,
                     （修订版）
@@ -139,33 +139,33 @@
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
+                    <button style="width: 150px;margin-right: 20px" type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 
 </div>
 <script>
-    document.getElementById("next").style("disabled:disabled")
-    $("#next").attr("disabled",true);
-    $("#agree").focus(function(){
-        $("#next").attr("disabled",false);
-    })
-    $("#disagree").focus(function(){
+    $(document).ready(function () {
+        $("#next").attr("disabled:disabled");
         $("#next").attr("disabled",true);
-    })
-
+        $("#agree").focus(function(){
+            $("#next").attr("disabled",false);
+        })
+        $("#disagree").focus(function(){
+            $("#next").attr("disabled",true);
+        })
+    });
     function applyproject() {
         window.location.href="/jump/applyproject2";
     }
-
 </script>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<%--<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>--%>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<%--<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->--%>
+<%--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--%>
 </body>
 </html>

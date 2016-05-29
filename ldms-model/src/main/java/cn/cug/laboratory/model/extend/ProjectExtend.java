@@ -30,4 +30,9 @@ public class ProjectExtend extends Project {
     public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

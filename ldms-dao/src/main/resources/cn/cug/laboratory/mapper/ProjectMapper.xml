@@ -9,6 +9,7 @@
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="left_capacity" property="leftCapacity" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="SMALLINT" />
     <result column="credit" property="credit" jdbcType="REAL" />
     <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
@@ -20,7 +21,7 @@
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
+    id, lab_id, tea_id, name, start_time, end_time, capacity,left_capacity,state, credit, submit_time,
     pass_time, devices, files
   </sql>
   <sql id="Blob_Column_List" >
@@ -40,13 +41,13 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.cug.laboratory.model.persistent.Project" >
-    insert into project (id, lab_id, tea_id, name, 
-      start_time, end_time, capacity, 
-      state, credit, submit_time, 
+    insert into project (id, lab_id, tea_id, name,
+      start_time, end_time, capacity, left_capacity,
+      state, credit, submit_time,
       pass_time, devices, files, 
       description)
     values (#{id,jdbcType=VARCHAR}, #{labId,jdbcType=CHAR}, #{teaId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{capacity,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{capacity,jdbcType=INTEGER}, #{leftCapacity,jdbcType=INTEGER}
       #{state,jdbcType=SMALLINT}, #{credit,jdbcType=REAL}, #{submitTime,jdbcType=TIMESTAMP}, 
       #{passTime,jdbcType=TIMESTAMP}, #{devices,jdbcType=VARCHAR}, #{files,jdbcType=VARCHAR}, 
       #{description,jdbcType=LONGVARCHAR})
@@ -74,6 +75,9 @@
       </if>
       <if test="capacity != null" >
         capacity,
+      </if>
+      <if test="leftCapacity != null" >
+        left_capacity,
       </if>
       <if test="state != null" >
         state,
@@ -119,6 +123,9 @@
       <if test="capacity != null" >
         #{capacity,jdbcType=INTEGER},
       </if>
+      <if test="leftCapacity != null" >
+        #{leftCapacity,jdbcType=INTEGER},
+      </if>
       <if test="state != null" >
         #{state,jdbcType=SMALLINT},
       </if>
@@ -163,6 +170,9 @@
       <if test="capacity != null" >
         capacity = #{capacity,jdbcType=INTEGER},
       </if>
+      <if test="leftCapacity != null" >
+        #{leftCapacity,jdbcType=INTEGER},
+      </if>
       <if test="state != null" >
         state = #{state,jdbcType=SMALLINT},
       </if>
@@ -195,6 +205,7 @@
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       capacity = #{capacity,jdbcType=INTEGER},
+      left_capacity = #{leftCapacity,jdbcType=INTEGER},
       state = #{state,jdbcType=SMALLINT},
       credit = #{credit,jdbcType=REAL},
       submit_time = #{submitTime,jdbcType=TIMESTAMP},
@@ -212,6 +223,7 @@
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       capacity = #{capacity,jdbcType=INTEGER},
+      left_capacity = #{leftCapacity,jdbcType=INTEGER},
       state = #{state,jdbcType=SMALLINT},
       credit = #{credit,jdbcType=REAL},
       submit_time = #{submitTime,jdbcType=TIMESTAMP},

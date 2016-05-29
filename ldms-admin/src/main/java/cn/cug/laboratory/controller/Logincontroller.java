@@ -1,6 +1,9 @@
 package cn.cug.laboratory.controller;
 
+import cn.cug.laboratory.model.extend.UserExtend;
+import cn.cug.laboratory.model.persistent.Teacher;
 import cn.cug.laboratory.model.persistent.User;
+import cn.cug.laboratory.service.TeacherService;
 import cn.cug.laboratory.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,8 @@ public class Logincontroller {
     @Autowired
     private UserService userService;
 
+
+
     /**
      * session中保存用户参数为user
      * @param session
@@ -25,7 +30,7 @@ public class Logincontroller {
      * @return
      */
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public String login(HttpSession session, User user) {
+    public String login(HttpSession session, UserExtend user) {
         session.setAttribute("user",user);
         switch (user.getAuth()) {
             case "学生":
@@ -46,7 +51,7 @@ public class Logincontroller {
     @RequestMapping(value = "validateuser", method = RequestMethod.GET)
     public
     @ResponseBody
-    String validateuser(User user) {
+    String validateuser(UserExtend user) {
         String auth = userService.getAuth(user);
         String result = "";
 

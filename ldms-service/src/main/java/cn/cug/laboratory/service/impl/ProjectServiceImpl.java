@@ -5,6 +5,7 @@ import cn.cug.laboratory.mapper.extend.ProjectExtendMapper;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.service.ProjectService;
+import cn.cug.laboratory.utils.DBUtils;
 import cn.cug.laboratory.utils.RetuValueClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectExtendMapper projectMapper;
 
-    @Autowired ProjectExtendMapper projectExtendMapper;
 
     /**
      *
@@ -65,6 +65,18 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend) {
-        return projectExtendMapper.selectByMultipleInfo(projectExtend);
+        return projectMapper.selectByMultipleInfo(projectExtend);
     }
+
+    @Override
+    public String getNewId() {
+        return DBUtils.StringAddOne(projectMapper.getLatId());
+    }
+
+    @Override
+    public int insert(Project project) {
+        return projectMapper.insertSelective(project);
+    }
+
+
 }

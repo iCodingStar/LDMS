@@ -1,6 +1,8 @@
 package cn.cug.laboratory.service.impl;
 
+import cn.cug.laboratory.mapper.extend.TeacherExtendMapper;
 import cn.cug.laboratory.mapper.extend.UserExtendMapper;
+import cn.cug.laboratory.model.extend.UserExtend;
 import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserExtendMapper mapper;
 
+    @Autowired
+    private TeacherExtendMapper teacherExtendMappermapper;
     /**
      *
      * @param user
@@ -46,5 +50,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void updatePassword(String stuId, String newPwd) {
         mapper.updatePassword(stuId,newPwd);
+    }
+
+    @Override
+    public String getTeacherNameById(String name) {
+        return teacherExtendMappermapper.selectByPrimaryKey(name).getId();
     }
 }

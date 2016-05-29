@@ -9,6 +9,7 @@
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="left_capacity" property="leftCapacity" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="SMALLINT" />
     <result column="credit" property="credit" jdbcType="REAL" />
     <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
@@ -22,7 +23,7 @@
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
+    id, lab_id, tea_id, name, start_time, end_time, capacity,left_capacity, state, credit, submit_time,
     pass_time, devices, files
   </sql>
 
@@ -111,4 +112,12 @@
     set left_capacity=left_capacity+1
     where id= #{id}
   </select>
+
+    <select id="getLatId" resultType="java.lang.String">
+        select id
+    from project
+    ORDER BY id desc
+    limit 1
+    </select>
+
 </mapper>

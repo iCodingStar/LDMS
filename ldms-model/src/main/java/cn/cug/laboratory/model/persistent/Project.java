@@ -17,6 +17,9 @@ public class Project {
 
     private Integer capacity;
 
+    private Integer leftCapacity;
+
+
     private Integer state = 0;//项目状态
 
     private Float credit;
@@ -24,6 +27,7 @@ public class Project {
     private Date submitTime;//项目提交时间
 
     private Date passTime;//项目通过时间
+
 
     private String devices;//设备名称
 
@@ -124,7 +128,7 @@ public class Project {
     }
 
     public void setDevices(String devices) {
-        this.devices = devices == null ? null : devices.trim();
+        this.devices = devices;
     }
 
     public String getFiles() {
@@ -141,5 +145,33 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getLeftCapacity() {
+        return leftCapacity;
+    }
+
+    public void setLeftCapacity(Integer leftCapacity) {
+        this.leftCapacity = leftCapacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id='" + id + '\'' +
+                ", labId='" + labId + '\'' +
+                ", teaId='" + teaId + '\'' +
+                ", name='" + name + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", capacity=" + capacity +
+                ", state=" + state +
+                ", credit=" + credit +
+                ", submitTime=" + submitTime +
+                ", passTime=" + passTime +
+                ", devices='" + devices + '\'' +
+                ", files='" + files + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

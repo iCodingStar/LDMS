@@ -1202,7 +1202,7 @@
                 beforeSend: fnBefore,
                 success: fnSuccess,
                 complete: fnComplete,
-                error: fnError
+                // error: fnSuccess
             }, self.ajaxSettings);
             self.ajaxRequests.push($.ajax(settings));
         },
@@ -2006,6 +2006,7 @@
             }
             return '<button type="button" title="' + self.removeTitle + '" class="' + css + '"' + status + '>' + self.removeIcon + self.removeLabel + '</button>';
         },
+
         renderCancel: function () {
             var self = this, css = self.cancelClass + ' fileinput-cancel fileinput-cancel-button';
             if (!self.showCancel) {
@@ -2013,6 +2014,7 @@
             }
             return '<button type="button" title="' + self.cancelTitle + '" class="hide ' + css + '">' + self.cancelIcon + self.cancelLabel + '</button>';
         },
+
         renderUpload: function () {
             var self = this, css = self.uploadClass + ' kv-fileinput-upload fileinput-upload-button', content = '', status = '';
             if (!self.showUpload) {
@@ -2028,6 +2030,7 @@
             }
             return content;
         }
+
     };
 
     //FileInput plugin definition

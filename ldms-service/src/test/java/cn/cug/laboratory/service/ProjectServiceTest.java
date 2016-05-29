@@ -38,4 +38,11 @@ public class ProjectServiceTest extends AbstractSpringTest {
         System.out.println(list);
     }
 
+    @Test
+    public void testGetlastId(){
+        System.out.println(projectService.getNewId());
+    }
+
+
+
 }
