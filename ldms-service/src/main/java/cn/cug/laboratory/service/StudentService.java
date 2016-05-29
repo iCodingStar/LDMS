@@ -38,5 +38,4 @@ public interface StudentService {
      * @param sex
      */
     public void insert(String name, String major, Integer classId, String academy, String sex);
-
 }

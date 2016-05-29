@@ -9,6 +9,7 @@
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="left_capacity" property="leftCapacity" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="SMALLINT" />
     <result column="credit" property="credit" jdbcType="REAL" />
     <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
@@ -17,12 +18,23 @@
     <result column="files" property="files" jdbcType="VARCHAR" />
   </resultMap>
 
+  <resultMap id="GroupResultMap" type="cn.cug.laboratory.model.extend.ProjectExtend" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="tea_name" property="teacherName" jdbcType="CHAR" />
+        <result column="lab_name" property="labName" jdbcType="CHAR" />
+        <result column="project_name" property="name" jdbcType="VARCHAR" />
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+        <result column="capacity" property="capacity" jdbcType="INTEGER" />
+        <result column="left_capacity" property="leftCapacity" jdbcType="INTEGER" />
+    </resultMap>
+
   <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
+    id, lab_id, tea_id, name, start_time, end_time, capacity, left_capacity,state, credit, submit_time,
     pass_time, devices, files
   </sql>
 
@@ -65,13 +77,11 @@
     </select>
 
 
-  <select id="selectByTeaId" resultMap="ResultMapWithBLOBs" >
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from project
-    where tea_id= #{teaId,jdbcType=CHAR}
+  <select id="selectByTeaId" resultMap="GroupResultMap" >
+   select project.id,teacher.`name` 'tea_name',lab.`name` 'lab_name',project.`name` 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
+    from project,teacher,lab
+    where project.lab_id=lab.id and project.tea_id=teacher.id
+      and tea_id= #{teaId,jdbcType=CHAR}
     order by id
     limit #{startSite},#{pageNum}
   </select>
@@ -82,21 +92,20 @@
     where tea_id= #{teaId,jdbcType=CHAR}
   </select>
 
-  <select id="selectByName" resultMap="ResultMapWithBLOBs" >
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from project
-    where name = #{name,jdbcType=VARCHAR}
+  <select id="selectByName" resultMap="GroupResultMap ">
+   select project.id,teacher.name 'tea_name',lab.name 'lab_name',project.name 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
+    from project,teacher,lab
+    where project.lab_id=lab.id and project.tea_id=teacher.id
+     and  project.name = #{name,jdbcType=VARCHAR}
     order by id
     limit #{startSite},#{pageNum}
   </select>
 
   <select id="selectCountByName" resultType="java.lang.Integer">
     select count(*)
-    from project
-    where name = #{name,jdbcType=VARCHAR}
+    from project,teacher,lab
+    where project.lab_id=lab.id and project.tea_id=teacher.id
+     and  project.name = #{name,jdbcType=VARCHAR}
   </select>
 
 

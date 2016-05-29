@@ -38,8 +38,8 @@ public class ProjectOrderServiceImplTest extends AbstarctSpringTest{
 
     @Test
     public void DeleteTest(){
-        String proOrderId="PO05005";
-        projectOrderService.delete(proOrderId);
+//        String proOrderId="PO05005";
+//        projectOrderService.delete(proOrderId);
     }
 
     @Test

@@ -16,7 +16,7 @@ public interface ProjectExtendMapper extends ProjectMapper{
      * @return
      * 根据教师ID和分页条件查询获取实验集合
      */
-    List<Project> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<ProjectExtend> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      *
@@ -34,7 +34,7 @@ public interface ProjectExtendMapper extends ProjectMapper{
      * @return
      * 根据实验名称和分页条件获取实验结果
      */
-    List<Project> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<ProjectExtend> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      *

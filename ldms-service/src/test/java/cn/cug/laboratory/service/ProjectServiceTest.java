@@ -35,22 +35,22 @@ public class ProjectServiceTest extends AbstarctSpringTest {
 
     @Test
     public void selectByTeaIdTest()throws Exception{
-        String tea_id="050003";
-        RetuValueClass<Project> projectRetuValueClass=projectService.selectByTeaId(tea_id,1,2);
-        for(Project project: projectRetuValueClass.getRetuList()){
-            System.out.println(project.toString());
-        }
-        System.out.println(projectRetuValueClass.getCount());
+//        String tea_id="050003";
+//        RetuValueClass<ProjectExtend> projectRetuValueClass=projectService.selectByTeaId(tea_id,1,2);
+//        for(Project project: projectRetuValueClass.getRetuList()){
+//            System.out.println(project.toString());
+//        }
+//        System.out.println(projectRetuValueClass.getCount());
     }
 
     @Test
     public void selectByNameTest()throws Exception{
-        String name="测绘实习";
-        RetuValueClass<Project> projectRetuValueClass=projectService.selectByName(name,1,3);
-        for(Project project: projectRetuValueClass.getRetuList()){
-            System.out.println(project.toString());
-        }
-        System.out.println(projectRetuValueClass.getCount());
+//        String name="测绘实习";
+//        RetuValueClass<ProjectExtend> projectRetuValueClass=projectService.selectByName(name,1,3);
+//        for(Project project: projectRetuValueClass.getRetuList()){
+//            System.out.println(project.toString());
+//        }
+//        System.out.println(projectRetuValueClass.getCount());
     }
 
 }

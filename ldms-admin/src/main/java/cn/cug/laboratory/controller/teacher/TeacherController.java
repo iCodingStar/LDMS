@@ -26,52 +26,12 @@ public class TeacherController {
     @Autowired
     private LabService labService;
 
-    /**
-     * session中保存用户参数为user
-     * @param session
-     * @param user
-     * @return
-     */
-    @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public ModelAndView login(HttpSession session, User user) {
-        ModelAndView mav = new ModelAndView();
-        switch (user.getAuth()) {
-            case "学生":
-                mav.setViewName("student/home");
-                mav.addObject("msg","hhhh");
-                break;
-            case "教师":
-                mav.setViewName("teacher/home");
-                break;
-            case "管理员":
-                mav.setViewName("admin/home");
-                break;
-        }
-        session.setAttribute("user",user);
+    @RequestMapping("/home")
+    public ModelAndView home() {
+        System.out.println("home");
+        ModelAndView mav = new ModelAndView("teacher/home");
         return mav;
     }
-
-
-    /**
-     *
-     * @param user
-     * @return
-     * 登录部分的ajax验证用户信息
-     */
-    @RequestMapping(value = "validateuser", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String validateuser(User user) {
-        String auth = userService.getAuth(user);
-        String result = "";
-
-        if (auth.equals(user.getAuth()))
-            result = "success";
-        else
-            result = "Error";
-        return result;
-    }
-
     /**
      *
      * @param project

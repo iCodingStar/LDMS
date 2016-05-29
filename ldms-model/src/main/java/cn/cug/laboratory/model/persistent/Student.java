@@ -3,6 +3,16 @@ package cn.cug.laboratory.model.persistent;
 public class Student {
     private String id;
 
+    public Student(){}
+    public Student(String id, String name, String major, Integer classId, String academy, String sex) {
+        this.id = id;
+        this.name = name;
+        this.major = major;
+        this.classId = classId;
+        this.academy = academy;
+        this.sex = sex;
+    }
+
     private String name;
 
     private String major;

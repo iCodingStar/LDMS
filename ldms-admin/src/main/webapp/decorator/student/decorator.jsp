@@ -265,7 +265,7 @@ desired effect
                 <li class="header"></i>学生系统主菜单</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="">
-                    <a href="#">
+                    <a href="/student/order">
                         <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
                         <span>预约实验</span>
                         <i class="fa fa-angle-right pull-right"></i>
@@ -273,7 +273,7 @@ desired effect
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/student/record">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
                         <span>查看已预约实验</span>
                         <i class="fa fa-angle-right pull-right"></i>
@@ -281,16 +281,16 @@ desired effect
                 </li>
 
                 <li class="treeview">
-                    <a href="#">
+                    <a href="/student/score">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
                         <span>查询成绩</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="/student/info">
                         <i class="fa fa-cube fa-lg" style="margin-right: 30px"></i>
-                        <span>设置</span>
+                        <span>查看个人信息</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                 </li>

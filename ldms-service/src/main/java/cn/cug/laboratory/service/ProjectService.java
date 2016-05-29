@@ -20,7 +20,7 @@ public interface ProjectService {
      * @param pageNum
      * @return 记录列表，总的记录数
      */
-    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum);
+    public RetuValueClass<ProjectExtend> selectByTeaId(String teaId, int pageNo, int pageNum);
 
     /**
      * @param name
@@ -28,7 +28,7 @@ public interface ProjectService {
      * @param pageNum
      * @return
      */
-    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum);
+    public RetuValueClass<ProjectExtend> selectByName(String name, int pageNo, int pageNum);
 
     /**
      * @author: shixing

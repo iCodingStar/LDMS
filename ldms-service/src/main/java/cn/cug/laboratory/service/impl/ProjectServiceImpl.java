@@ -19,7 +19,7 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
-    private ProjectExtendMapper projectMapper;
+    private ProjectExtendMapper projectExtendMapper;
 
     /**
      *
@@ -30,11 +30,11 @@ public class ProjectServiceImpl implements ProjectService {
      *
      */
     //pageNo表示第几页，从1开始，pageNum表示每页的记录数目
-    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum){
+    public RetuValueClass<ProjectExtend> selectByTeaId(String teaId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<Project> projectList=projectMapper.selectByTeaId(teaId,startSite,pageNum);
-        int projectCount=projectMapper.selectCountByTeaId(teaId);
-        return new RetuValueClass<Project>(projectList,projectCount);
+        List<ProjectExtend> projectList=projectExtendMapper.selectByTeaId(teaId,startSite,pageNum);
+        int projectCount=projectExtendMapper.selectCountByTeaId(teaId);
+        return new RetuValueClass<ProjectExtend>(projectList,projectCount);
     }
 
     /**
@@ -44,14 +44,14 @@ public class ProjectServiceImpl implements ProjectService {
      * @param pageNum
      * @return
      */
-    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum){
+    public RetuValueClass<ProjectExtend> selectByName(String name, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<Project> projectList=projectMapper.selectByName(name,startSite,pageNum);
-        int projectCount=projectMapper.selectCountByName(name);
-        return new RetuValueClass<Project>(projectList,projectCount);
+        List<ProjectExtend> projectExtendList=projectExtendMapper.selectByName(name,startSite,pageNum);
+        int projectCount=projectExtendMapper.selectCountByName(name);
+        return new RetuValueClass<ProjectExtend>(projectExtendList,projectCount);
     }
 
     public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend) {
-        return projectMapper.selectByMultipleInfo(projectExtend);
+        return projectExtendMapper.selectByMultipleInfo(projectExtend);
     }
 }
