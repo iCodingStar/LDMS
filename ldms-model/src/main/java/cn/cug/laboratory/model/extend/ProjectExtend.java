@@ -3,9 +3,8 @@ package cn.cug.laboratory.model.extend;
 import cn.cug.laboratory.model.persistent.Project;
 
 public class ProjectExtend extends Project {
-    private Integer startSite = 0;
-    private Integer pageNum = 5;
     private String teacherName;
+    private String labName;
 
     public String getTeacherName() {
         return teacherName;
@@ -15,19 +14,11 @@ public class ProjectExtend extends Project {
         this.teacherName = teacherName;
     }
 
-    public Integer getStartSite() {
-        return startSite;
+    public String getLabName() {
+        return labName;
     }
 
-    public void setStartSite(Integer startSite) {
-        this.startSite = startSite;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
+    public void setLabName(String labName) {
+        this.labName = labName;
     }
 }

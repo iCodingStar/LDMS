@@ -16,10 +16,16 @@
 package cn.cug.laboratory.controller.admin;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
+import cn.cug.laboratory.model.persistent.Project;
+import cn.cug.laboratory.service.ProjectService;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * @autor shixing
@@ -27,12 +33,65 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-@RequestMapping("/project")
+@RequestMapping("admin/project")
 public class ProjectController {
+    private Integer offset = 1;
 
-    @RequestMapping(value = {},method = RequestMethod.GET)
-    public @ResponseBody String queryProjectInfo(ProjectExtend projectExtend){
+    @Autowired
+    private ProjectService projectService;
 
-        return "";
+    /**
+     * @author: shixing
+     * @function:进入项目审核
+     * @since : 1.0.0
+     */
+    @RequestMapping("")
+    public ModelAndView checkProject() {
+        return new ModelAndView("admin/project/checkProject");
+    }
+
+
+    /**
+     * @author: shixing
+     * @fuction:进行分页查询
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/query"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    List<ProjectExtend> queryProjectInfo(@Param("page") Integer currentPage,
+                                         ProjectExtend projectExtend) {
+        List<ProjectExtend> projectExtendList = projectService.selectByMultipleInfo(currentPage, offset, projectExtend);
+        System.out.println(projectExtendList);
+        return projectExtendList;
+    }
+
+
+    /**
+     * @author: shixing
+     * @fuction:进行分页查询
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/query/page"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    PageModel<ProjectExtend> queryProjectInfoByPage(Integer page,
+                                                    ProjectExtend projectExtend) {
+        PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(page, offset, projectExtend);
+        return pm;
+    }
+
+    /**
+     * @author: shixing
+     * @function:根据id查询项目详细信息
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/queryById"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    ProjectExtend queryProjectInfoById(Project project) {
+        ProjectExtend projectExtend = projectService.selectMultipleInfoById(project.getId());
+        System.out.println(projectExtend);
+        return projectExtend;
     }
 }

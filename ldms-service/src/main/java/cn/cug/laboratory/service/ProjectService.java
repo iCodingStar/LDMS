@@ -1,8 +1,10 @@
 package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.utils.RetuValueClass;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -33,7 +35,29 @@ public interface ProjectService {
 
     /**
      * @author: shixing
+     * @function:查询项目记录
      * @since : 1.0.0
      */
-    public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend);
+    public List<ProjectExtend> selectByMultipleInfo(Integer currentPage,
+                                                    Integer offset,
+                                                    ProjectExtend projectExtend);
+
+    /**
+     * @author: shixing
+     * @function:查询记录条数
+     * @since : 1.0.0
+     */
+    public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+
+    /**
+     * @author: shixing
+     * @function:根据id查询项目详情
+     * @since : 1.0.0
+     */
+    public ProjectExtend selectMultipleInfoById(String id);
+
+
+    public PageModel<ProjectExtend> getProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
+
 }

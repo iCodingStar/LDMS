@@ -1,52 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.cug.laboratory.mapper.extend.ProjectExtendMapper" >
-  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Project" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="lab_id" property="labId" jdbcType="CHAR" />
-    <result column="tea_id" property="teaId" jdbcType="CHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="capacity" property="capacity" jdbcType="INTEGER" />
-    <result column="state" property="state" jdbcType="SMALLINT" />
-    <result column="credit" property="credit" jdbcType="REAL" />
-    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
-    <result column="pass_time" property="passTime" jdbcType="TIMESTAMP" />
-    <result column="devices" property="devices" jdbcType="VARCHAR" />
-    <result column="files" property="files" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="cn.cug.laboratory.mapper.extend.ProjectExtendMapper">
+    <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Project">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="lab_id" property="labId" jdbcType="CHAR"/>
+        <result column="tea_id" property="teaId" jdbcType="CHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="capacity" property="capacity" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="SMALLINT"/>
+        <result column="credit" property="credit" jdbcType="REAL"/>
+        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP"/>
+        <result column="pass_time" property="passTime" jdbcType="TIMESTAMP"/>
+        <result column="devices" property="devices" jdbcType="VARCHAR"/>
+        <result column="files" property="files" jdbcType="VARCHAR"/>
+    </resultMap>
 
-  <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap" >
-    <result column="description" property="description" jdbcType="LONGVARCHAR" />
-  </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="cn.cug.laboratory.model.persistent.Project" extends="BaseResultMap">
+        <result column="description" property="description" jdbcType="LONGVARCHAR"/>
+    </resultMap>
 
-  <sql id="Base_Column_List" >
+    <sql id="Base_Column_List">
     id, lab_id, tea_id, name, start_time, end_time, capacity, state, credit, submit_time, 
     pass_time, devices, files
   </sql>
 
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     description
   </sql>
 
     <!-- 定义项目查询的sql片段，就是商品查询条件 -->
     <sql id="project_query_lists">
         <!---->
-        <if test="id != null">
-            AND project.`id` = #{id}
+        <if test="pe.id != null and pe.id != ''">
+            AND project.`id` = #{pe.id}
         </if>
-        <if test="name != null">
-            AND project.`name` like '%${name}%'
+        <if test="pe.name != null and pe.name != ''">
+            AND project.`name` like '%${pe.name}%'
         </if>
-        <if test="teacherName != null">
-            AND teacher.`name`  like '%${teacherName}%'
+        <if test="pe.teacherName != null and pe.teacherName != ''">
+            AND teacher.`name` like '%${pe.teacherName}%'
         </if>
-        AND state = #{state}
-        limit #{startSite},#{pageNum}
+        <if test="pe.state == null">
+            AND 1 = 1
+        </if>
+        <if test="pe.state != null">
+            AND state = #{pe.state}
+        </if>
+        AND project.`tea_id`=teacher.`id`
+        limit #{startPosition},#{offset}
     </sql>
 
-    <!-- 定义项目查询 -->
+    <!-- 定义项目查询的sql片段，就是商品查询条件 -->
+    <sql id="project_query_lists_for_counts">
+        <!---->
+        <if test="id != null and id != ''">
+            AND project.`id` = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            AND project.`name` like '%${name}%'
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            AND teacher.`name` like '%${teacherName}%'
+        </if>
+        <if test="state == null">
+            AND 1 = 1
+        </if>
+        <if test="state != null">
+            AND state = #{state}
+        </if>
+        AND project.`tea_id`=teacher.`id`
+    </sql>
+
     <select id="selectByMultipleInfo"
             parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
@@ -55,7 +81,7 @@
         project.`name` 'name',
         project.`start_time` 'startTime',
         teacher.`name` 'teacherName',
-        project.state 'state'
+        project.`state` 'state'
         FROM
         project,
         teacher
@@ -64,49 +90,92 @@
         </where>
     </select>
 
+    <select id="selectByMultipleInfoCounts"
+            resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        (
+        SELECT
+        project.`id` 'id',
+        project.`name` 'name',
+        project.`start_time` 'startTime',
+        teacher.`name` 'teacherName',
+        project.`state` 'state'
+        FROM
+        project,
+        teacher
+        <where>
+            <include refid="project_query_lists_for_counts"></include>
+        </where>
+        )AS counttable
+    </select>
 
-  <select id="selectByTeaId" resultMap="ResultMapWithBLOBs" >
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from project
-    where tea_id= #{teaId,jdbcType=CHAR}
-    order by id
-    limit #{startSite},#{pageNum}
-  </select>
 
-  <select id="selectCountByTeaId" resultType="java.lang.Integer">
+    <select id="selectByTeaId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from project
+        where tea_id= #{teaId,jdbcType=CHAR}
+        order by id
+        limit #{currentPage},#{pageShowRecords}
+    </select>
+
+    <select id="selectCountByTeaId" resultType="java.lang.Integer">
     select count(*)
     from project
     where tea_id= #{teaId,jdbcType=CHAR}
   </select>
 
-  <select id="selectByName" resultMap="ResultMapWithBLOBs" >
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from project
-    where name = #{name,jdbcType=VARCHAR}
-    order by id
-    limit #{startSite},#{pageNum}
-  </select>
+    <select id="selectMultipleInfoById" parameterType="java.lang.String"
+            resultType="cn.cug.laboratory.model.extend.ProjectExtend">
+    SELECT
+        project.`id` 'id',
+        project.`submit_time` 'submitTime',
+        teacher.`name` 'teacherName',
+        lab.`name` 'labName',
+        project.`credit` 'credit',
+        project.`capacity` 'capacity',
+        project.`state` 'state',
+        project.`start_time` 'startTime',
+        project.`end_time` 'endTime'
+        FROM
+        project,
+        teacher,
+        lab
+        WHERE
+        project.`id` = #{id}
+        AND lab.`id`=project.`lab_id`
+        AND teacher.`id` = project.`tea_id`
+    </select>
 
-  <select id="selectCountByName" resultType="java.lang.Integer">
+    <select id="selectByName" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from project
+        where name = #{name,jdbcType=VARCHAR}
+        order by id
+        limit #{startSite},#{pageNum}
+    </select>
+
+    <select id="selectCountByName" resultType="java.lang.Integer">
     select count(*)
     from project
     where name = #{name,jdbcType=VARCHAR}
   </select>
 
 
-  <select id="reduceLeft"  parameterType="java.lang.String">
+    <select id="reduceLeft" parameterType="java.lang.String">
     update project
     set left_capacity=left_capacity-1
     where id= #{id}
   </select>
 
-  <select id="addLeft"  parameterType="java.lang.String">
+    <select id="addLeft" parameterType="java.lang.String">
     update project
     set left_capacity=left_capacity+1
     where id= #{id}

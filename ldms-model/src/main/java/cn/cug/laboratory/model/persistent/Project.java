@@ -2,7 +2,7 @@ package cn.cug.laboratory.model.persistent;
 
 import java.util.Date;
 
-public class Project {
+public class Project{
     private String id;//项目编号
 
     private String labId;//实验编号
@@ -17,7 +17,7 @@ public class Project {
 
     private Integer capacity;
 
-    private Integer state = 0;//项目状态
+    private Integer state;//项目状态
 
     private Float credit;
 
