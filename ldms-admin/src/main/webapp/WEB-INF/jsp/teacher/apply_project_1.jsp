@@ -139,7 +139,7 @@
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-                    <button style="width: 150px;margin-right: 20px" type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
+                    <button style="width: 150px;margin-left: 60px" type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
                 </div>
             </div>
         </div>

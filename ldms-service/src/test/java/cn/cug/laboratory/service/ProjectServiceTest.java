@@ -33,9 +33,9 @@ public class ProjectServiceTest extends AbstractSpringTest {
 
     @Test
     public void testSelectByMultipleInfo(){
-        ProjectExtend projectExtend = new ProjectExtend();
-        List<ProjectExtend> list = projectService.selectByMultipleInfo(projectExtend);
-        System.out.println(list);
+//        ProjectExtend projectExtend = new ProjectExtend();
+//        List<ProjectExtend> list = projectService.selectByMultipleInfo(projectExtend);
+//        System.out.println(list);
     }
 
     @Test

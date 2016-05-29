@@ -1,9 +1,7 @@
+<%@ page import="cn.cug.laboratory.model.persistent.Teacher" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><sitemesh:write property='title'/></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -215,7 +213,7 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                    <a href="/teacher/logout" class="btn btn-default btn-flat">注销</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">修改</a>
@@ -243,7 +241,7 @@ desired effect
                     <img src="${cacheUrl}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>石星</p>
+                    <p><%=((Teacher)session.getAttribute("teacher")).getName()%></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                 </div>
@@ -357,7 +355,7 @@ desired effect
                 <h3 class="control-sidebar-heading">最近活动</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">

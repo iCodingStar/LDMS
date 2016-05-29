@@ -125,7 +125,8 @@ public class TeacherController{
     }
 
     @RequestMapping("upfile")
-    public ModelAndView upfile(){
+    public ModelAndView upfile(HttpSession session){
+        checksession(session);
         ModelAndView mav=new ModelAndView("teacher/uploadfile");
         return mav;
     }
@@ -156,6 +157,21 @@ public class TeacherController{
             }
         } else {
             return "file empty.";
+        }
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/index.jsp";
+    }
+
+    public String checksession(HttpSession session){
+        if(null==(User)session.getAttribute("user")){
+            return "redirect:/index.jsp";
+        }
+        else{
+            return "on";
         }
     }
 

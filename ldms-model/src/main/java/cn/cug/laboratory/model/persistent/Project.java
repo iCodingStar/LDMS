@@ -19,7 +19,6 @@ public class Project {
 
     private Integer leftCapacity;
 
-
     private Integer state = 0;//项目状态
 
     private Float credit;
@@ -27,7 +26,6 @@ public class Project {
     private Date submitTime;//项目提交时间
 
     private Date passTime;//项目通过时间
-
 
     private String devices;//设备名称
 
@@ -128,7 +126,7 @@ public class Project {
     }
 
     public void setDevices(String devices) {
-        this.devices = devices;
+        this.devices = devices == null ? null : devices.trim();
     }
 
     public String getFiles() {

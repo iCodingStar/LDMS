@@ -15,11 +15,14 @@
  */
 package cn.cug.laboratory.controller.admin;
 
+import cn.cug.laboratory.model.persistent.User;
+import cn.cug.laboratory.web.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @autor shixing
@@ -27,10 +30,32 @@ import java.util.Date;
  */
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
+public class AdminController extends BaseController{
+
+    //进入后台
     @RequestMapping(value = {"/home"})
-    public String go(Model model) {
-        model.addAttribute("msg", "Go ,Let's Go!");
-        return "admin/home";
+    public String home(Model model) {
+        User user = (User) getHttpSession().getAttribute("user");
+        if (user != null){
+            model.addAttribute("msg", "welcome");
+            return "admin/home";
+        }else {
+            model.addAttribute("msg", "failure");
+            return "redirect:toLogin";
+        }
+    }
+
+    //进入登陆
+    @RequestMapping("/toLogin")
+    public void login() throws IOException {
+        HttpServletResponse response = getHttpServletResponse();
+        response.sendRedirect("../index.jsp");
+    }
+
+    //注销
+    @RequestMapping("/logout")
+    public String logout(){
+        getHttpSession().invalidate();
+        return "redirect:toLogin";
     }
 }
