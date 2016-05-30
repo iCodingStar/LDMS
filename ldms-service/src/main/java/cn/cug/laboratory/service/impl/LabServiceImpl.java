@@ -23,6 +23,11 @@ public class LabServiceImpl implements LabService{
     }
 
     @Override
+    public String getLabNameByid(String id) {
+        return mapper.getLabNameByid(id);
+    }
+
+    @Override
     public List<Lab> getAll() {
         return mapper.getAll();
     }

@@ -24,7 +24,9 @@
 
     <link rel="stylesheet" type="text/css" href="${cacheUrl}/assets/applyproject/fileup/default.css">
     <link href="${cacheUrl}/assets/applyproject/fileup/fileinput.css" media="all" rel="stylesheet" type="text/css">
-
+     <!--分页插件-->
+    <link type="text/css" rel="stylesheet" href="${cacheUrl}/css/simplePagination.css"/>
+    <script type="text/javascript" src="${cacheUrl}/js/teacher/jquery.simplePagination.js"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -274,13 +276,13 @@ desired effect
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
-                        <span>查看实验</span>
+                        <span>查看所有实验</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                 </li>
 
                 <li class="treeview">
-                    <a href="#">
+                    <a href="/teacher/showproject">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
                         <span>查询</span>
                         <i class="fa fa-angle-right pull-right"></i>

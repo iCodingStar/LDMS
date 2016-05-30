@@ -52,6 +52,7 @@
       #{passTime,jdbcType=TIMESTAMP}, #{devices,jdbcType=VARCHAR}, #{files,jdbcType=VARCHAR}, 
       #{description,jdbcType=LONGVARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="cn.cug.laboratory.model.persistent.Project" >
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides="," >

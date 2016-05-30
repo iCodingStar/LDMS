@@ -53,6 +53,24 @@
         limit #{startPosition},#{offset}
     </sql>
 
+    <!-- 定义项目查询的sql片段，就是商品查询条件HXY -->
+    <sql id="project_querybyteacehr_lists">
+        <!---->
+        <if test="pr.name != null and pr.name != ''">
+            AND name like '%${pr.name}%'
+        </if>
+        <if test="pr.teaId != null and pr.teaId != ''">
+            AND tea_id =#{pr.teaId}
+        </if>
+        <if test="pr.state == null">
+            AND 1 = 1
+        </if>
+        <if test="pr.state != null">
+            AND state = #{pr.state}
+        </if>
+        limit #{startPosition},#{offset}
+    </sql>
+
     <!-- 定义项目查询的sql片段，就是商品查询条件 -->
     <sql id="project_query_lists_for_counts">
         <!---->
@@ -74,6 +92,22 @@
         AND project.`tea_id`=teacher.`id`
     </sql>
 
+    <!-- 定义项目查询的sql片段，就是商品查询条件HXY -->
+    <sql id="project_querybyTeacher_lists_for_counts">
+        <!---->
+        <if test="teaId != null and teaId != ''">
+            AND tea_id = #{teaId,jdbcType=CHAR}
+        </if>
+        <if test="name != null and name != ''">
+            AND name like '%${name}%'
+        </if>
+        <if test="state == null">
+            AND 1 = 1
+        </if>
+        <if test="state != null">
+            AND state = #{state}
+        </if>
+    </sql>
     <select id="selectByMultipleInfo"
             parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
@@ -88,6 +122,19 @@
         teacher
         <where>
             <include refid="project_query_lists"></include>
+        </where>
+    </select>
+
+    <select id="getinfo"
+            parameterType="cn.cug.laboratory.model.persistent.Project"
+            resultMap="BaseResultMap"
+         >
+        SELECT
+        *
+        FROM
+        project
+        <where>
+            <include refid="project_querybyteacehr_lists"></include>
         </where>
     </select>
 
@@ -108,6 +155,21 @@
         teacher
         <where>
             <include refid="project_query_lists_for_counts"></include>
+        </where>
+        )AS counttable
+    </select>
+
+    <select id="getCounts" resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        (
+        SELECT
+        tea_id,name,state
+        FROM
+        project
+        <where>
+            <include refid="project_querybyTeacher_lists_for_counts"></include>
         </where>
         )AS counttable
     </select>
@@ -188,5 +250,11 @@
     ORDER BY id desc
     limit 1
     </select>
+
+    <update id="setfilenameById">
+        UPDATE project
+        set files=#{files}
+        where id=#{id};
+    </update>
 
 </mapper>

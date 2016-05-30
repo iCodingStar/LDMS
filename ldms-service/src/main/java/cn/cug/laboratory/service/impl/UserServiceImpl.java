@@ -31,14 +31,8 @@ public class UserServiceImpl implements UserService{
         if (auth == null) {
             return "-1";
         }else {
-            if(auth.equals("0"))
-                return "学生";
-            else if(auth.equals("1"))
-                return "教师";
-            else if (auth.equals("2"))
-                return "管理员";
+            return auth;
         }
-        return "-1";
     }
 
     /**

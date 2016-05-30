@@ -106,6 +106,27 @@ public class ProjectServiceImpl implements ProjectService {
         return pm;
     }
 
+    /**
+     * @author:HXY
+     * @param currentPage
+     * @param offset
+     * @param project
+     * @return
+     */
+    @Override
+    public PageModel<Project> getProjectByMultipleinfo(Integer currentPage, Integer offset, Project project) {
+        //获取总的记录数
+        Integer totalRecords = projectExtendMapper.getCounts(project);
+        //创建PageModel对象
+        PageModel<Project> pm = new PageModel<>(currentPage, offset, totalRecords);
+        //获取当前页面数据
+        List<Project> data = projectExtendMapper.getinfo(pm.getStartPosition(), offset, project);
+        //设置数据
+        pm.setData(data);
+        //返回页面
+        return pm;
+    }
+
     @Override
     public String getNewId() {
         return DBUtils.StringAddOne(projectExtendMapper.getLastId());
@@ -114,6 +135,16 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public int insert(Project project) {
         return projectMapper.insertSelective(project);
+    }
+
+    @Override
+    public Project getById(String id) {
+        return projectMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void setfilenameBYId(Project project) {
+        projectExtendMapper.setfilenameById(project);
     }
 
 

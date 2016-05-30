@@ -32,6 +32,14 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <![endif]-->
+
+    <!--公告栏-->
+    <script type="text/javascript" src="${cacheUrl}/assets/notify/jquery.min.js"></script>
+    <script type="text/javascript" src="${cacheUrl}/assets/notify/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="${cacheUrl}/assets/notify/min.css">
+    <script type="text/javascript" src="${cacheUrl}/assets/notify/min.js"></script>
+    <script type="text/javascript" src="${cacheUrl}/assets/notify/main.js"></script>
+    <link rel="stylesheet" href="${cacheUrl}/assets/notify/style.css">
 </head>
 <body class="skin-blue sidebar-mini">
 
@@ -362,9 +370,8 @@
 
         <!-- Main content -->
         <section class="content">
-            <h1>
+
                 <sitemesh:write property='body'/>
-            </h1>
             <!-- Your Page Content Here -->
         </section>
         <!-- /.content -->

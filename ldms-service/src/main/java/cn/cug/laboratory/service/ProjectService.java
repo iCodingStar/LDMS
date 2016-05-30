@@ -59,8 +59,14 @@ public interface ProjectService {
 
     public PageModel<ProjectExtend> getProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
 
+    public PageModel<Project> getProjectByMultipleinfo(Integer currentPage, Integer offset, Project project);
+
 
     public String getNewId();
 
     public int insert(Project project);
+
+    public Project getById(String id);
+
+    public void setfilenameBYId(Project project);
 }

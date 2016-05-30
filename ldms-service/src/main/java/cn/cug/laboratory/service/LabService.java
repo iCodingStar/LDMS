@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface LabService {
     public String getLabIdByName(String name);
+    public String getLabNameByid(String name);
     public List<Lab> getAll();
 }

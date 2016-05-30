@@ -19,4 +19,11 @@
     ORDER BY id desc
     limit 1
   </select>
+
+  <select id="getAlStudentByProid" resultType="cn.cug.laboratory.model.extend.StudentExtend" parameterType="java.lang.String">
+    select student.`name`,student.major,project_order.score
+    from student,project_order
+    where project_order.pro_id=#{id}
+	and project_order.stu_id=student.id
+  </select>
 </mapper>

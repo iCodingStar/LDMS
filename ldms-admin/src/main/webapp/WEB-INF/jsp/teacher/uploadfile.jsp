@@ -28,36 +28,40 @@
     <div class="col-md-6" style="margin-top: 10%">
         <!--面板-->
         <div class="panel panel-info">
-                <div class="col-md-12">
-                    <form enctype="multipart/form-data" >
-                        <div class="form-group">
-                            <input name="file" id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="${pageContext.request.contextPath}/teacher/upload" data-preview-file-icon="">
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" >
+                    <div class="form-group">
+                        <input  name="file" id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="${pageContext.request.contextPath}/teacher/upload" data-preview-file-icon="">
+                    </div>
+                    <div>
+                        <input type="button" style="display: none" onclick="up">
+                    </div>
+                </form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <br>
+                                <span style="margin-top:10px"><strong><h4 style="margin-bottom: 10px">若不需要上传文件请直接下一步</h4></strong></span>
+                            </div>
+                            <div class="col-md-6">
+                                <button id="finesh_apply" style="height: 60px;width: 180px;align-content: center;margin-top: 30px" class="btn btn-info"><h4>完成申请</h4></button>
+                            </div>
                         </div>
-                        <div>
-                            <input type="button" style="display: none" onclick="up">
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-<%--<div class="panel panel-default">--%>
-    <%--<div class="panel-body">--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-6">--%>
-                <%--<button class="btn btn-info" value="上传"></button>--%>
-            <%--</div>--%>
-            <%--<div>--%>
-                <%--<button class="btn btn-info" value="直接完成"></button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-    <div class="col-md-3"></div>
 </div>
 
-<!--设备添加-->><!-- /.modal -->
+<div class="col-md-3"></div>
+<script>
+    $("#finesh_apply").click(function () {
+        window.location.href="/teacher/finishapply";
+    });
+</script>
+<!--设备添加--><!-- /.modal -->
 <script src="${cacheUrl}/assets/applyproject/fileup/jquery.min.js"></script>
 <script src="${cacheUrl}/assets/applyproject/fileup/fileinput.js" type="text/javascript"></script>
 <script src="${cacheUrl}/assets/applyproject/fileup/fileinput_locale_zh.js" type="text/javascript"></script>

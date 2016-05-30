@@ -43,6 +43,11 @@ public class ProjectServiceTest extends AbstractSpringTest {
         System.out.println(projectService.getNewId());
     }
 
+    @Test
+    public void testgetById(){
+        System.out.println(projectService.getById("p1605006"));
+    }
+
 
 
 }

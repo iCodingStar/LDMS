@@ -24,6 +24,8 @@ import cn.cug.laboratory.utils.DBUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @autor shixing
  * @since 1.0.0
@@ -59,5 +61,10 @@ public class StudentServiceImpl implements StudentService {
         String ID=dbUtils.StringAddOne(lastID);
         Student student=new StudentExtend(ID,name,major,classId,academy,sex);
         studentMapper.insert(student);
+    }
+
+    @Override
+    public List<StudentExtend> getAllStudentByProId(String id) {
+        return studentMapper.getAlStudentByProid(id);
     }
 }

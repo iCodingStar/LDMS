@@ -1,17 +1,13 @@
 package cn.cug.laboratory.controller.teacher;
 
+import cn.cug.laboratory.mapper.ProjectMapper;
 import cn.cug.laboratory.model.extend.ProjectExtend;
-import cn.cug.laboratory.model.persistent.Device;
-import cn.cug.laboratory.model.persistent.Project;
-import cn.cug.laboratory.model.persistent.Teacher;
-import cn.cug.laboratory.model.persistent.User;
-import cn.cug.laboratory.service.LabService;
-import cn.cug.laboratory.service.ProjectService;
-import cn.cug.laboratory.service.TeacherService;
-import cn.cug.laboratory.service.UserService;
+import cn.cug.laboratory.model.persistent.*;
+import cn.cug.laboratory.service.*;
 import cn.cug.laboratory.utils.DBUtils;
 import cn.cug.laboratory.utils.DateUtils;
 import cn.cug.laboratory.web.Checkcontroller;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +35,8 @@ import java.util.List;
 @RequestMapping("/teacher")
 public class TeacherController{
 
+    private Integer offset=8;
+
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
@@ -52,6 +50,9 @@ public class TeacherController{
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StudentService studentService;
 
     @RequestMapping("/home")
     public ModelAndView home(HttpSession session) {
@@ -130,26 +131,28 @@ public class TeacherController{
         ModelAndView mav=new ModelAndView("teacher/uploadfile");
         return mav;
     }
+
+
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public
     @ResponseBody
-    String upload(@RequestParam("file") MultipartFile file) {
+    String upload(@RequestParam("file") MultipartFile file,HttpSession session) {
+        Project project=(Project) session.getAttribute("applyprojectinfo");
         //获取当前路径并定位到资源模块路径
         String rootpath=System.getProperty("user.dir");
-        rootpath=rootpath.substring(0,rootpath.lastIndexOf("\\"));
-        String modoulpath="\\ldms-cache\\upload\\";
-        String dir=rootpath+modoulpath;
-        File file1=new File(dir);
+        File file1=new File(rootpath+"\\fileupload\\");
         if(!file1.exists())
             file1.mkdir();
 
         //获取文件并写入
         String name =file.getOriginalFilename();
+        String finalfilename=project.getId()+"##"+name;
         if (!file.isEmpty()) {
             try {
                 System.out.println(file.getOriginalFilename());
-                try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(file1+name)))) {
+                try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(file1+finalfilename)))) {
                     stream.write(file.getBytes());
+                    projectService.insert(project);
                 }
                 return "success";
             } catch (IOException e) {
@@ -160,7 +163,55 @@ public class TeacherController{
         }
     }
 
-    @RequestMapping("logout")
+    @RequestMapping("showstudentdetail")
+    public @ResponseBody String showstudentdetail(){
+        return "success";
+    }
+
+    @RequestMapping("Studentdetail")
+    public ModelAndView Studentdetail(@Param("id") String id){
+        ModelAndView mav=new ModelAndView("teacher/showProjectStudentdetail");
+        id="P1605002";
+        mav.addObject("studentlist",studentService.getAllStudentByProId(id));
+        mav.addObject("proname",projectService.getById(id).getName());
+        return mav;
+    }
+    @RequestMapping("finishapply")
+    public ModelAndView finishapply(HttpSession session){
+        ModelAndView mav=new ModelAndView("teacher/home");
+        return mav;
+    }
+
+    @RequestMapping("/queryproject")
+    public @ResponseBody
+    PageModel<Project> queryproject(Integer page,
+                             Project project,HttpSession session){
+        project.setTeaId(((Teacher)session.getAttribute("teacher")).getId());
+        PageModel<Project> pm = projectService.getProjectByMultipleinfo(page, offset, project);
+        return pm;
+        }
+
+    @RequestMapping("/queryById")
+    public @ResponseBody Project  queryById(@Param("id") String id,HttpSession session){
+        Project project= projectService.getById(id);
+        project.setTeaId(((Teacher)session.getAttribute("teacher")).getName());
+        project.setLabId(labService.getLabNameByid(project.getLabId()));
+        return project;
+    }
+
+    @RequestMapping("/showproject")
+    public ModelAndView show(){
+        ModelAndView mav=new ModelAndView("teacher/showProject");
+        return mav;
+    }
+    @RequestMapping("/getproid")
+    public @ResponseBody String getproid(@Param("id")String id,HttpSession session){
+        Project project=projectService.getById(id);
+        session.setAttribute("applyprojectinfo",project);
+        return "success";
+    }
+
+    @RequestMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate();
         return "redirect:/index.jsp";

@@ -15,7 +15,10 @@
  */
 package cn.cug.laboratory.service;
 
+import cn.cug.laboratory.model.extend.StudentExtend;
 import cn.cug.laboratory.model.persistent.Student;
+
+import java.util.List;
 
 /**
  *  Created by PP on 2016/5/20.
@@ -38,5 +41,7 @@ public interface StudentService {
      * @param sex
      */
     public void insert(String name, String major, Integer classId, String academy, String sex);
+
+    public List<StudentExtend> getAllStudentByProId(String id);
 
 }
