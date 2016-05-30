@@ -4,7 +4,6 @@ import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.utils.RetuValueClass;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -58,6 +57,18 @@ public interface ProjectService {
     public ProjectExtend selectMultipleInfoById(String id);
 
 
+    /**
+     * @author: shixing
+     * @function:分页查询项目信息
+     * @since : 1.0.0
+     */
     public PageModel<ProjectExtend> getProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:根据项目id更新项目信息
+     */
+    public void updateProjectStateById(Project project);
 
 }

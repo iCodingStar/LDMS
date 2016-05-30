@@ -16,6 +16,7 @@
 package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,7 +27,7 @@ import java.util.List;
  * @since 1.0.0
  */
 
-public class ProjectServiceTest extends AbstarctSpringTest {
+public class ProjectServiceTest extends AbstractSpringTest {
 
     @Autowired
     private ProjectService projectService;
@@ -34,8 +35,16 @@ public class ProjectServiceTest extends AbstarctSpringTest {
     @Test
     public void testSelectByMultipleInfo(){
         ProjectExtend projectExtend = new ProjectExtend();
-        List<ProjectExtend> list = projectService.selectByMultipleInfo(projectExtend);
+        List<ProjectExtend> list = projectService.selectByMultipleInfo(1,3,projectExtend);
+        PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(1,5,projectExtend);
         System.out.println(list);
+    }
+
+    @Test
+    public void testSelectMultipleInfoById(){
+        ProjectExtend projectExtend  = projectService.selectMultipleInfoById("P1605001");
+        projectService.selectByMultipleInfoCounts(projectExtend);
+        System.out.println(projectExtend);
     }
 
 }

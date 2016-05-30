@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="${cacheUrl}/css/skin-blue.min.css">
 
     <!--checkProject-->
-    <link  rel="stylesheet" href="${cacheUrl}/css/admin/admin-base.css">
+    <link rel="stylesheet" href="${cacheUrl}/css/admin/admin-base.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -199,10 +200,13 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="${pageContext.request.contextPath}/admin/logout" class="btn btn-default btn-flat">注销</a>
+                                    <a href="#" data-target="#logout-modal-dialog" data-toggle="modal"
+                                       class="btn btn-default btn-flat">注销账户</a>
                                 </div>
+
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">修改</a>
+                                    <a href="#" class="btn btn-default btn-flat" data-target="#modify-pass"
+                                       data-toggle="modal">修改密码</a>
                                 </div>
                             </li>
                         </ul>
@@ -215,6 +219,68 @@
             </div>
         </nav>
     </header>
+
+    <!--修改密码对话框-->
+    <div class="modal fade" id="modify-pass">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改密码</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div id="old-password-div" class="form-group">
+                        <input type="password" class="form-password form-control"
+                               placeholder="请输入原密码(6-16个字符)"
+                               maxlength="16"
+                               required>
+                    </div>
+                    <div id="new-password-div1" class="form-group">
+                        <input type="password" class="form-password form-control"
+                               placeholder="请输入新密码(6-16个字符)"
+                               maxlength="16"
+                               required>
+                    </div>
+                    <div id="new-password-div2" class="form-group">
+                        <input type="password" class="form-password form-control"
+                               placeholder="请再次输入新密码"
+                               maxlength="16"
+                               required>
+                    </div>
+                    <button class="btn btn-single">确认修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--注销确认-->
+    <div id="logout-modal-dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">警告</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>确认结束本次登录？</h4>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-double"
+                            onclick="window.location='${pageContext.request.contextPath}/admin/logout'">确认
+                    </button>
+                    <button class="btn btn-default btn-double" data-target="#logout-modal-dialog"
+                            data-toggle="modal">取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar" style="font-family: 微软雅黑;font-size: 20px">
 
@@ -271,37 +337,20 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/admin/project/">
                         <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
                         <span>教学实验</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验查询</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/project/queryProject" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验查询</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/admin/project/checkProject" style="text-align: center"><i
+                                class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
                         </li>
                         <li><a href="#" style="text-align: center"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;成绩报表</a>
                         </li>
                         <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/admin/project/" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
-                        <span>开放实验</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-question fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验查询</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-line-chart fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;成绩报表</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;项目安排</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/admin/project/" style="text-align: center"><i class="fa fa-spinner fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;实验审核</a>
                         </li>
                     </ul>
                 </li>
@@ -325,17 +374,17 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/admin/user/">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
                         <span>人员管理</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/user/" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
                         </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/student/" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
                         </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/teacher/" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
                         </li>
                     </ul>
                 </li>
@@ -473,11 +522,5 @@
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
 <script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>
-<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
 </body>
 </html>

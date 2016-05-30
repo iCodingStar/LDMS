@@ -28,7 +28,7 @@ body {
 
 @media (min-width: 768px) {
     #wrapper {
-        padding-left: 225px;
+        padding-left: 15px;
     }
 
     #page-wrapper {
@@ -166,7 +166,6 @@ body {
     width: 100%;
 }
 
-
 .btn-single:hover,
 .btn-primary:hover,
 .label:hover,
@@ -256,11 +255,11 @@ ul {
     padding: 10px;
 }
 
-.dropdown-menu .select-role li a{
+.dropdown-menu .select-role li a {
     background-color: #0d6aad;
 }
 
-.dropdown-menu .select-role{
+.dropdown-menu .select-role {
     background-color: #00a65a;
 }
 
@@ -295,8 +294,15 @@ a {
     background-color: #080808;
 }
 
-.select-role > li > a{
+.select-role > li > a {
     font-family: 微软雅黑;
     text-align: center;
     font-size: 14px;
+}
+
+#panel-heading {
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-family: 微软雅黑;
 }

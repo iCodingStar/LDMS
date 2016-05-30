@@ -75,6 +75,9 @@
       <if test="capacity != null" >
         capacity,
       </if>
+      <if test="leftCapacity != null" >
+        left_capacity,
+      </if>
       <if test="state != null" >
         state,
       </if>
@@ -118,6 +121,9 @@
       </if>
       <if test="capacity != null" >
         #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="leftCapacity != null" >
+        #{leftCapacity,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         #{state,jdbcType=SMALLINT},

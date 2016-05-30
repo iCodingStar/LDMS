@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by HXY on 2016/5/27.
  */
-public class StudentServiceTest extends AbstarctSpringTest {
+public class StudentServiceTest extends AbstractSpringTest {
     @Test
     public void test(){
         System.out.println("test");

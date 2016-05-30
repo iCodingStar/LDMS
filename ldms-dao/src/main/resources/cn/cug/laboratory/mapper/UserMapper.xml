@@ -62,6 +62,7 @@
     </set>
     where username = #{username,jdbcType=CHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="cn.cug.laboratory.model.persistent.User" >
     update user
     set password = #{password,jdbcType=CHAR},

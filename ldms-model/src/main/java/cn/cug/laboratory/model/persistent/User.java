@@ -4,6 +4,11 @@ public class User {
     public User() {
     }
 
+    public User(String username, String auth) {
+        this.username = username;
+        this.auth = auth;
+    }
+
     public User(String username, String password, String auth) {
         this.username = username;
         this.password = password;
@@ -38,5 +43,14 @@ public class User {
 
     public void setAuth(String auth) {
         this.auth = auth == null ? null : auth.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "auth='" + auth + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

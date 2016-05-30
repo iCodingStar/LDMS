@@ -2,7 +2,7 @@ package cn.cug.laboratory.model.persistent;
 
 import java.util.Date;
 
-public class Project{
+public class Project {
     private String id;//项目编号
 
     private String labId;//实验编号
@@ -16,6 +16,8 @@ public class Project{
     private Date endTime;//项目结束时间
 
     private Integer capacity;
+
+    private Integer leftCapacity;
 
     private Integer state;//项目状态
 
@@ -141,5 +143,13 @@ public class Project{
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getLeftCapacity() {
+        return leftCapacity;
+    }
+
+    public void setLeftCapacity(Integer leftCapacity) {
+        this.leftCapacity = leftCapacity;
     }
 }

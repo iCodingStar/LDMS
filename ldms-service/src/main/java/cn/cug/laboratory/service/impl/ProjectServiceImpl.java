@@ -1,6 +1,5 @@
 package cn.cug.laboratory.service.impl;
 
-import cn.cug.laboratory.mapper.ProjectMapper;
 import cn.cug.laboratory.mapper.extend.ProjectExtendMapper;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
@@ -82,10 +81,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     /**
-     * 项目信息
-     *
      * @author: shixing
-     * @function:分页查询
+     * @function:分页查询项目信息
      * @since : 1.0.0
      */
     @Override
@@ -100,5 +97,10 @@ public class ProjectServiceImpl implements ProjectService {
         pm.setData(data);
         //返回页面
         return pm;
+    }
+
+    @Override
+    public void updateProjectStateById(Project project) {
+        projectMapper.updateByPrimaryKeySelective(project);
     }
 }

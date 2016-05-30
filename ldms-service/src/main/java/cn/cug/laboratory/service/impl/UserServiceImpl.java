@@ -1,10 +1,15 @@
 package cn.cug.laboratory.service.impl;
 
+import cn.cug.laboratory.mapper.UserMapper;
 import cn.cug.laboratory.mapper.extend.UserExtendMapper;
+import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by HXY on 2016/5/24.
@@ -12,8 +17,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
 
+
     @Autowired
-    private UserExtendMapper mapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private UserExtendMapper userExtendMapper;
 
     /**
      *
@@ -23,7 +32,7 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public String getAuth(User user) {
-        String auth= mapper.getAuth(user);
+        String auth= userExtendMapper.getAuth(user);
         if (auth == null) {
             return "-1";
         }else {
@@ -45,6 +54,62 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public void updatePassword(String stuId, String newPwd) {
-        mapper.updatePassword(stuId,newPwd);
+        userExtendMapper.updatePassword(stuId,newPwd);
     }
+
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
+    @Override
+    public void insertSelective(User record) {
+        userMapper.insertSelective(record);
+    }
+
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
+    @Override
+    public void deleteByPrimaryKey(String id) {
+        userMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
+    @Override
+    public User selectByPrimaryKey(String id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public PageModel selectUserByUserNameAndAuth(Integer currentPage, Integer offset, User user) {
+        Integer totalCounts = userExtendMapper.gettotalRecords(user);
+        PageModel<User> pm = new PageModel<>(currentPage,offset,totalCounts);
+        List<User> data = userExtendMapper.getPageData(pm.getStartPosition(),offset,user);
+        pm.setData(data);
+        return pm;
+    }
+
+    @Override
+    public User selectUserByUserNameAndPWD(User user) {
+        return userExtendMapper.selectUserByUserNameAndPWD(user);
+    }
+
+
 }

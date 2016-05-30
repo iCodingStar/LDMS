@@ -70,4 +70,10 @@ public interface ProjectExtendMapper extends ProjectMapper {
      */
     ProjectExtend selectMultipleInfoById(String id);
 
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:
+     */
+
 }
