@@ -38,13 +38,8 @@
     }
 </script>
 
-<div class="row" style="margin-top: 3%">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
+<div  style="margin-top: 3%">
+    <div class="container-fluid">
                 <!-- 页面内容 -->
 
                 <div class="row">
@@ -56,7 +51,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <table class="table table-striped ">
+                                    <table class="table table-striped "style="margin-top:10px">
                                         <tr>
                                             <td>姓名</td>
                                             <td>
@@ -96,34 +91,34 @@
                                     </table>
                                 </div>
                                 <div class="col-md-6">
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal "style="margin-top:10px">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label  class="control-label" style="font-size: 21px">原密码</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="oldPwd" class="form-control" style="width: 161px" placeholder="请输入原始密码">
+                                                    <input type="password" id="oldPwd" class="form-control" style="width: 280px" placeholder="请输入原始密码">
                                                 </div>
-                                            </div><br>
+                                            </div>
                                             <div class="row">
                                             <div class="col-md-3">
                                                 <label  class="control-label" style="font-size: 21px">新密码</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="password" id="newPwd" class="form-control" style="width: 161px" placeholder="请输入新密码">
+                                                <input type="password" id="newPwd" class="form-control" style="width: 280px" placeholder="请输入新密码">
                                             </div>
-                                            </div><br>
+                                            </div>
                                             <div class="row">
                                             <div class="col-md-3">
                                                 <label  class="control-label" style="font-size: 21px">新密码</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="password" id="new2Pwd" class="form-control" style="width: 161px" placeholder="请再次输入新密码">
+                                                <input type="password" id="new2Pwd" class="form-control" style="width: 280px" placeholder="请再次输入新密码">
                                             </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkPwd()">确认</button>
+                                        <button id="update-student-password" type="button" class="btn btn-primary btn-lg btn-block">确认</button>
                                     </form>
                                 </div>
                             </div>
@@ -134,26 +129,19 @@
 
                 </div>
                 <!-- /.container-fluid -->
-            </div>
+        <!--消息框-->
+        <div id="msg-modal" class="message modal">
+            <div class="msg-dialog modal-dialog">
+                <%--<div class="modal-content">--%>
+                    <div class="message-body modal-body">
 
+                    </div>
+                <%--</div>--%>
+            </div>
         </div>
 
     </div>
 </div>
-
-
-<script>
-    function checkPwd() {
-        if(document.getElementById("newPwd")!=document.getElementById("new2Pwd")) {
-            alert("hello");
-            $.globalMessenger().post({
-                message: "操作成功",//提示信息
-                type: 'info',//消息类型。error、info、success
-            });
-        }
-    }
-</script>
-
 
 </body>
 </html>

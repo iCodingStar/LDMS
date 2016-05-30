@@ -38,6 +38,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      * 实验预约成功，插入一条记录
      */
     public void insert(String proId,String stuId,Float score) {
+        System.out.println("serviceImpl--insert"+proId+"--"+stuId+"--"+score);
         DBUtils dbUtils=new DBUtils();
         String lastID=projectOrderMapper.selectLastId();
         String ID=dbUtils.StringAddOne(lastID);

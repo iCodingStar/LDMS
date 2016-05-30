@@ -15,10 +15,14 @@ public interface UserService {
     public String getAuth(User user);
 
     /**
-     *更新密码，
-     * 需要先判断[用户名，密码]记录在数据库中是否存在
+     * 更新密码
+     * @author:PP
      * @param stuId
+     * @param oldPwd
      * @param newPwd
+     * @return
+     * 原密码验证不通过，返回0，
+     * 原密码验证通过（基本上相当于修改成功），返回1
      */
-    public void updatePassword(String stuId,String oldPwd,String newPwd);
+    public Integer updatePassword(String stuId,String oldPwd,String newPwd);
 }

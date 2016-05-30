@@ -48,6 +48,20 @@ public interface ProjectService {
      */
     public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
 
+    /**
+     * @author: PP
+     * @function:学生查询项目信息
+     */
+    public List<ProjectExtend> selectProByMultipleInfo(Integer currentPage,
+                                                    Integer offset,
+                                                    ProjectExtend projectExtend);
+
+    /**
+     * @author: PP
+     * @function:学生查询记录条数
+     */
+    public Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
+
 
     /**
      * @author: shixing
@@ -58,5 +72,7 @@ public interface ProjectService {
 
 
     public PageModel<ProjectExtend> getProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
+
+    public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
 
 }

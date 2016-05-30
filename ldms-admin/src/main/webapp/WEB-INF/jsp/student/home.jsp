@@ -1,29 +1,16 @@
 <%@page language="java" contentType="text/html; charset=utf-8" %>
 </<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>学生登录主页</title>
-  <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+  <link href="${cacheUrl}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body>
-<div class="row" style="margin-top: 3%">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
 
-    <div id="page-wrapper">
+<body>
+<div  style="margin-top: 3%">
 
       <div class="container-fluid">
         <!-- 页面内容 -->
@@ -35,35 +22,30 @@
             <div class="col-md-2">
 
               <div class="btn-group">
-                <button class="btn search-state btn-default btn-lg md-high dropdown-toggle"
-                        type="button"
+                <button class="btn project-info btn-default btn-lg md-high dropdown-toggle" type="button"
                         data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
-                style="line-height: 0.8">
-                  <span class="select-name" >查询条件</span>
-                  <span class="caret"></span>
+                        style="line-height: 0.8">
+                  <span class="select-name">查询条件</span><span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">实验编号</a></li>
-                  <li><a href="#">教师姓名</a></li>
-                  <li><a href="#">实验主题</a></li>
+                <ul class="dropdown-menu project-info-select">
+                  <li><a>无条件</a></li>
+                  <li><a>实验编号</a></li>
+                  <li><a>教师姓名</a></li>
+                  <li><a>实验主题</a></li>
                 </ul>
               </div>
 
             </div>
 
               <div class="col-md-3">
-                <input type="text" id="search_value" class="form-control ">
+                <input type="text" class="form-control project-info-input" required>
               </div>
 
               <div class="col-md-2">
-                <button id="btn-search" onclick="queryproject()" class="btn btn-primary btn-lg" style="line-height: 0.8">
+                <button id="btn-project-search" class="btn btn-primary btn-lg" style="line-height: 0.8">
                   查询
                 </button>
-                  <%--<span class="glyphicon glyphicon-search" aria-hidden="true" style="font-size: 23px">--%>
-
-                  </span>
-                </input>
               </div>
 
           </div>
@@ -87,55 +69,28 @@
                 <td></td>
               </tr>
             </table>
+            <%--分页显示区--%>
             <nav class="page-nav">
               <ul class="pagination pagination-lg">
               </ul>
             </nav>
           </div>
           <div class="panel-footer">
-            <form class="form-inline">
-              <%--<div class="form-group">--%>
-                <%--<div class="input-group">--%>
-
-                <div class="row">
-                  <div class="col-md-8">
-                    <nav>
-                      <ul class="pagination pagination-lg">
-                        <li>
-                          <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                          </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                          <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div class="col-md-4" >
-                    <label style="font-size: 20px;padding-right:0px;margin-top: 28px">    总记录：3 条</label>
-                  </div>
-                </div>
-                <%--</div>--%>
-              <%--</div>--%>
-            </form>
+            <div id="count" style="display: none;font-family: 微软雅黑;font-size: 16px;margin-right: 10px;text-align: right"></div>
           </div>
         </div>
-
-
       </div>
-      <!-- /.container-fluid -->
-    </div>
+  <!--消息框-->
+      <div id="msg-modal" class="message modal">
+        <div class="msg-dialog modal-dialog">
+          <%--<div class="modal-content">--%>
+          <div class="message-body modal-body">
 
-  </div>
-  <div class="col-md-1"></div>
+          </div>
+          <%--</div>--%>
+        </div>
+      </div>
+
 </div>
 
 <script>
@@ -163,44 +118,6 @@
         fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
     return fmt;
   }
-</script>
-<script>
-  function queryproject() {
-
-    $(".project-info-table tr:not(:first)").remove();
-    var data=$("#search_value").val();
-    $.ajax({
-      url: "/student/queryproject",
-      method: "get",
-      data:{search_value:data},
-      success: function (data) {
-        appenddata(data);
-      },
-      error: function () {
-        alert("ajax-error");
-      }
-    });
-  }
-
-  function appenddata(data) {
-  $.each(data, function (index, item) {
-    var node = "<tr>"
-            + "<td>" + item.id + "</td>"
-            +"<td>"+item.teacherName+"</td>"
-            +"<td>"+item.labName+"</td>"
-            +"<td>"+item.name+"</td>"
-            +"<td>"+(new Date(item.startTime)).Format("yyyy-MM-dd")+"</td>"
-            +"<td>"+(new Date(item.endTime)).Format("yyyy-MM-dd")+"</td>"
-            +"<td>"+item.capacity+"</td>"
-            +"<td>"+item.leftCapacity+"</td>"
-            +"<td><button type='button' class='btn btn-primary btn-sm'>"
-            + "预约"
-            + "</button>"
-            + "</td>"
-            + "</tr>";
-
-  $(".project-info-table").append(node);
-    })};
 </script>
 
 

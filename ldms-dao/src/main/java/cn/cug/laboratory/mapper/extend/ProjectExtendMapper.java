@@ -56,12 +56,18 @@ public interface ProjectExtendMapper extends ProjectMapper {
                                              @Param("offset") Integer offset,
                                              @Param("pe") ProjectExtend projectExtend);
 
+    List<ProjectExtend> selectProByMultipleInfo(@Param("startPosition") Integer startPosition,
+                                                @Param("offset") Integer offset,
+                                                @Param("pe") ProjectExtend projectExtend);
+
     /**
      * @author: shixing
      * @function:查询项目信息条数
      * @since : 1.0.0
      */
     Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
 
     /**
      * @author: shixing

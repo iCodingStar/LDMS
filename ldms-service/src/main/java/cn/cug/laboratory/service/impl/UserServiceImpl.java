@@ -38,14 +38,22 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     *
+     * @author:PP
      * @param stuId
+     * @param oldPwd
      * @param newPwd
+     * @return
      */
-    public void updatePassword(String stuId,String oldPwd,String newPwd) {
+    public Integer updatePassword(String stuId,String oldPwd,String newPwd) {
         User user=mapper.selectByPrimaryKey(stuId);
         if(user.getPassword().equalsIgnoreCase(oldPwd)){
+            System.out.println("原密码正确");
             mapper.updatePassword(stuId,newPwd);
+            return 1;
+        }
+        else{
+            System.out.println("原密码不正确");
+            return 0;
         }
     }
 }

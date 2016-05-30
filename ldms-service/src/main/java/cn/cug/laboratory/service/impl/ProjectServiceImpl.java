@@ -81,16 +81,18 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectExtend> selectByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
         return projectMapper.selectByMultipleInfo(currentPage, offset, projectExtend);
     }
-
-
-    /**
-     * @author: shixing
-     * @function:查询记录条数
-     * @since : 1.0.0
-     */
     @Override
     public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend) {
         return projectMapper.selectByMultipleInfoCounts(projectExtend);
+    }
+
+    @Override
+    public List<ProjectExtend> selectProByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
+        return projectMapper.selectProByMultipleInfo(currentPage, offset, projectExtend);
+    }
+    @Override
+    public Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend) {
+        return projectMapper.selectProByMultipleInfoCounts(projectExtend);
     }
 
     @Override
@@ -118,4 +120,34 @@ public class ProjectServiceImpl implements ProjectService {
         //返回页面
         return pm;
     }
+
+    /**
+     * 查询已发布的实验项目信息
+     * @author:PP
+     * @param currentPage
+     * @param offset
+     * @param projectExtend
+     * @return
+     */
+    @Override
+    public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
+        //获取总的记录数
+        Integer totalRecords = projectMapper.selectProByMultipleInfoCounts(projectExtend);
+        System.out.println("totalRecords--"+totalRecords);
+        //创建PageModel对象
+        PageModel<ProjectExtend> pm = new PageModel<>(currentPage, offset, totalRecords);
+        //获取当前页面数据
+        List<ProjectExtend> data = projectMapper.selectProByMultipleInfo(pm.getStartPosition(), offset, projectExtend);
+//        for (ProjectExtend pExtend:data
+//             ) {
+//            System.out.println(pExtend.toString());
+//        }
+
+        //设置数据
+        pm.setData(data);
+        //返回页面
+        return pm;
+    }
+
+
 }

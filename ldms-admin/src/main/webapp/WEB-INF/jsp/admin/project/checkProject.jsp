@@ -320,6 +320,6 @@ Time: 1:19
 <%--<!-- Bootstrap Core JavaScript -->--%>
 <%--<script src="${cacheUrl}/bootstrap/js/bootstrap.min.js"></script>--%>
 <%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>--%>
-<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>--%>
+<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-student.js"></script>--%>
 </body>
 </html>

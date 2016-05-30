@@ -473,7 +473,7 @@
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
 <script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>
-<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>
+<script type="text/javascript" src="${cacheUrl}/js/admin/admin-student.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

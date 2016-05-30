@@ -85,6 +85,36 @@
         AND project.`tea_id`=teacher.`id`
     </sql>
 
+    <!-- 学生版：定义项目查询的sql片段，就是商品查询条件 -->
+    <sql id="stu_project_query_lists">
+
+        <if test="pe.id != null and pe.id != ''">
+            AND project.`id` = #{pe.id}
+        </if>
+        <if test="pe.teacherName != null and pe.teacherName != ''">
+            AND teacher.`name` like '%${pe.teacherName}%'
+        </if>
+        <if test="pe.name != null and pe.name != ''">
+            AND project.`name` like '%${pe.name}%'
+        </if>
+        and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
+        limit #{startPosition},#{offset}
+    </sql>
+
+    <!-- 学生版：定义项目查询的sql片段，就是商品查询条件 -->
+    <sql id="stu_project_query_lists_for_counts">
+        <if test="id != null and id != ''">
+            AND project.`id` = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            AND project.`name` like '%${name}%'
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            AND teacher.`name` like '%${teacherName}%'
+        </if>
+        and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
+    </sql>
+
     <select id="selectByMultipleInfo"
             parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
@@ -123,6 +153,33 @@
         )AS counttable
     </select>
 
+    <select id="selectProByMultipleInfo"
+            parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
+            resultType="cn.cug.laboratory.model.extend.ProjectExtend">
+        SELECT
+        project.id,
+        teacher.`name` 'teacherName',
+        lab.`name` 'labName',
+        project.`name` 'name',
+        project.start_time 'startTime',
+        project.end_time 'endTime',
+        project.capacity 'capacity',
+        project.left_capacity 'leftCapacity'
+        from project,teacher,lab
+        <where>
+            <include refid="stu_project_query_lists"></include>
+        </where>
+    </select>
+
+    <select id="selectProByMultipleInfoCounts"
+            resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM project,teacher,lab
+        <where>
+            <include refid="stu_project_query_lists_for_counts"></include>
+        </where>
+    </select>
+
   <select id="selectByTeaId" resultMap="GroupResultMap" >
    select project.id,teacher.`name` 'tea_name',lab.`name` 'lab_name',project.`name` 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
     from project,teacher,lab
@@ -132,16 +189,16 @@
     limit #{startSite},#{pageNum}
   </select>
 
-    <select id="selectByTeaId" resultMap="ResultMapWithBLOBs">
-        select
-        <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
-        from project
-        where tea_id= #{teaId,jdbcType=CHAR}
-        order by id
-        limit #{currentPage},#{pageShowRecords}
-    </select>
+    <!--<select id="selectByTeaId" resultMap="ResultMapWithBLOBs">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--,-->
+        <!--<include refid="Blob_Column_List"/>-->
+        <!--from project-->
+        <!--where tea_id= #{teaId,jdbcType=CHAR}-->
+        <!--order by id-->
+        <!--limit #{currentPage},#{pageShowRecords}-->
+    <!--</select>-->
 
     <select id="selectCountByTeaId" resultType="java.lang.Integer">
     select count(*)
@@ -179,16 +236,16 @@
         AND teacher.`id` = project.`tea_id`
     </select>
 
-    <select id="selectByName" resultMap="ResultMapWithBLOBs">
-        select
-        <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
-        from project
-        where name = #{name,jdbcType=VARCHAR}
-        order by id
-        limit #{startSite},#{pageNum}
-    </select>
+    <!--<select id="selectByName" resultMap="ResultMapWithBLOBs">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--,-->
+        <!--<include refid="Blob_Column_List"/>-->
+        <!--from project-->
+        <!--where name = #{name,jdbcType=VARCHAR}-->
+        <!--order by id-->
+        <!--limit #{startSite},#{pageNum}-->
+    <!--</select>-->
 
     <select id="selectCountByName" resultType="java.lang.Integer">
     select count(*)
