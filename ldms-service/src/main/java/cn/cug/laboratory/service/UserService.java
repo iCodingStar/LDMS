@@ -16,10 +16,17 @@ public interface UserService {
     public String getAuth(User user);
 
     /**
-     *
+     * 更新密码
+     * @author:PP
      * @param stuId
+     * @param oldPwd
      * @param newPwd
+     * @return
+     * 原密码验证不通过，返回0，
+     * 原密码验证通过（基本上相当于修改成功），返回1
      */
+    public Integer pp_updatePassword(String stuId,String oldPwd,String newPwd);
+
     public void updatePassword(String stuId,String newPwd);
 
     /**
@@ -59,8 +66,6 @@ public interface UserService {
     public PageModel selectUserByUserNameAndAuth(Integer currentPage,
                                                  Integer offset,
                                                  User user);
-
-
     /**
      * @author: shixing
      * @function:根据用户名和密码查找用户

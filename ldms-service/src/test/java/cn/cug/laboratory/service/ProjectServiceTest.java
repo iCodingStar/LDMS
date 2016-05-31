@@ -17,14 +17,16 @@ package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
+import cn.cug.laboratory.model.persistent.Project;
+import cn.cug.laboratory.utils.RetuValueClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 /**
- * @autor shixing
- * @since 1.0.0
+ * Created by PP on 2016/5/27.
+ * 2个函数测试通过
  */
 
 public class ProjectServiceTest extends AbstractSpringTest {
@@ -38,6 +40,25 @@ public class ProjectServiceTest extends AbstractSpringTest {
         List<ProjectExtend> list = projectService.selectByMultipleInfo(1,3,projectExtend);
         PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(1,5,projectExtend);
         System.out.println(list);
+    }
+
+    public void selectByTeaIdTest()throws Exception{
+//        String tea_id="050003";
+//        RetuValueClass<ProjectExtend> projectRetuValueClass=projectService.selectByTeaId(tea_id,1,2);
+//        for(Project project: projectRetuValueClass.getRetuList()){
+//            System.out.println(project.toString());
+//        }
+//        System.out.println(projectRetuValueClass.getCount());
+    }
+
+    @Test
+    public void selectByNameTest()throws Exception{
+//        String name="测绘实习";
+//        RetuValueClass<ProjectExtend> projectRetuValueClass=projectService.selectByName(name,1,3);
+//        for(Project project: projectRetuValueClass.getRetuList()){
+//            System.out.println(project.toString());
+//        }
+//        System.out.println(projectRetuValueClass.getCount());
     }
 
     @Test

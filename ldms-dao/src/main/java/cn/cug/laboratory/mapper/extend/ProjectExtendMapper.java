@@ -15,7 +15,7 @@ public interface ProjectExtendMapper extends ProjectMapper {
      * @param pageNum
      * @return 根据教师ID和分页条件查询获取实验集合
      */
-    List<Project> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<ProjectExtend> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      * @param teaId
@@ -29,7 +29,7 @@ public interface ProjectExtendMapper extends ProjectMapper {
      * @param pageNum
      * @return 根据实验名称和分页条件获取实验结果
      */
-    List<Project> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<ProjectExtend> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      * @param name
@@ -56,12 +56,18 @@ public interface ProjectExtendMapper extends ProjectMapper {
                                              @Param("offset") Integer offset,
                                              @Param("pe") ProjectExtend projectExtend);
 
+    List<ProjectExtend> selectProByMultipleInfo(@Param("startPosition") Integer startPosition,
+                                                @Param("offset") Integer offset,
+                                                @Param("pe") ProjectExtend projectExtend);
+
     /**
      * @author: shixing
      * @function:查询项目信息条数
      * @since : 1.0.0
      */
     Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
 
     /**
      * @author: shixing

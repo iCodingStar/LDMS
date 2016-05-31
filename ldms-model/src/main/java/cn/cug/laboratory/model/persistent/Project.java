@@ -3,153 +3,176 @@ package cn.cug.laboratory.model.persistent;
 import java.util.Date;
 
 public class Project {
-    private String id;//项目编号
+        private String id;//项目编号
 
-    private String labId;//实验编号
+        private String labId;//实验编号
 
-    private String teaId;//教师编号
+        private String teaId;//教师编号
 
-    private String name;//项目名称
+        private String name;//项目名称
 
-    private Date startTime;//项目开始时间
+        private Date startTime;//项目开始时间
 
-    private Date endTime;//项目结束时间
+        private Date endTime;//项目结束时间
 
-    private Integer capacity;
+        private Integer capacity;
 
-    private Integer leftCapacity;
+        public Integer getLeftCapacity() {
+            return leftCapacity;
+        }
 
-    private Integer state;//项目状态
+        public void setLeftCapacity(Integer leftCapacity) {
+            this.leftCapacity = leftCapacity;
+        }
 
-    private Float credit;
+        private Integer leftCapacity;
 
-    private Date submitTime;//项目提交时间
+        private Integer state = 0;//项目状态
 
-    private Date passTime;//项目通过时间
+        private Float credit;
 
-    private String devices;//设备名称
+        private Date submitTime;//项目提交时间
 
-    private String files;//项目文件名称
+        private Date passTime;//项目通过时间
 
-    private String description;//项目描述
+        private String devices;//设备名称
 
-    public String getId() {
-        return id;
-    }
+        private String files;//项目文件名称
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+        private String description;//项目描述
 
-    public String getLabId() {
-        return labId;
-    }
+        public String getId() {
+            return id;
+        }
 
-    public void setLabId(String labId) {
-        this.labId = labId == null ? null : labId.trim();
-    }
+        public void setId(String id) {
+            this.id = id == null ? null : id.trim();
+        }
 
-    public String getTeaId() {
-        return teaId;
-    }
+        public String getLabId() {
+            return labId;
+        }
 
-    public void setTeaId(String teaId) {
-        this.teaId = teaId == null ? null : teaId.trim();
-    }
+        public void setLabId(String labId) {
+            this.labId = labId == null ? null : labId.trim();
+        }
 
-    public String getName() {
-        return name;
-    }
+        public String getTeaId() {
+            return teaId;
+        }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+        public void setTeaId(String teaId) {
+            this.teaId = teaId == null ? null : teaId.trim();
+        }
 
-    public Date getStartTime() {
-        return startTime;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
+        public void setName(String name) {
+            this.name = name == null ? null : name.trim();
+        }
 
-    public Date getEndTime() {
-        return endTime;
-    }
+        public Date getStartTime() {
+            return startTime;
+        }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
+        public void setStartTime(Date startTime) {
+            this.startTime = startTime;
+        }
 
-    public Integer getCapacity() {
-        return capacity;
-    }
+        public Date getEndTime() {
+            return endTime;
+        }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
+        public void setEndTime(Date endTime) {
+            this.endTime = endTime;
+        }
 
-    public Integer getState() {
-        return state;
-    }
+        public Integer getCapacity() {
+            return capacity;
+        }
 
-    public void setState(Integer state) {
-        this.state = state;
-    }
+        public void setCapacity(Integer capacity) {
+            this.capacity = capacity;
+        }
 
-    public Float getCredit() {
-        return credit;
-    }
+        public Integer getState() {
+            return state;
+        }
 
-    public void setCredit(Float credit) {
-        this.credit = credit;
-    }
+        public void setState(Integer state) {
+            this.state = state;
+        }
 
-    public Date getSubmitTime() {
-        return submitTime;
-    }
+        public Float getCredit() {
+            return credit;
+        }
 
-    public void setSubmitTime(Date submitTime) {
-        this.submitTime = submitTime;
-    }
+        public void setCredit(Float credit) {
+            this.credit = credit;
+        }
 
-    public Date getPassTime() {
-        return passTime;
-    }
+        public Date getSubmitTime() {
+            return submitTime;
+        }
 
-    public void setPassTime(Date passTime) {
-        this.passTime = passTime;
-    }
+        public void setSubmitTime(Date submitTime) {
+            this.submitTime = submitTime;
+        }
 
-    public String getDevices() {
-        return devices;
-    }
+        public Date getPassTime() {
+            return passTime;
+        }
 
-    public void setDevices(String devices) {
-        this.devices = devices == null ? null : devices.trim();
-    }
+        public void setPassTime(Date passTime) {
+            this.passTime = passTime;
+        }
 
-    public String getFiles() {
-        return files;
-    }
+        public String getDevices() {
+            return devices;
+        }
 
-    public void setFiles(String files) {
-        this.files = files == null ? null : files.trim();
-    }
+        public void setDevices(String devices) {
+            this.devices = devices == null ? null : devices.trim();
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public String getFiles() {
+            return files;
+        }
+
+        public void setFiles(String files) {
+            this.files = files == null ? null : files.trim();
+        }
+
+        public String getDescription() {
+            return description;
+        }
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getLeftCapacity() {
-        return leftCapacity;
-    }
 
-    public void setLeftCapacity(Integer leftCapacity) {
-        this.leftCapacity = leftCapacity;
+
+        @Override
+        public String toString() {
+            return "Project{" +
+                    "id='" + id + '\'' +
+                    ", labId='" + labId + '\'' +
+                    ", teaId='" + teaId + '\'' +
+                    ", name='" + name + '\'' +
+                    ", startTime=" + startTime +
+                    ", endTime=" + endTime +
+                    ", capacity=" + capacity +
+                    ", leftCapacity=" + leftCapacity +
+                    ", state=" + state +
+                    ", credit=" + credit +
+                    ", submitTime=" + submitTime +
+                    ", passTime=" + passTime +
+                    ", devices='" + devices + '\'' +
+                    ", files='" + files + '\'' +
+                    ", description='" + description + '\'' +
+                    '}';
+        }
     }
-}

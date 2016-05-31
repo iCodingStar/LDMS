@@ -17,30 +17,32 @@ package cn.cug.laboratory.mapper;
 
 import cn.cug.laboratory.mapper.extend.UserExtendMapper;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * @autor shixing
  * @since 1.0.0
  */
 
-public class StudentMapperTest extends AbstractSpringTest {
-    @Autowired
-    private StudentMapper studentMapper;
 
-    @Autowired
-    private UserExtendMapper userExtendMapper;
+public class StudentMapperTest extends AbstractSpringTest {
+//    @Autowired
+//    private StudentMapper studentMapper;
+//
+//    @Autowired
+//    private UserExtendMapper userExtendMapper;
 
     @Test
-    public void getAuthTest(){
-        studentMapper.selectByPrimaryKey("20100p");
-    }
+    public void getAuthTest() {
+//        studentMapper.selectByPrimaryKey("20100p");
+ }
 
     @Test
     public void testSelectByPrimaryKey(){
 
         //studentMapper.selectByPrimaryKey("");
     }
-
-
 }

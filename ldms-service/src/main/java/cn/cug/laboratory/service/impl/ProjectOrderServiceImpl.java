@@ -38,6 +38,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      * 实验预约成功，插入一条记录
      */
     public void insert(String proId,String stuId,Float score) {
+        System.out.println("serviceImpl--insert"+proId+"--"+stuId+"--"+score);
         DBUtils dbUtils=new DBUtils();
         String lastID=projectOrderMapper.selectLastId();
         String ID=dbUtils.StringAddOne(lastID);
@@ -58,7 +59,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      */
     public RetuValueClass<ProjectOrder> selectByStuId(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
+        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,startSite,pageNum);
         int projectOrderCount=projectOrderMapper.selectCountByStuId(stuId);
         return new RetuValueClass<ProjectOrder>(projectOrderList,projectOrderCount);
     }
@@ -94,7 +95,7 @@ public class ProjectOrderServiceImpl implements ProjectOrderService {
      */
     public RetuValueClass<ProjectOrder> selectScore(String stuId, int pageNo, int pageNum){
         int startSite=(pageNo-1)*pageNum;
-        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,pageNo,pageNum);
+        List<ProjectOrder> projectOrderList=projectOrderMapper.selectByStuId(stuId,startSite,pageNum);
         Iterator<ProjectOrder> it=projectOrderList.iterator();
         while(it.hasNext()){
             if(it.next().getScore()==0)

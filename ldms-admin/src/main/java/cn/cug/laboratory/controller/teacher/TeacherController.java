@@ -26,6 +26,12 @@ public class TeacherController {
     @Autowired
     private LabService labService;
 
+    @RequestMapping("/home")
+    public ModelAndView home() {
+        System.out.println("home");
+        ModelAndView mav = new ModelAndView("teacher/home");
+        return mav;
+    }
     /**
      *
      * @param project

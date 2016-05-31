@@ -24,10 +24,10 @@ function showMsg(msg, type, callback) {
 
     switch (type) {
         case 0:
-            $(".message-body").append('<div class="alert alert-success" role="alert">' + msg + '</div>');
+            $(".message-body").append('<div class="alert alert-success" role="alert"  style="font-size: 20px;font-family: 微软雅黑">' + msg + '</div>');
             break;
         case 1:
-            $(".message-body").append('<div class="alert alert-danger" role="alert">' + msg + '</div>');
+            $(".message-body").append('<div class="alert alert-danger" role="alert"  style="font-size: 20px;font-family: 微软雅黑">' + msg + '</div>');
             break
     }
 
@@ -37,7 +37,7 @@ function showMsg(msg, type, callback) {
         if (callback) {
             callback();
         }
-    }, 2000);
+    }, 100000);
 }
 
 $(function () {

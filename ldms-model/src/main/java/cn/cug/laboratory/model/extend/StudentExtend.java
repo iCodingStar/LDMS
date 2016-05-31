@@ -13,4 +13,7 @@ public class StudentExtend extends Student {
         setAcademy(academy);
         setSex(sex);
     }
+
+
+
 }

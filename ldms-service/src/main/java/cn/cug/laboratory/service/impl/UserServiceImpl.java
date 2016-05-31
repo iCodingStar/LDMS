@@ -47,6 +47,26 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
+     * @author:PP
+     * @param stuId
+     * @param oldPwd
+     * @param newPwd
+     * @return
+     */
+    public Integer pp_updatePassword(String stuId,String oldPwd,String newPwd) {
+        User user=userMapper.selectByPrimaryKey(stuId);
+        if(user.getPassword().equalsIgnoreCase(oldPwd)){
+            System.out.println("原密码正确");
+            userExtendMapper.updatePassword(stuId,newPwd);
+            return 1;
+        }
+        else{
+            System.out.println("原密码不正确");
+            return 0;
+        }
+    }
+
+    /**
      *
      * @param stuId
      * @param newPwd

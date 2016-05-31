@@ -11,7 +11,6 @@ import java.util.List;
  * Created by PP on 2016/5/22.
  */
 public interface ProjectService {
-    public Project selectByPrimaryKey(String id);
 
     /**
      * 通过教师Id选择相应的实验记录，
@@ -22,7 +21,7 @@ public interface ProjectService {
      * @param pageNum
      * @return 记录列表，总的记录数
      */
-    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum);
+    public RetuValueClass<ProjectExtend> selectByTeaId(String teaId, int pageNo, int pageNum);
 
     /**
      * @param name
@@ -30,7 +29,7 @@ public interface ProjectService {
      * @param pageNum
      * @return
      */
-    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum);
+    public RetuValueClass<ProjectExtend> selectByName(String name, int pageNo, int pageNum);
 
     /**
      * @author: shixing
@@ -47,6 +46,20 @@ public interface ProjectService {
      * @since : 1.0.0
      */
     public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    /**
+     * @author: PP
+     * @function:学生查询项目信息
+     */
+    public List<ProjectExtend> selectProByMultipleInfo(Integer currentPage,
+                                                    Integer offset,
+                                                    ProjectExtend projectExtend);
+
+    /**
+     * @author: PP
+     * @function:学生查询记录条数
+     */
+    public Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
 
 
     /**
@@ -70,5 +83,7 @@ public interface ProjectService {
      * @function:根据项目id更新项目信息
      */
     public void updateProjectStateById(Project project);
+
+    public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
 
 }

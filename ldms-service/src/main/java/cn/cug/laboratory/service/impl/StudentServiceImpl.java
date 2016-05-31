@@ -16,10 +16,12 @@
 package cn.cug.laboratory.service.impl;
 
 import cn.cug.laboratory.mapper.StudentMapper;
+import cn.cug.laboratory.mapper.UserMapper;
 import cn.cug.laboratory.mapper.extend.StudentExtendMapper;
 import cn.cug.laboratory.model.extend.StudentExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Student;
+import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.StudentService;
 import cn.cug.laboratory.utils.DBUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,21 +41,37 @@ public class StudentServiceImpl implements StudentService {
     private StudentExtendMapper studentMapper;
     @Autowired
     private StudentExtendMapper studentExtendMapper;
+    @Autowired
+    private UserMapper userMapper;
+
     private DBUtils dbUtils;
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    public Student selectByPrimaryKey(String id){
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     *
+     * 插入新的学生信息，要插入到Student和User表中
      * @param name
      * @param major
      * @param classId
      * @param academy
      * @param sex
      */
-    public void insert(String name, String major, Integer classId, String academy, String sex) {
-        String lastID = studentMapper.selectLastId();
-        System.out.print(lastID);
-        String ID = dbUtils.StringAddOne(lastID);
-        Student student = new StudentExtend(ID, name, major, classId, academy, sex);
+    public void insert(String name,String major,Integer classId,String academy,String sex){
+        String lastID=studentMapper.selectLastId();
+        String ID=dbUtils.StringAddOne(lastID);
+        Student student=new StudentExtend(ID,name,major,classId,academy,sex);
         studentMapper.insert(student);
+        User user=new User(ID,"0","1");
+        userMapper.insert(user);
+
     }
 
     /**
@@ -86,15 +104,6 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.updateByPrimaryKeySelective(record);
     }
 
-    /**
-     * @author: shixing
-     * @function:根据id查询信息
-     * @since : 1.0.0
-     */
-    @Override
-    public Student selectByPrimaryKey(String id) {
-        return studentMapper.selectByPrimaryKey(id);
-    }
 
     @Override
     public PageModel<Student> selectMultiInfoByPage(Integer currentPage, Integer offset, Student student) {
