@@ -19,10 +19,11 @@ import java.util.List;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-
     @Autowired
     private ProjectExtendMapper projectMapper;
 
+    @Autowired
+    ProjectExtendMapper projectExtendMapper;
 
     /**
      * @param id
@@ -66,16 +67,6 @@ public class ProjectServiceImpl implements ProjectService {
         int projectCount=projectMapper.selectCountByName(name);
         return new RetuValueClass<ProjectExtend>(projectExtendList,projectCount);
     }
-
-//    public List<ProjectExtend> selectByMultipleInfo(ProjectExtend projectExtend) {
-//        return projectMapper.selectByMultipleInfo(projectExtend);
-//    }
-//    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum) {
-//        int startSite = (pageNo - 1) * pageNum;
-//        List<Project> projectList = projectMapper.selectByName(name, startSite, pageNum);
-//        int projectCount = projectMapper.selectCountByTeaId(name);
-//        return new RetuValueClass<Project>(projectList, projectCount);
-//    }
 
     @Override
     public List<ProjectExtend> selectByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
@@ -149,5 +140,8 @@ public class ProjectServiceImpl implements ProjectService {
         return pm;
     }
 
-
+    @Override
+    public void updateProjectStateById(Project project) {
+        projectMapper.updateByPrimaryKeySelective(project);
+    }
 }

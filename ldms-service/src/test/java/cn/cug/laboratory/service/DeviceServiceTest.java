@@ -6,7 +6,7 @@ import org.springframework.util.Assert;
 /**
  * Created by HXY on 2016/5/27.
  */
-public class DeviceServiceTest extends AbstarctSpringTest {
+public class DeviceServiceTest extends AbstractSpringTest {
     @Test
     public void test(){
         System.out.println("test");

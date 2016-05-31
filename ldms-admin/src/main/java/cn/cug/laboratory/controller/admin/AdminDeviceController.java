@@ -13,19 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.cug.laboratory.service;
+package cn.cug.laboratory.controller.admin;
 
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @autor shixing
  * @since 1.0.0
  */
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-transaction.xml","classpath:application-context-service.xml"})
-public abstract class AbstarctSpringTest {
+@Controller
+@RequestMapping(value = {""})
+public class AdminDeviceController {
 
 }

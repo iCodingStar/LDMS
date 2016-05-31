@@ -15,6 +15,7 @@
  */
 package cn.cug.laboratory.service;
 
+import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Student;
 
 /**
@@ -38,4 +39,37 @@ public interface StudentService {
      * @param sex
      */
     public void insert(String name, String major, Integer classId, String academy, String sex);
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:动态插入信息
+     */
+    public void insertSelective(Student student);
+
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:根据id删除
+     */
+    public void deleteByPrimaryKey(String id);
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:根据id修改任意信息
+     */
+    public int updateByPrimaryKeySelective(Student record);
+
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:模糊查询
+     */
+    public PageModel<Student> selectMultiInfoByPage(Integer currentPage,
+                                                    Integer offset,
+                                                    Student student);
+
 }

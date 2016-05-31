@@ -19,12 +19,15 @@ import cn.cug.laboratory.mapper.StudentMapper;
 import cn.cug.laboratory.mapper.UserMapper;
 import cn.cug.laboratory.mapper.extend.StudentExtendMapper;
 import cn.cug.laboratory.model.extend.StudentExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Student;
 import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.StudentService;
 import cn.cug.laboratory.utils.DBUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @autor shixing
@@ -36,6 +39,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentExtendMapper studentMapper;
+    @Autowired
+    private StudentExtendMapper studentExtendMapper;
     @Autowired
     private UserMapper userMapper;
 
@@ -67,5 +72,45 @@ public class StudentServiceImpl implements StudentService {
         User user=new User(ID,"0","1");
         userMapper.insert(user);
 
+    }
+
+    /**
+     * @author: shixing
+     * @function:动态插入信息
+     * @since : 1.0.0
+     */
+    @Override
+    public void insertSelective(Student student) {
+        studentMapper.insertSelective(student);
+    }
+
+    /**
+     * @author: shixing
+     * @function:根据id删除
+     * @since : 1.0.0
+     */
+    @Override
+    public void deleteByPrimaryKey(String id) {
+        studentMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * @author: shixing
+     * @function:根据id修改任意信息
+     * @since : 1.0.0
+     */
+    @Override
+    public int updateByPrimaryKeySelective(Student record) {
+        return studentMapper.updateByPrimaryKeySelective(record);
+    }
+
+
+    @Override
+    public PageModel<Student> selectMultiInfoByPage(Integer currentPage, Integer offset, Student student) {
+        Integer totalRecords = studentExtendMapper.getTotalRecords(student);
+        PageModel pm = new PageModel(currentPage, offset, totalRecords);
+        List<Student> data = studentExtendMapper.getPageData(pm.getStartPosition(), offset, student);
+        pm.setData(data);
+        return pm;
     }
 }

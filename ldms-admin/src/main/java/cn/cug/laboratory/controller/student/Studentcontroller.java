@@ -103,7 +103,7 @@ public class Studentcontroller {
         System.out.println("进入Controller函数--"+oldPwd+newPwd);
         User user=(User)session.getAttribute("user");
         Student student=studentService.selectByPrimaryKey(user.getUsername());
-        return userService.updatePassword(student.getId(),oldPwd,newPwd).toString();
+        return userService.pp_updatePassword(student.getId(),oldPwd,newPwd).toString();
     }
 
 

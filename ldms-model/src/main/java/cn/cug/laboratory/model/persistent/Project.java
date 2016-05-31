@@ -149,9 +149,11 @@ public class Project {
             return description;
         }
 
-        public void setDescription(String description) {
-            this.description = description == null ? null : description.trim();
-        }
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
+
 
         @Override
         public String toString() {

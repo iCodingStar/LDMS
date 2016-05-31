@@ -1,22 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.cug.laboratory.mapper.extend.UserExtendMapper" >
-  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.User" >
-    <id column="username" property="username" jdbcType="CHAR" />
-    <result column="password" property="password" jdbcType="CHAR" />
-    <result column="auth" property="auth" jdbcType="CHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="cn.cug.laboratory.mapper.extend.UserExtendMapper">
+    <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.User">
+        <id column="username" property="username" jdbcType="CHAR"/>
+        <result column="password" property="password" jdbcType="CHAR"/>
+        <result column="auth" property="auth" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     username, password, auth
   </sql>
-  <select id="getAuth" parameterType="cn.cug.laboratory.model.persistent.User" resultType="java.lang.String">
+    <select id="getAuth" parameterType="cn.cug.laboratory.model.persistent.User" resultType="java.lang.String">
     SELECT auth
     from user
     WHERE username=#{username,jdbcType=CHAR} and password=#{password,jdbcType=CHAR}
   </select>
-  <update id="updatePassword">
+    <update id="updatePassword">
     update user
     set password = #{newPwd}
     where username = #{stuId}
   </update>
+
+    <sql id="basic_user_query_lists">
+        <if test="user.username != null and user.username != ''">
+            AND username=#{user.username}
+        </if>
+        <if test="user.auth != null and user.auth != ''">
+            AND auth = #{user.auth}
+        </if>
+        AND 1 = 1
+        limit #{startPosition},#{offset}
+    </sql>
+
+    <sql id="basic_user_query_lists_for_counts">
+
+        <if test="username != null and username != ''">
+            AND username=#{username}
+        </if>
+        <if test="auth != null and auth != ''">
+            AND auth = #{auth}
+        </if>
+        AND 1 = 1
+
+    </sql>
+
+    <select id="getPageData"
+            resultType="cn.cug.laboratory.model.persistent.User">
+        SELECT
+        *
+        FROM
+        USER
+        <where>
+            <include refid="basic_user_query_lists"></include>
+        </where>
+    </select>
+
+    <select id="gettotalRecords"
+            parameterType="cn.cug.laboratory.model.persistent.User"
+            resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM (
+        SELECT
+        *
+        FROM
+        USER
+        <where>
+            <include refid="basic_user_query_lists_for_counts"></include>
+        </where>
+        )as temptable
+    </select>
+
+    <select id="selectUserByUserNameAndPWD"
+            parameterType="cn.cug.laboratory.model.persistent.User"
+            resultType="cn.cug.laboratory.model.persistent.User">
+            SELECT
+            *
+            FROM
+            USER
+            WHERE
+            username=#{username}
+            AND password = #{password};
+    </select>
 </mapper>

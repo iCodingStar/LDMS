@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by HXY on 2016/5/27.
  */
-public class LabServiceImplTest extends AbstarctSpringTest {
+public class LabServiceImplTest extends AbstractSpringTest {
 
     @Autowired
     private LabService labService;

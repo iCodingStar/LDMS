@@ -27,24 +27,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 1.0.0
  */
 
-public class StudentMapperTest extends AbstarctSpringTest {
 
-    @Autowired
-    private StudentMapper studentMapper;
-
-    @Autowired
-    private UserExtendMapper userExtendMapper;
+public class StudentMapperTest extends AbstractSpringTest {
+//    @Autowired
+//    private StudentMapper studentMapper;
+//
+//    @Autowired
+//    private UserExtendMapper userExtendMapper;
 
     @Test
     public void getAuthTest() {
 //        studentMapper.selectByPrimaryKey("20100p");
+ }
 
-    }
     @Test
     public void testSelectByPrimaryKey(){
 
         //studentMapper.selectByPrimaryKey("");
     }
-
-
 }

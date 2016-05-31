@@ -16,6 +16,7 @@
 package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.utils.RetuValueClass;
 import org.junit.Test;
@@ -28,12 +29,19 @@ import java.util.List;
  * 2个函数测试通过
  */
 
-public class ProjectServiceTest extends AbstarctSpringTest {
+public class ProjectServiceTest extends AbstractSpringTest {
 
     @Autowired
     private ProjectService projectService;
 
     @Test
+    public void testSelectByMultipleInfo(){
+        ProjectExtend projectExtend = new ProjectExtend();
+        List<ProjectExtend> list = projectService.selectByMultipleInfo(1,3,projectExtend);
+        PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(1,5,projectExtend);
+        System.out.println(list);
+    }
+
     public void selectByTeaIdTest()throws Exception{
 //        String tea_id="050003";
 //        RetuValueClass<ProjectExtend> projectRetuValueClass=projectService.selectByTeaId(tea_id,1,2);
@@ -51,6 +59,13 @@ public class ProjectServiceTest extends AbstarctSpringTest {
 //            System.out.println(project.toString());
 //        }
 //        System.out.println(projectRetuValueClass.getCount());
+    }
+
+    @Test
+    public void testSelectMultipleInfoById(){
+        ProjectExtend projectExtend  = projectService.selectMultipleInfoById("P1605001");
+        projectService.selectByMultipleInfoCounts(projectExtend);
+        System.out.println(projectExtend);
     }
 
 }

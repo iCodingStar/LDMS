@@ -3,17 +3,14 @@ package cn.cug.laboratory.service;
 import cn.cug.laboratory.model.persistent.ProjectOrder;
 import cn.cug.laboratory.utils.RetuValueClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by PP on 2016/5/23.
  * 4个函数测试通过
  */
 
-public class ProjectOrderServiceImplTest extends AbstarctSpringTest{
+public class ProjectOrderServiceImplTest extends AbstractSpringTest {
 
     @Autowired
     private ProjectOrderService projectOrderService;

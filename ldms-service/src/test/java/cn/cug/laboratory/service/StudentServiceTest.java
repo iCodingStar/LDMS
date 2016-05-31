@@ -1,15 +1,13 @@
 package cn.cug.laboratory.service;
 
-import cn.cug.laboratory.model.persistent.Student;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.junit.Test;
 
 /**
  * Created by PP on 2016/5/27.
  * 2个函数测试通过
  */
-public class StudentServiceTest extends AbstarctSpringTest {
+public class StudentServiceTest extends AbstractSpringTest {
     @Autowired
     private StudentService studentService;
 

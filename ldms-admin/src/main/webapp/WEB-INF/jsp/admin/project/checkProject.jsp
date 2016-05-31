@@ -25,59 +25,18 @@ Time: 1:19
         <!-- 页面内容 -->
         <div class="panel panel-default">
 
-            <div class="panel-heading">
-                <h3 class="panel-title">审核实验</h3>
-            </div>
-
-            <div class="panel-body">
-
-                <div class="col-md-4">
-                    <input type="text" class="form-control project-info-input" placeholder="请输入项目信息" required>
-                </div>
-
-                <div class="col-md-2 col-md-offset-1">
-                    <div class="btn-group">
-                        <button class="btn project-info btn-default btn-lg md-high dropdown-toggle" type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            <span class="select-name">项目信息</span><span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu project-info-select">
-                            <li><a>无筛选</a></li>
-                            <li><a>项目编号</a></li>
-                            <li><a>申请人</a></li>
-                            <li><a>主题</a></li>
-                        </ul>
+            <!--消息框-->
+            <div id="msg-modal" class="message modal">
+                <div class="msg-dialog modal-dialog">
+                    <div class="modal-content">
                     </div>
                 </div>
-
-                <div class="col-md-2 col-md-offset-1">
-                    <div class="btn-group">
-
-                        <button class="btn project-state btn-default btn-lg md-high dropdown-toggle" type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            <sapn class="select-name">项目状态</sapn>
-                            <span class="caret"></span>
-                        </button>
-
-                        <ul class="dropdown-menu project-state-select">
-                            <li><a href="#">无筛选</a></li>
-                            <li><a href="#">提交</a></li>
-                            <li><a href="#">未审核</a></li>
-                            <li><a href="#">已通过</a></li>
-                            <li><a href="#">已拒绝</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-1 col-md-offset-1">
-                    <button id="btn-search" type="button" class="btn btn-primary btn-lg">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        查询
-                    </button>
-                </div>
             </div>
+
+            <div class="panel-heading" id="panel-heading">
+                <h3 class="panel-title" style="text-align: center;padding: 15px;font-size: 24px;font-family: 微软雅黑;">审核实验</h3>
+            </div>
+
         </div>
 
         <!--标题栏-->
@@ -98,7 +57,7 @@ Time: 1:19
                 </table>
                 <%--分页显示区--%>
                 <nav class="page-nav">
-                    <ul class="pagination pagination-lg">
+                    <ul id="project" class="pagination  pagination-lg">
                     </ul>
                 </nav>
 
