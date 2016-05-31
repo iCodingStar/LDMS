@@ -106,6 +106,11 @@ public class ProjectServiceImpl implements ProjectService {
         return pm;
     }
 
+    @Override
+    public void updateProjectStateById(Project project) {
+        projectMapper.updateByPrimaryKeySelective(project);
+    }
+
     /**
      * @author:HXY
      * @param currentPage

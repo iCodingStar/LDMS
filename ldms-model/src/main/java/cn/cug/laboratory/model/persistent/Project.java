@@ -2,7 +2,7 @@ package cn.cug.laboratory.model.persistent;
 
 import java.util.Date;
 
-public class Project {
+public class Project{
     private String id;//项目编号
 
     private String labId;//实验编号

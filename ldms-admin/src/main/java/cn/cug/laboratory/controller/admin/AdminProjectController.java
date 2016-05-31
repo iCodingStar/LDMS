@@ -34,18 +34,28 @@ import java.util.List;
 
 @Controller
 @RequestMapping("admin/project")
-public class ProjectController {
-    private Integer offset = 1;
+public class AdminProjectController {
+    private Integer offset = 5;
 
     @Autowired
     private ProjectService projectService;
 
     /**
      * @author: shixing
+     * @function:进入项目查询
+     * @since : 1.0.0
+     */
+    @RequestMapping("/queryProject")
+    public ModelAndView queryProject() {
+        return new ModelAndView("admin/project/queryProject");
+    }
+
+    /**
+     * @author: shixing
      * @function:进入项目审核
      * @since : 1.0.0
      */
-    @RequestMapping("")
+    @RequestMapping("/checkProject")
     public ModelAndView checkProject() {
         return new ModelAndView("admin/project/checkProject");
     }
@@ -93,5 +103,18 @@ public class ProjectController {
         ProjectExtend projectExtend = projectService.selectMultipleInfoById(project.getId());
         System.out.println(projectExtend);
         return projectExtend;
+    }
+
+    /**
+     * @author: shixing
+     * @function:修改项目状态
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/update/state"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    Project updateProjectById(Project project) {
+        projectService.updateProjectStateById(project);
+        return project;
     }
 }

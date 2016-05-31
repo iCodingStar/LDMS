@@ -1,6 +1,5 @@
 package cn.cug.laboratory.service;
 
-import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

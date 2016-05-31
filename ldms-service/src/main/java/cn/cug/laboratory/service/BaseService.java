@@ -15,37 +15,18 @@
  */
 package cn.cug.laboratory.service;
 
-import cn.cug.laboratory.model.extend.StudentExtend;
-import cn.cug.laboratory.model.persistent.PageModel;
-import cn.cug.laboratory.model.persistent.Student;
-
-import java.util.List;
-
 /**
- * Created by PP on 2016/5/20.
+ * @autor shixing
+ * @since 1.0.0
  */
 
-public interface StudentService {
-
-
-    /**
-     *
-     * @param name
-     * @param major
-     * @param classId
-     * @param academy
-     * @param sex
-     */
-    public void insert(String name, String major, Integer classId, String academy, String sex);
-
-    public List<StudentExtend> getAllStudentByProId(String id);
-
+public interface BaseService<T> {
     /**
      * @author: shixing
      * @since : 1.0.0
      * @function:动态插入信息
      */
-    public void insertSelective(Student student);
+    public void insertSelective(T record);
 
 
     /**
@@ -53,29 +34,27 @@ public interface StudentService {
      * @since : 1.0.0
      * @function:根据id删除
      */
-    public void deleteByPrimaryKey(String id);
+    public void deleteByPrimaryKey(Integer id);
 
     /**
      * @author: shixing
      * @since : 1.0.0
      * @function:根据id修改任意信息
      */
-    public int updateByPrimaryKeySelective(Student record);
+    public int updateByPrimaryKeySelective(T record);
 
     /**
      * @author: shixing
      * @function:根据id查询信息
      * @since : 1.0.0
      */
-    public Student selectByPrimaryKey(String id);
+    public T selectByPrimaryKey(String id);
 
     /**
      * @author: shixing
      * @since : 1.0.0
      * @function:模糊查询
      */
-    public PageModel<Student> selectMultiInfoByPage(Integer currentPage,
-                                                    Integer offset,
-                                                    Student student);
+
 
 }

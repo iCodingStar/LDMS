@@ -1,8 +1,8 @@
 package cn.cug.laboratory.service;
 
-import cn.cug.laboratory.mapper.extend.DeviceExtendMapper;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 /**
  * Created by HXY on 2016/5/27.

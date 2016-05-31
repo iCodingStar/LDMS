@@ -43,6 +43,9 @@ public class PageModel<T> {
 
     public PageModel(Integer currentPage,Integer offset,Integer totalRecords){
         //初始化当前页面
+        if (currentPage == null){
+            currentPage = 1;
+        }
         if (currentPage <= 1){
             this.currentPage = 1;
         }

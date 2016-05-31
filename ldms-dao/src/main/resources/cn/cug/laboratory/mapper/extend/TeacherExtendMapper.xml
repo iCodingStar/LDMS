@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.cug.laboratory.mapper.extend.TeacherExtendMapper" >
-  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Teacher" >
-    <id column="id" property="id" jdbcType="CHAR" />
-    <result column="name" property="name" jdbcType="CHAR" />
-    <result column="sex" property="sex" jdbcType="CHAR" />
-    <result column="major" property="major" jdbcType="CHAR" />
-    <result column="academy" property="academy" jdbcType="CHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="cn.cug.laboratory.mapper.extend.TeacherExtendMapper">
+    <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Teacher">
+        <id column="id" property="id" jdbcType="CHAR"/>
+        <result column="name" property="name" jdbcType="CHAR"/>
+        <result column="sex" property="sex" jdbcType="CHAR"/>
+        <result column="major" property="major" jdbcType="CHAR"/>
+        <result column="academy" property="academy" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, name, sex, major, academy
   </sql>
+
+    <sql id="query_total_records">
+        <if test="t.id != null and t.id != ''">
+            AND id = #{t.id}
+        </if>
+        <if test="t.name != null and t.name != ''">
+            AND name = #{t.name}
+        </if>
+        <if test="t.sex != null and t.sex != ''">
+            AND sex= #{t.sex}
+        </if>
+        <if test="t.major != null and t.major != ''">
+            AND major= #{t.major}
+        </if>
+        <if test="t.academy != null and t.academy != ''">
+            AND academy= #{t.academy}
+        </if>
+        AND 1 = 1
+    </sql>
+
+    <sql id="query_total_records_all">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM
+        teacher
+        <where>
+            <include refid="query_total_records"></include>
+        </where>
+    </sql>
+
+    <select id="getPageData"
+            resultType="cn.cug.laboratory.model.persistent.Teacher">
+        <include refid="query_total_records_all"></include>
+        limit #{startPosition},#{offset}
+    </select>
+
+    <select id="getTotalRecords"
+            parameterType="cn.cug.laboratory.model.persistent.Teacher"
+            resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM(
+        <include refid="query_total_records_all"></include>
+        )AS temptable
+    </select>
 
 </mapper>

@@ -6,7 +6,6 @@ import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import org.apache.ibatis.annotations.Param;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public interface ProjectExtendMapper extends ProjectMapper {

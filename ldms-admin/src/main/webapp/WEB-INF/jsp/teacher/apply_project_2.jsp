@@ -23,7 +23,6 @@
     <![endif]-->
     <script>
         window.onload = function(){
-            alert("初始化");
             $("#input_lab_name").value=${sessionScope.applyprojectinfo.labId};
             $("#input_lab_theme").value=${sessionScope.applyprojectinfo.name};
             $("#lab_capacity").value=${sessionScope.applyprojectinfo.capacity};
@@ -198,7 +197,7 @@
 </div><!-- /.modal -->
 
 
-
+<script style="text/javascript" src="${cacheUrl}/js/teacher/admin-base.js"></script>
 
 <script>
 
@@ -231,7 +230,6 @@
                 'Content-Type': 'application/json'
             },
             error: function () {
-                alert("query failed");
             }
         });
     }
@@ -254,7 +252,6 @@
     function saveinfo() {
 
         getdapplydeviceinfo();
-        alert(device_info);
 
         var labid = $("#input_lab_name").val(),
                 pro_name = $("#input_lab_theme").val(),
@@ -263,7 +260,7 @@
                 pro_start_time = $("#lab_start_time").val(),
                 pro_end_time = $("#lab_end_time").val(),
                 pro_decp = $('#decp').val();
-        console.log(pro_start_time, pro_end_time);
+
 
         $.ajax({
             url: "/teacher/saveprojectinfo",
@@ -306,7 +303,6 @@
 </script>
 <script>
     function upfile() {
-        alert("ok");
         $("#upform").submit();
     }
 
