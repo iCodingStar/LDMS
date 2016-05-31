@@ -24,6 +24,15 @@ public class ProjectExtend extends Project {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "ProjectExtend{" +
+                "id='" + getId() + '\'' +
+                "teacherName='" + teacherName + '\'' +
+                ", labName='" + labName + '\'' +
+                ", name='" + getName() + '\'' +
+                ", startTime=" + getStartTime() +
+                ", endTime=" + getEndTime() +
+                ", capacity=" + getCapacity() +
+                ", leftCapacity=" + getLeftCapacity() +
+                '}';
     }
 }

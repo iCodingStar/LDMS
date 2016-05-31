@@ -4,7 +4,7 @@ import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Teacher;
 
 /**
- * Created by HXY on 2016/5/27.
+ * Created by PP on 2016/5/27.
  */
 
 public interface TeacherService {

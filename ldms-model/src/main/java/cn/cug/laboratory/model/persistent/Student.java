@@ -3,11 +3,22 @@ package cn.cug.laboratory.model.persistent;
 public class Student {
     private String id;
 
+    public Student(){}
+    public Student(String id, String name, String major, Integer classId, String academy, String sex) {
+        this.id = id;
+        this.name = name;
+        this.major = major;
+        this.classId = classId;
+        this.academy = academy;
+        this.sex = sex;
+    }
+
     private String name;
 
     private String major;
 
     private Integer classId;
+
 
     private String academy;
 
@@ -49,6 +60,18 @@ public class Student {
         return academy;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", major='" + major + '\'' +
+                ", classId=" + classId +
+                ", academy='" + academy + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
+
     public void setAcademy(String academy) {
         this.academy = academy == null ? null : academy.trim();
     }
@@ -60,4 +83,6 @@ public class Student {
     public void setSex(String sex) {
         this.sex = sex == null ? null : sex.trim();
     }
+
+
 }

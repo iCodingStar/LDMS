@@ -1,12 +1,9 @@
 package cn.cug.laboratory.controller.teacher;
 
-import cn.cug.laboratory.mapper.ProjectMapper;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.*;
 import cn.cug.laboratory.service.*;
-import cn.cug.laboratory.utils.DBUtils;
 import cn.cug.laboratory.utils.DateUtils;
-import cn.cug.laboratory.web.Checkcontroller;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +30,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/teacher")
-public class TeacherController{
+public class TeacherController {
 
     private Integer offset=8;
 
@@ -64,14 +61,15 @@ public class TeacherController{
     }
 
     /**
+     *
      * @param project
-     * @return 申请实验第一步，提交信息，在controlller里面保存用户提交的信息，并不存入数据库
+     * @return
+     * 申请实验第一步，提交信息，在controlller里面保存用户提交的信息，并不存入数据库
      * 要生成一个实验ID
      * 根据传过来的实验室名称查询lab_id
      * 将实验状态设置为0,标识为提交状态
-     * 从当前session里面获取tea_id
-     * 将上传文件保存到临时文件夹(在确认信息无误,确认申请以后放到upload文件夹)
-     * 得到设备列表
+     *从当前session里面获取tea_id
+     *将上传文件保存到临时文件夹(在确认信息无误,确认申请以后放到upload文件夹)
      */
     @RequestMapping(value = "/saveprojectinfo", method = RequestMethod.POST)
     public @ResponseBody String saveprojectinfo(@RequestBody Project project, HttpSession session) {
@@ -136,7 +134,7 @@ public class TeacherController{
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public
     @ResponseBody
-    String upload(@RequestParam("file") MultipartFile file,HttpSession session) {
+    String upload(@RequestParam("file") MultipartFile file, HttpSession session) {
         Project project=(Project) session.getAttribute("applyprojectinfo");
         //获取当前路径并定位到资源模块路径
         String rootpath=System.getProperty("user.dir");
@@ -185,7 +183,7 @@ public class TeacherController{
     @RequestMapping("/queryproject")
     public @ResponseBody
     PageModel<Project> queryproject(Integer page,
-                             Project project,HttpSession session){
+                                    Project project, HttpSession session){
         project.setTeaId(((Teacher)session.getAttribute("teacher")).getId());
         PageModel<Project> pm = projectService.getProjectByMultipleinfo(page, offset, project);
         return pm;

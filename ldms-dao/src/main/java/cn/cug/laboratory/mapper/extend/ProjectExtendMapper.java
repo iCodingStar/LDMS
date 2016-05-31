@@ -15,7 +15,7 @@ public interface ProjectExtendMapper extends ProjectMapper {
      * @param pageNum
      * @return 根据教师ID和分页条件查询获取实验集合
      */
-    List<Project> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<ProjectExtend> selectByTeaId(@Param("teaId") String teaId, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      * @param teaId
@@ -56,6 +56,10 @@ public interface ProjectExtendMapper extends ProjectMapper {
                                              @Param("offset") Integer offset,
                                              @Param("pe") ProjectExtend projectExtend);
 
+    List<ProjectExtend> selectProByMultipleInfo(@Param("startPosition") Integer startPosition,
+                                                @Param("offset") Integer offset,
+                                                @Param("pe") ProjectExtend projectExtend);
+
     /**
      * @author: HXY
      * @return
@@ -77,6 +81,8 @@ public interface ProjectExtendMapper extends ProjectMapper {
      * @since : 1.0.0
      */
     Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
 
     /**
      * @author: shixing

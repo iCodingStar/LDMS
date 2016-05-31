@@ -1,6 +1,16 @@
 package cn.cug.laboratory.model.persistent;
 
 public class ProjectOrder {
+    @Override
+    public String toString() {
+        return "ProjectOrder{" +
+                "id='" + id + '\'' +
+                ", proId='" + proId + '\'' +
+                ", stuId='" + stuId + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
     private String id;
 
     private String proId;

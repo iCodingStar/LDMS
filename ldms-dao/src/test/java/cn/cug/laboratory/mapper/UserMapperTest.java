@@ -34,15 +34,15 @@ public class UserMapperTest extends AbstractSpringTest {
 
     @Test
     public void testUser(){
-        List<User> list = userExtendMapper.getPageData(0,5,new User());
-        System.out.println(list);
-        Integer count = userExtendMapper.gettotalRecords(new User());
-        System.out.println(count);
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("2");
-        User user1 = userExtendMapper.selectUserByUserNameAndPWD(user);
-        System.out.println(user1);
+//        List<User> list = userExtendMapper.getPageData(0,5,new User());
+//        System.out.println(list);
+//        Integer count = userExtendMapper.gettotalRecords(new User());
+//        System.out.println(count);
+//        User user = new User();
+//        user.setUsername("admin");
+//        user.setPassword("2");
+//        User user1 = userExtendMapper.selectUserByUserNameAndPWD(user);
+//        System.out.println(user1);
     }
 
 }

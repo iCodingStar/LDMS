@@ -211,7 +211,6 @@
                                     <a href="#" data-target="#logout-modal-dialog" data-toggle="modal"
                                        class="btn btn-default btn-flat">注销账户</a>
                                 </div>
-
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat" data-target="#modify-pass"
                                        data-toggle="modal">修改密码</a>
@@ -529,5 +528,11 @@
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
 <script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>
+<script type="text/javascript" src="${cacheUrl}/js/admin/admin-student.js"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 </body>
 </html>

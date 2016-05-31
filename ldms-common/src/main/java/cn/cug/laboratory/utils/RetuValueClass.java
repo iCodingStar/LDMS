@@ -16,6 +16,7 @@ public class RetuValueClass<E> {
         this.count = count;
     }
 
+
     public List<E> getRetuList() {
         return retuList;
     }

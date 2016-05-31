@@ -4,7 +4,6 @@ import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.utils.RetuValueClass;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public interface ProjectService {
      * @param pageNum
      * @return 记录列表，总的记录数
      */
-    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum);
+    //public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum);
 
     /**
      * @param name
@@ -49,6 +48,20 @@ public interface ProjectService {
      */
     public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
 
+    /**
+     * @author: PP
+     * @function:学生查询项目信息
+     */
+    public List<ProjectExtend> selectProByMultipleInfo(Integer currentPage,
+                                                    Integer offset,
+                                                    ProjectExtend projectExtend);
+
+    /**
+     * @author: PP
+     * @function:学生查询记录条数
+     */
+    public Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
+
 
     /**
      * @author: shixing
@@ -71,6 +84,8 @@ public interface ProjectService {
      * @function:根据项目id更新项目信息
      */
     public void updateProjectStateById(Project project);
+
+    public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
 
     public PageModel<Project> getProjectByMultipleinfo(Integer currentPage, Integer offset, Project project);
 

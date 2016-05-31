@@ -22,11 +22,16 @@ import cn.cug.laboratory.model.persistent.Student;
 import java.util.List;
 
 /**
- * Created by PP on 2016/5/20.
+ *  Created by PP on 2016/5/20.
  */
 
 public interface StudentService {
-
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Student selectByPrimaryKey(String id);
 
     /**
      *
@@ -62,12 +67,6 @@ public interface StudentService {
      */
     public int updateByPrimaryKeySelective(Student record);
 
-    /**
-     * @author: shixing
-     * @function:根据id查询信息
-     * @since : 1.0.0
-     */
-    public Student selectByPrimaryKey(String id);
 
     /**
      * @author: shixing

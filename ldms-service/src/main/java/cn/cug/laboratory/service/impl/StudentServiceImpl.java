@@ -16,10 +16,12 @@
 package cn.cug.laboratory.service.impl;
 
 import cn.cug.laboratory.mapper.StudentMapper;
+import cn.cug.laboratory.mapper.UserMapper;
 import cn.cug.laboratory.mapper.extend.StudentExtendMapper;
 import cn.cug.laboratory.model.extend.StudentExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Student;
+import cn.cug.laboratory.model.persistent.User;
 import cn.cug.laboratory.service.StudentService;
 import cn.cug.laboratory.utils.DBUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +41,19 @@ public class StudentServiceImpl implements StudentService {
     private StudentExtendMapper studentMapper;
     @Autowired
     private StudentExtendMapper studentExtendMapper;
+    @Autowired
+    private UserMapper userMapper;
+
 
     private DBUtils dbUtils;
 
 
 
+
+
     /**
      *
+     * 插入新的学生信息，要插入到Student和User表中
      * @param name
      * @param major
      * @param classId
@@ -58,6 +66,9 @@ public class StudentServiceImpl implements StudentService {
         String ID = dbUtils.StringAddOne(lastID);
         Student student = new StudentExtend(ID, name, major, classId, academy, sex);
         studentMapper.insert(student);
+        User user=new User(ID,"0","1");
+        userMapper.insert(user);
+
     }
 
     /**

@@ -22,10 +22,10 @@ public class ProjectMapperTest extends AbstractSpringTest {
 
     @Test
     public void testCount(){
-        Project project=new Project();
-        project.setTeaId("050002");
-        System.out.println(projectMapper.getCounts(project));
-        System.out.println(projectMapper.getinfo(0,8,project));
+//        Project project=new Project();
+//        project.setTeaId("050002");
+//        System.out.println(projectMapper.getCounts(project));
+//        System.out.println(projectMapper.getinfo(0,8,project));
     }
 
 }
