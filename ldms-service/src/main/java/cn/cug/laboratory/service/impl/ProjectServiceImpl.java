@@ -80,6 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projectExtendMapper.selectByMultipleInfoCounts(projectExtend);
     }
 
+
     @Override
     public ProjectExtend selectMultipleInfoById(String id) {
         return projectExtendMapper.selectMultipleInfoById(id);
@@ -110,6 +111,7 @@ public class ProjectServiceImpl implements ProjectService {
     public void updateProjectStateById(Project project) {
         projectMapper.updateByPrimaryKeySelective(project);
     }
+    
 
     /**
      * @author:HXY
