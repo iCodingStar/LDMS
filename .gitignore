@@ -13,6 +13,10 @@ target/
 /ldms-dao/src/main/resources/star-jdbc.properties
 *.txt
 *.bak
-.idea/
-ldms-admin/src/main/java/cn/cug/laboratory/controller/student/
-ldms-dao/src/main/resources/cn/cug/laboratory/mapper/wrapper/
+*.doc
+*.docx
+*.pdf
+*.rp
+*.jpg
+*.sql
+*.image

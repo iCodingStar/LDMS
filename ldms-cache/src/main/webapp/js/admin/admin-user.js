@@ -53,7 +53,6 @@ $(function () {
             } else if (result == '-1') {
                 btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">输入信息有误！</div>');
             } else if (result == '-2') {
-                alert(result);
                 btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">用户名已存在！</div>');
             }
         });

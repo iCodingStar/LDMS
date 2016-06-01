@@ -29,7 +29,7 @@ public interface ProjectExtendMapper extends ProjectMapper {
      * @param pageNum
      * @return 根据实验名称和分页条件获取实验结果
      */
-    List<ProjectExtend> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
+    List<Project> selectByName(@Param("name") String name, @Param("startSite") int startSite, @Param("pageNum") int pageNum);
 
     /**
      * @param name
@@ -61,6 +61,21 @@ public interface ProjectExtendMapper extends ProjectMapper {
                                                 @Param("pe") ProjectExtend projectExtend);
 
     /**
+     * @author: HXY
+     * @return
+     */
+    List<Project> getinfo(@Param("startPosition") Integer startPosition,
+                                                 @Param("offset") Integer offset,
+                                                 @Param("pr") Project project);
+    /**
+     * @author: HXY
+     * @function:查询项目信息条数
+     * @since : 1.0.0
+     */
+    Integer getCounts(Project project);
+
+
+    /**
      * @author: shixing
      * @function:查询项目信息条数
      * @since : 1.0.0
@@ -76,10 +91,14 @@ public interface ProjectExtendMapper extends ProjectMapper {
      */
     ProjectExtend selectMultipleInfoById(String id);
 
+
     /**
-     * @author: shixing
-     * @since : 1.0.0
-     * @function:
+     * @author: HXY
+     * @return
      */
+    public String getLastId();
+
+
+    public void setfilenameById(Project project);
 
 }

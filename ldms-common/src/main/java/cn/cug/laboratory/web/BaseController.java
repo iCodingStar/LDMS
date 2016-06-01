@@ -67,6 +67,7 @@ public abstract class BaseController {
         BaseController.modelThreadLocal.set(model);
     }
 
+
     /**
      * 获取当前线程的HttpServletRequest对象
      * @return

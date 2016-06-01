@@ -36,4 +36,12 @@
   <sql id="Blob_Column_List" >
     ps
   </sql>
+
+  <select id="getAll" resultMap="ResultMapWithBLOBs">
+    SELECT * from device;
+  </select>
+
+  <select id="queryLeftById" resultType="java.lang.Integer" parameterType="java.lang.String">
+    SELECT amount-amount_used from device WHERE id=#{id,jdbcType=CHAR};
+  </select>
 </mapper>

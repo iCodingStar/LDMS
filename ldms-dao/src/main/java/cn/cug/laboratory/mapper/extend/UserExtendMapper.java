@@ -1,6 +1,7 @@
 package cn.cug.laboratory.mapper.extend;
 
 import cn.cug.laboratory.mapper.UserMapper;
+import cn.cug.laboratory.model.extend.UserExtend;
 import cn.cug.laboratory.model.persistent.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

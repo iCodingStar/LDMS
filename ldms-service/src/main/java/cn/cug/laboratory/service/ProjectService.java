@@ -11,6 +11,7 @@ import java.util.List;
  * Created by PP on 2016/5/22.
  */
 public interface ProjectService {
+    public Project selectByPrimaryKey(String id);
 
     /**
      * 通过教师Id选择相应的实验记录，
@@ -21,7 +22,7 @@ public interface ProjectService {
      * @param pageNum
      * @return 记录列表，总的记录数
      */
-    public RetuValueClass<ProjectExtend> selectByTeaId(String teaId, int pageNo, int pageNum);
+    //public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum);
 
     /**
      * @param name
@@ -29,7 +30,7 @@ public interface ProjectService {
      * @param pageNum
      * @return
      */
-    public RetuValueClass<ProjectExtend> selectByName(String name, int pageNo, int pageNum);
+    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum);
 
     /**
      * @author: shixing
@@ -86,4 +87,14 @@ public interface ProjectService {
 
     public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend);
 
+    public PageModel<Project> getProjectByMultipleinfo(Integer currentPage, Integer offset, Project project);
+
+
+    public String getNewId();
+
+    public int insert(Project project);
+
+    public Project getById(String id);
+
+    public void setfilenameBYId(Project project);
 }

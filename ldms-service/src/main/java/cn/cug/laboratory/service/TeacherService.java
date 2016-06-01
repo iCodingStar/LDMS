@@ -1,7 +1,6 @@
 package cn.cug.laboratory.service;
 
 import cn.cug.laboratory.model.persistent.PageModel;
-import cn.cug.laboratory.model.persistent.Student;
 import cn.cug.laboratory.model.persistent.Teacher;
 
 /**
@@ -9,6 +8,8 @@ import cn.cug.laboratory.model.persistent.Teacher;
  */
 
 public interface TeacherService {
+
+    public Teacher getTeacherByUsername(String username);
     /**
      * @author: shixing
      * @since : 1.0.0

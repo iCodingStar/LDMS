@@ -1,6 +1,7 @@
 package cn.cug.laboratory.service.impl;
 
 import cn.cug.laboratory.mapper.UserMapper;
+import cn.cug.laboratory.mapper.extend.TeacherExtendMapper;
 import cn.cug.laboratory.mapper.extend.UserExtendMapper;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.User;
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserExtendMapper userExtendMapper;
 
+    @Autowired
+    private TeacherExtendMapper teacherExtendMappermapper;
     /**
      *
      * @param user
@@ -36,14 +39,8 @@ public class UserServiceImpl implements UserService{
         if (auth == null) {
             return "-1";
         }else {
-            if(auth.equals("0"))
-                return "学生";
-            else if(auth.equals("1"))
-                return "教师";
-            else if (auth.equals("2"))
-                return "管理员";
+            return auth;
         }
-        return "-1";
     }
 
     /**
@@ -118,7 +115,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public PageModel selectUserByUserNameAndAuth(Integer currentPage, Integer offset, User user) {
+    public PageModel<User> selectUserByUserNameAndAuth(Integer currentPage, Integer offset, User user) {
         Integer totalCounts = userExtendMapper.gettotalRecords(user);
         PageModel<User> pm = new PageModel<>(currentPage,offset,totalCounts);
         List<User> data = userExtendMapper.getPageData(pm.getStartPosition(),offset,user);
@@ -132,4 +129,9 @@ public class UserServiceImpl implements UserService{
     }
 
 
+
+    @Override
+    public String getTeacherNameById(String name) {
+        return teacherExtendMappermapper.selectByPrimaryKey(name).getId();
+    }
 }

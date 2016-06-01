@@ -24,7 +24,7 @@ public interface ProjectOrderService {
      * @param pageNum 每页显示的条数
      * @return
      */
-    public RetuValueClass<ProjectOrder> selectByStuId(String stuId, int pageNo, int pageNum);
+//    public RetuValueClass<ProjectOrder> selectByStuId(String stuId, int pageNo, int pageNum);
 
     /**
      * 如果当前时间还未到达项目开始时间，那么可以退课
@@ -38,6 +38,6 @@ public interface ProjectOrderService {
      * 根据学号选出成绩>0的科目
      * @param stuId
      */
-    public RetuValueClass<ProjectOrder> selectScore(String stuId, int pageNo, int pageNum);
+//    public RetuValueClass<ProjectOrder> selectScore(String stuId, int pageNo, int pageNum);
 
 }

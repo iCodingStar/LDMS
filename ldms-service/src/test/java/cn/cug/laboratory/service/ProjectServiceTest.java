@@ -36,10 +36,10 @@ public class ProjectServiceTest extends AbstractSpringTest {
 
     @Test
     public void testSelectByMultipleInfo(){
-        ProjectExtend projectExtend = new ProjectExtend();
-        List<ProjectExtend> list = projectService.selectByMultipleInfo(1,3,projectExtend);
-        PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(1,5,projectExtend);
-        System.out.println(list);
+//        ProjectExtend projectExtend = new ProjectExtend();
+//        List<ProjectExtend> list = projectService.selectByMultipleInfo(1,3,projectExtend);
+//        PageModel<ProjectExtend> pm = projectService.getProjectInfoByPage(1,5,projectExtend);
+//        System.out.println(list);
     }
 
     public void selectByTeaIdTest()throws Exception{
@@ -60,6 +60,18 @@ public class ProjectServiceTest extends AbstractSpringTest {
 //        }
 //        System.out.println(projectRetuValueClass.getCount());
     }
+
+    @Test
+    public void testGetlastId(){
+        System.out.println(projectService.getNewId());
+    }
+
+    @Test
+    public void testgetById(){
+        System.out.println(projectService.getById("p1605006"));
+    }
+
+
 
     @Test
     public void testSelectMultipleInfoById(){

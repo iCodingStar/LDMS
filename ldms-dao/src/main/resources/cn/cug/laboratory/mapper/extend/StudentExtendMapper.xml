@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.cug.laboratory.mapper.extend.StudentExtendMapper">
-    <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Student">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
-        <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="major" property="major" jdbcType="VARCHAR"/>
-        <result column="class_id" property="classId" jdbcType="INTEGER"/>
-        <result column="academy" property="academy" jdbcType="VARCHAR"/>
-        <result column="sex" property="sex" jdbcType="CHAR"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-    id , name, major, class_id 'classId', academy, sex
+<mapper namespace="cn.cug.laboratory.mapper.extend.StudentExtendMapper" >
+  <resultMap id="BaseResultMap" type="cn.cug.laboratory.model.persistent.Student" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="academy" property="academy" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, major, class_id, academy, sex
   </sql>
-    <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
-    <select id="selectLastId" resultType="java.lang.String">
+  <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
+  <select id="selectLastId" resultType="java.lang.String">
     select id
     from student
     ORDER BY id desc
     limit 1
-    </select>
+  </select>
+
+  <select id="getAlStudentByProid" resultType="cn.cug.laboratory.model.extend.StudentExtend" parameterType="java.lang.String">
+    select student.`name`,student.major,project_order.score
+    from student,project_order
+    where project_order.pro_id=#{id}
+	and project_order.stu_id=student.id
+  </select>
+
 
     <sql id="query_total_records">
         <if test="s.id != null and s.id != ''">

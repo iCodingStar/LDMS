@@ -13,11 +13,11 @@ public class StudentServiceTest extends AbstractSpringTest {
 
     @Test
     public void insertTest()throws Exception{
-        studentService.insert("鹏鹏","软件工程",111132,"信息工程","女");
+//        studentService.insert("鹏鹏","软件工程",111132,"信息工程","女");
     }
 
     @Test
     public void SelectByPrimaryKeyTest() throws Exception {
-        System.out.println(studentService.selectByPrimaryKey("20131000007").toString());
+//        System.out.println(studentService.selectByPrimaryKey("20131000007").toString());
     }
 }

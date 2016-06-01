@@ -1,33 +1,32 @@
+<%@ page import="cn.cug.laboratory.model.persistent.Teacher" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><sitemesh:write property='title'/></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="${cacheUrl}/bootstrap/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="${cacheUrl}/bootstrap/css/bootstrap.min.css">--%>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="${cacheUrl}/css/ldms.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
     <link rel="stylesheet" href="${cacheUrl}/css/skin-blue.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="${cacheUrl}/assets/applyproject/fileup/default.css">
+    <link href="${cacheUrl}/assets/applyproject/fileup/fileinput.css" media="all" rel="stylesheet" type="text/css">
+     <!--分页插件-->
+    <link type="text/css" rel="stylesheet" href="${cacheUrl}/css/simplePagination.css"/>
+    <script type="text/javascript" src="${cacheUrl}/js/teacher/jquery.simplePagination.js"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -50,6 +49,8 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="skin-blue sidebar-mini">
+
+
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -214,7 +215,7 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                    <a href="/teacher/logout" class="btn btn-default btn-flat">注销</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">修改</a>
@@ -242,7 +243,7 @@ desired effect
                     <img src="${cacheUrl}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>石星</p>
+                    <p><%=((Teacher)session.getAttribute("teacher")).getName()%></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                 </div>
@@ -275,13 +276,13 @@ desired effect
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
-                        <span>查看实验</span>
+                        <span>查看所有实验</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                 </li>
 
                 <li class="treeview">
-                    <a href="#">
+                    <a href="/teacher/showproject">
                         <i class="fa fa-users fa-lg" style="margin-right: 30px"></i>
                         <span>查询</span>
                         <i class="fa fa-angle-right pull-right"></i>
@@ -356,7 +357,7 @@ desired effect
                 <h3 class="control-sidebar-heading">最近活动</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                             <div class="menu-info">
@@ -417,9 +418,6 @@ desired effect
          immediately after the control sidebar -->
     <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.0 -->
 <script src="${cacheUrl}/js/jquery/jQuery-2.2.0.min.js"></script>
@@ -428,9 +426,5 @@ desired effect
 <!-- AdminLTE App -->
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
 </body>
 </html>
