@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-1 col-md-offset-1" style="margin-left: 10px">
                     <button id="btn-search" type="button" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         查询

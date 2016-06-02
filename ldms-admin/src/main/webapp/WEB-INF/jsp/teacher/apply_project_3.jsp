@@ -21,6 +21,13 @@
 
 </head>
 <body>
+<style type="text/css">
+    .two {
+        -moz-box-shadow: 2px 2px 10px #06c;
+        -webkit-box-shadow: 2px 2px 10px #06c;
+        box-shadow: 2px 2px 10px #06c;
+    }
+</style>
 <%
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 %>
@@ -28,7 +35,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <div class="panel panel-info" style="margin-top: 10%">
-            <div class="panel-heading">实验申请信息核对</div>
+            <div class="panel-heading"><div style="margin-left: 300px">实验申请信息核对</div></div>
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
@@ -119,7 +126,7 @@
                                 %>
 
                                 <tr>
-                                    <td><%=i%>
+                                    <td><%=i + 1%>
                                     </td>
                                     <td><%=devicelist.get(i).getName()%>
                                     </td>
@@ -138,27 +145,32 @@
                 </div>
             </div>
         </div>
+        <div class="panel-body">
+            <table>
+                <tr>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form action="/jump/applyproject2">
+                                <input style="width: 200px" type="submit" class="btn btn-primary btn-lg" value="修改">
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <form action="/teacher/confirmapply">
+                                <input style=";width: 200px;margin-left: 100px" type="submit" class="btn btn-primary btn-lg" value="提交">
+                            </form>
+                        </div>
+                    </div>
+                </tr>
+            </table>
+
+
+        </div>
     </div>
     <div class="col-md-1"></div>
 </div>
-<div class="panel-body">
-    <div class="row">
-        <div class="col-md-8">
-            <form action="/jump/applyproject2">
-                <input style="margin-left: 60%" type="submit" class="btn btn-primary btn-lg" value="修改">
-            </form>
-        </div>
-        <div class="col-md-4">
-            <form action="/teacher/confirmapply">
-                <input style="margin-left: 40%" type="submit" class="btn btn-primary btn-lg" value="提交">
-            </form>
-        </div>
-    </div>
-</div>
+
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
-<script>
-</script>
 </html>

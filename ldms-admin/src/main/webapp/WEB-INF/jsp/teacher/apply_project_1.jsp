@@ -32,10 +32,10 @@
 <div>
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-top: 100px">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>信息工程学院试验申请条例</strong></h3>
+                    <h3 class="panel-title"><strong>信息工程学院实验申请条例</strong></h3>
                 </div>
                 <div class="panel-body" style="height: 350px;overflow-y: auto;font-size: 20px">
                     文华学院实验室设备维修及耗材使用管理暂行规定
@@ -131,16 +131,13 @@
                     二〇一五年三月十日
                     <br>
                     <br>
-                    <a><input type="radio" name="chose" id="agree">Accept</a>
+                    <a><input type="radio" name="chose" id="agree">同意</a>
                     <br>
-                    <a><input type="radio" name="chose" id="disagree" checked="checked">No Accept</a>
+                    <a><input type="radio" name="chose" id="disagree" checked="checked">不同意</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    <button style="width: 150px;margin-left: 60px" type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
-                </div>
+                    <button style="width: 150px;margin-left: 340px" type="button" class="btn btn-primary btn-lg" id="next"  onclick="applyproject()">下一步</button>
             </div>
         </div>
         <div class="col-md-3"></div>

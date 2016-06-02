@@ -27,6 +27,42 @@
      <!--分页插件-->
     <link type="text/css" rel="stylesheet" href="${cacheUrl}/css/simplePagination.css"/>
     <script type="text/javascript" src="${cacheUrl}/js/teacher/jquery.simplePagination.js"></script>
+
+    <script type="text/javascript" src="${cacheUrl}/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="${cacheUrl}/js/ajaxfileupload.js"></script>
+
+    <style type="text/css">
+        #add_Btn {
+            margin-top: -30px;
+            float: left;
+            font-weight: bold;
+            border: solid gray;
+            padding: 2px;
+            width: 50px;
+            border-radius: 5px;
+            margin-left: 160px;
+            moz-user-select: -moz-none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            text-align: center;
+        }
+        #add_Btn:hover {
+            background-color: #C2BFBF
+        }
+
+        #add_Btn:active {
+            color: white;
+            background-color: #9A9595
+        }
+    </style>
+
+
+
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -184,7 +220,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="${cacheUrl}/images/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">石星</span>
+                            <span class="hidden-xs"><%=((Teacher)session.getAttribute("teacher")).getName()%></span>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -193,7 +229,7 @@ desired effect
                                 <img src="${cacheUrl}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    石星 - 管理员
+                                    <%=((Teacher)session.getAttribute("teacher")).getName()%> - 教师
                                     <small>会员注册时间 09. 2012</small>
                                 </p>
                             </li>

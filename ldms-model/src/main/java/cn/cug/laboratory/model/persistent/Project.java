@@ -19,7 +19,7 @@ public class Project {
 
     private Integer leftCapacity;
 
-    private Integer state;//项目状态
+    private Integer state=0;//项目状态
 
     private Float credit;
 

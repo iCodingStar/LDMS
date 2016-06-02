@@ -1,4 +1,5 @@
 <%@ page import="cn.cug.laboratory.model.persistent.User" %>
+<%@ page import="cn.cug.laboratory.model.persistent.Project" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=utf-8" language="java" %>
 <!DOCTYPE html>
@@ -21,31 +22,49 @@
     <!--[if IE]>
     <!--<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>-->
     <![endif]-->
-    <script>
-        window.onload = function(){
-            $("#input_lab_name").value=${sessionScope.applyprojectinfo.labId};
-            $("#input_lab_theme").value=${sessionScope.applyprojectinfo.name};
-            $("#lab_capacity").value=${sessionScope.applyprojectinfo.capacity};
-            $("#lab_score").value=${sessionScope.applyprojectinfo.capacity};
-            $("#lab_start_time").value=${sessionScope.applyprojectinfo.capacity};
-            $("#lab_end_time").value=${sessionScope.applyprojectinfo.capacity};
-            $('#decp').value=${sessionScope.applyprojectinfo.capacity};
+    <!--返回修改的时候填充信息-->
+    <%--<script>--%>
+        <%--window.onload = function(){--%>
+            <%--$("#input_lab_name").value=${sessionScope.applyprojectinfo.labId};--%>
+            <%--$("#input_lab_theme").value=${sessionScope.applyprojectinfo.name};--%>
+            <%--$("#lab_capacity").value=${sessionScope.applyprojectinfo.capacity};--%>
+            <%--$("#lab_score").value=${sessionScope.applyprojectinfo.capacity};--%>
+            <%--$("#lab_start_time").value=${sessionScope.applyprojectinfo.capacity};--%>
+            <%--$("#lab_end_time").value=${sessionScope.applyprojectinfo.capacity};--%>
+            <%--$('#decp').value=${sessionScope.applyprojectinfo.capacity};--%>
 
-            var cf_table=$(".cf_device_list");
-            console.log(cf_table);
-            <c:forEach items="${devicelist}" var="items">
+            <%--var cf_table=$(".cf_device_list");--%>
+            <%--console.log(cf_table);--%>
+            <%--<c:forEach items="${devicelist}" var="items">--%>
 
-            </c:forEach>
-        }
-    </script>
+            <%--</c:forEach>--%>
+        <%--}--%>
+    <%--</script>--%>
 </head>
 <body>
+<%
+    Project project;
+    if(session.getAttribute("applyprojectinfo")!=null){
+     project=(Project)session.getAttribute("applyprojectinfo");
+    }
+    else
+    project=new Project();
+%>
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
+
+        <!--消息框-->
+        <div id="msg-modal" class="message modal" style="margin-top: 300px;">
+            <div class="msg-dialog modal-dialog">
+                <div class="modal-content">
+                </div>
+                <div class=" message-body"></div>
+            </div>
+        </div>
         <!--面板-->
         <div class="panel panel-info">
-            <div class="panel-heading">试验申请信息填写</div>
+            <div class="panel-heading"><div style="margin-left: 35%">实验申请信息填写</div></div>
             <div class="panel-body row">
                 <div class="col-md-6">
                     <div class="input-group" id="chose_lab">
@@ -58,15 +77,15 @@
                                     <li><a href="#">${item.name}</a></li>
                                 </c:forEach>
                             </ul></span>
-                        <input id="input_lab_name" type="text" class="form-control" placeholder="Username"
-                               aria-describedby="basic-addon1">
+                        <input id="input_lab_name" type="text" class="form-control" placeholder="LAB"
+                               aria-describedby="basic-addon1" value="<%=project.getLabId()%>">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group">
                         <span style="background-color: #ededed" class="input-group-addon">输入实验主题</span>
                         <input type="text" id="input_lab_theme" class="form-control" placeholder="实验主题"
-                               aria-describedby="basic-addon1">
+                               aria-describedby="basic-addon1" value="<%=project.getName()%>">
                     </div>
                 </div>
             </div>
@@ -75,14 +94,14 @@
                     <div class="input-group">
                         <span style="background-color: #ededed" class="input-group-addon">学分</span>
                         <input type="text" id="lab_score" class="form-control" placeholder="学分"
-                               aria-describedby="basic-addon1">
+                               aria-describedby="basic-addon1" value="<%=project.getCredit()%>">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group">
                         <span style="background-color: #ededed" class="input-group-addon">容量</span>
                         <input type="text" id="lab_capacity" class="form-control" placeholder="容量"
-                               aria-describedby="basic-addon1">
+                               aria-describedby="basic-addon1" value="<%=project.getCapacity()%>">
                     </div>
                 </div>
             </div>
@@ -90,15 +109,15 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <span style="background-color: #ededed" class="input-group-addon">开始时间</span>
-                        <input type="date" id="lab_start_time" class="form-control" placeholder="Username"
-                               aria-describedby="basic-addon1">
+                        <input type="date" id="lab_start_time" class="form-control" placeholder="开始时间"
+                               aria-describedby="basic-addon1" value="<%=project.getStartTime()%>">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group">
                         <span style="background-color: #ededed" class="input-group-addon">结束时间</span>
-                        <input type="date" id="lab_end_time" class="form-control" placeholder="Username"
-                               aria-describedby="basic-addon1">
+                        <input type="date" id="lab_end_time" class="form-control" placeholder="结束时间"
+                               aria-describedby="basic-addon1" value="<%=project.getEndTime()%>">
                     </div>
                 </div>
             </div>
@@ -106,7 +125,7 @@
                 <form class="form-horizontal">
                     <div class="form-group form-group-lg">
                         <div class="col-lg-12" style="margin-right: 5px">
-                            <textarea style="height: 200px;width: 920px;margin-left: 20px" class="form-control" type="" id="decp"
+                            <textarea style="height: 200px;width: 97%;margin-left: 20px" class="form-control" type="" id="decp"
                                       placeholder="备注信息"></textarea>
                         </div>
                     </div>
@@ -181,7 +200,7 @@
                         ><td
                         ><div class="form-group"
                             ><input type="text" id="apply_device_num" class="form-control apply_device_num"
-                                    placeholder="0" value=""
+                                    placeholder="0"
                             ></div
                             ></td
                         ></tr>
@@ -198,7 +217,9 @@
 
 
 <script style="text/javascript" src="${cacheUrl}/js/teacher/admin-base.js"></script>
-
+<script src="${cacheUrl}/assets/applyproject/fileup/jquery.min.js"></script>
+<script src="${cacheUrl}/assets/applyproject/fileup/fileinput.js" type="text/javascript"></script>
+<script src="${cacheUrl}/assets/applyproject/fileup/fileinput_locale_zh.js" type="text/javascript"></script>
 <script>
 
     //添加设备
@@ -237,31 +258,86 @@
     //点击保存信息是获取全部的设备相关的信息
     var device_info = '';
     function getdapplydeviceinfo() {
+        device_info="";
         var adname = $(".apply_device_name");
         var adnum = $(".apply_device_num");
-//        console.log(adname[0].parentNode.parentNode.childNodes[0].value)
-        console.log(adnum[0].value)
         for (var i = 0; i < adname.length; i++){
-            device_info+=adname[i].parentNode.parentNode.childNodes[0].value;
-            device_info+='&';
-            device_info+=adnum[i].value;
-            device_info+='##';
+            var left=adname[i].parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].firstElementChild.value
+            if(adnum[i].value>left){
+                showMsg("设备申请数量不能大于剩余数量",1);
+                return false;
+            }
+            if(adnum[i].value!=0){
+                device_info+=adname[i].parentNode.parentNode.childNodes[0].value;;
+                device_info+='&';
+                device_info+=adnum[i].value;
+                device_info+='##';
+            }
         }
 
     }
     function saveinfo() {
-
-        getdapplydeviceinfo();
-
+        var reg_num = new RegExp("^[0-9]*$");//验证是否是数字
+        var reg_2=new RegExp("^\\d+$");//验证正整数
+        var reg_3=new RegExp("^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$");
+        var juge=getdapplydeviceinfo();
+        if(juge==false)
+                return;
         var labid = $("#input_lab_name").val(),
                 pro_name = $("#input_lab_theme").val(),
                 pro_capacity = $("#lab_capacity").val(),
-                pro_score = $("#lab_score").val(),
-                pro_start_time = $("#lab_start_time").val(),
+                pro_score = $("#lab_score").val();
+        var     start_time=$("#lab_start_time").val(),
                 pro_end_time = $("#lab_end_time").val(),
                 pro_decp = $('#decp').val();
 
-
+        if(labid==""){
+         showMsg("必须选择一个实验室",1);
+            return;
+        }
+        if(pro_name==""){
+            showMsg("实验名称不能为空",1);
+            return;
+        }
+        if(pro_score==""||pro_score==0){
+            showMsg("请输入实验的学分",1);
+            return;
+        }
+        if(!reg_3.test(pro_score)){
+            showMsg("学分输入有误",1);
+            return;
+        }
+        if(pro_capacity==""){
+            showMsg("实验容量不能为空",1);
+            return;
+        }
+        if(!reg_2.test(pro_capacity)){
+            showMsg("试验容量输入非法",1);
+            return;
+        }
+        if(pro_capacity<20){
+            showMsg("注意！！！ 实验容量小于20",1);
+        }
+        if(start_time=""){
+            showMsg("请选择实验开始时间",1);
+            return;
+        }
+        if(pro_end_time==""){
+            showMsg("请选择实验结束时间",1);
+            return;
+        }
+        if(pro_end_time<start_time){
+            showMsg("实验日期选择有误",1);
+            return;
+        }
+        if(pro_decp==""){
+            pro_decp="无备注";
+        }
+        if(device_info==""||device_info=="&##"){
+            device_info="_&##";
+        }
+        alert("要提交的数据"+device_info);
+        alert(start_time);
         $.ajax({
             url: "/teacher/saveprojectinfo",
             method: 'post',
@@ -271,7 +347,7 @@
             data: JSON.stringify({
                 labId: labid,
                 name: pro_name,
-                startTime: pro_start_time,
+                startTime: start_time,
                 endTime: pro_end_time,
                 capacity: pro_capacity,
                 credit: pro_score,
@@ -283,15 +359,12 @@
                     window.location.href = "/jump/applyproject3";
             },
             error: function () {
-                alert("信息未提交成功,请尝试重新")
+                showMsg("信息未提交成功",1)
             }
         });
     }
 
 </script>
-<script src="${cacheUrl}/assets/applyproject/fileup/jquery.min.js"></script>
-<script src="${cacheUrl}/assets/applyproject/fileup/fileinput.js" type="text/javascript"></script>
-<script src="${cacheUrl}/assets/applyproject/fileup/fileinput_locale_zh.js" type="text/javascript"></script>
 <%--<script src="${cacheUrl}/assets/applyproject/fileup/bootstrap.min.js" type="text/javascript"></script>--%>
 <script>
     $("#chose_lab ul li").each(function () {
@@ -305,7 +378,6 @@
     function upfile() {
         $("#upform").submit();
     }
-
 
 </script>
 <script>
