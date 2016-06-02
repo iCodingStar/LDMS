@@ -122,21 +122,23 @@ $(function () {
 
 });
 
-function getStudentPageDataAndParse(page,  id, name, sex, classId, major, academy) {
+function getStudentPageDataAndParse(page, id, name, sex, classId, major, academy) {
     if (page < 0) return;
     getStudentData("/admin/student/query/page", {
         page: page,
         id: id,
         name: name,
         sex: sex,
-        classId:classId,
-        major:major,
-        academy:academy
+        classId: classId,
+        major: major,
+        academy: academy
     }, function (data) {
+
         $(".table tr:not(:first)").remove();
         if (data == null) {
             return;
         }
+
         $.each(data.data, function (index, item) {
             var node = "<tr>"
                 + "<td>" + item.id + "</td>"
@@ -180,8 +182,12 @@ function getStudentPageDataAndParse(page,  id, name, sex, classId, major, academ
 
         //分页
         $(".page-nav .pagination li").remove();
-        if (data.totalPages > 1) {
-            var paramStr = "," + id + "," + name  + sex + "," +  classId + "," + major + "," + academy ;
+
+        if (data.totalPages > 1) {//
+            var paramStr = "";
+            
+            paramStr = ","  + id + ","  + name + "," + classId + "," + major + "," + academy;
+
             var prevPage = "<li><span aria-hidden='true' onclick=getStudentPageDataAndParse(" + parseInt(data.currentPage - 1) + paramStr + ")>&laquo;</span></li>";
             $(".page-nav .pagination").append(prevPage);
 

@@ -52,9 +52,13 @@ public class UserServiceImpl implements UserService{
      */
     public Integer pp_updatePassword(String stuId,String oldPwd,String newPwd) {
         User user=userMapper.selectByPrimaryKey(stuId);
+        System.out.println("输入密码--"+user.getPassword());
+        System.out.println("原密码--"+oldPwd);
         if(user.getPassword().equalsIgnoreCase(oldPwd)){
             System.out.println("原密码正确");
             userExtendMapper.updatePassword(stuId,newPwd);
+//            user.setPassword(newPwd);
+//            userMapper.updateByPrimaryKey(user);
             return 1;
         }
         else{

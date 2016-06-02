@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface UserExtendMapper extends UserMapper{
-    void updatePassword(@Param("stuId") String stuId, @Param("newPwd") String newPwd);
+    public void updatePassword(@Param("stuId") String stuId, @Param("newPwd") String newPwd);
 
     /**
      * 根据用户名和密码获取用户权限
