@@ -168,10 +168,7 @@ function getUserPageDataAndParse(page, username, rolename) {
         $(".page-nav .pagination li").remove();
         if (data.totalPages > 1) {
             var paramStr ="";
-
-            paramStr += ",'" + username + "'";
-            paramStr += ",'" + rolename + "'";
-
+            paramStr += "," + username + "," + rolename ;
             var prevPage = "<li><span aria-hidden='true' onclick=getUserPageDataAndParse(" + parseInt(data.currentPage - 1) + paramStr + ")>&laquo;</span></li>";
             $(".page-nav #user").append(prevPage);
 
