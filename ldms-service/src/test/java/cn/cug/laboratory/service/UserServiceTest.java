@@ -24,9 +24,9 @@ private UserService userService;
 
     @Test
     public void test(){
-        PageModel<Student> studentPageModel = studentService.selectMultiInfoByPage(0,6,new Student());
+        PageModel<Student> studentPageModel = studentService.selectMultiInfoByPage(500,6,new Student());
         System.out.println(studentPageModel);
-        PageModel<Teacher>  pm = teacherService.selectMultiInfoByPage(0,6,new Teacher());
+        PageModel<Teacher>  pm = teacherService.selectMultiInfoByPage(500,6,new Teacher());
         System.out.println(pm);
     }
     public void updatePasswordTest(){

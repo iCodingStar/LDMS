@@ -35,7 +35,7 @@ import java.util.List;
 @Controller
 @RequestMapping("admin/project")
 public class AdminProjectController {
-    private Integer offset = 1;
+    private Integer offset = 8;
 
     @Autowired
     private ProjectService projectService;

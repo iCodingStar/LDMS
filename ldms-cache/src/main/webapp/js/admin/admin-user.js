@@ -1,60 +1,168 @@
-
 $(function () {
 
-    getUserPageDataAndParse(1);
+    getUserPageDataAndParse(1, null, null);
 
     $(".dropdown-menu li a,.dropdown-menu span.label").on('click', function () {
         $(this).parents(".dropdown-menu").prev(".dropdown-toggle").find(".select-name").text($(this).text());
     });
 
+    $(".btn-state:first").addClass("btn-active");
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:查询用户
+     */
     $("#btn-search-user").on('click', function () {
         var username = $(".search-input-username").val();
         var rolename = $(".search-role .select-name").text();
 
-        if (rolename == "用户角色"|| rolename == "所有角色") {
+        if (rolename == "用户角色" || rolename == "所有角色") {
             rolename = "";
         }
 
         getUserPageDataAndParse(1, username, rolename);
     });
 
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:添加用户时，根据选择专业动态显示相应的班级
+     */
+    $("#add-user-modal-dialog #select-major").on("click", function () {
+        //复原提示信息
+        $(".select-class").text("请选择班级");
+
+        //移除先前所有的班级信息
+        $("#add-user-modal-dialog #select-class li").remove();
+
+        //获取专业信息
+        var major = $("#add-user-modal-dialog .select-major").text();
+
+        //根据对应的专业动态添加相应的班级信息
+        if (major == "软件工程") {
+            var data = new Array();
+            data[0] = "111131";
+            data[1] = "111132";
+            addClassInfo(data)
+        } else if (major == "遥感科学技术") {
+            var data = new Array();
+            data[0] = "113131";
+            data[1] = "113132";
+            addClassInfo(data)
+        } else if (major == "地理信息科学") {
+            var data = new Array();
+            data[0] = "114131";
+            data[1] = "114132";
+            data[2] = "114133";
+            addClassInfo(data)
+        } else if (major == "测绘科学技术") {
+            var data = new Array();
+            data[0] = "115131";
+            data[1] = "115132";
+            data[2] = "115133";
+            addClassInfo(data)
+        } else if (major == "信息工程") {
+            var data = new Array();
+            data[0] = "116131";
+            data[1] = "116132";
+            addClassInfo(data)
+        }
+    });
+
+
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:添加具体班级信息
+     */
+    function addClassInfo(data) {
+        //获取班级节点
+        var select_class = $("#add-user-modal-dialog #select-class");
+        //移除先前所有的班级信息
+        $("#add-user-modal-dialog #select-class li").remove();
+
+        console.log(data);
+
+        for (var temp in data) {
+            select_class.append("<li ><a onclick=choseClassId()>" + data[temp] + "</a></li>")
+        }
+    }
+
+
     $(".add-user-submit").on('click', function () {
-        var username = $("#add-user-modal-dialog .form-username").val().trim();
-        var password = $("#add-user-modal-dialog .form-password").val().trim();
-        var rolename = $("#add-user-modal-dialog .select-name").text().trim();
         $(".modal-body .alert").remove();
-        if (username == "") {
-            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入用户名！</div>');
+
+        var id = $("#add-user-modal-dialog .form-id").val();
+        var password = $("#add-user-modal-dialog .form-password").val();
+        var password_confirm = $("#add-user-modal-dialog .form-password-confirm").val();
+        var name = $("#add-user-modal-dialog .form-name").val();
+        var sex = $("#add-user-modal-dialog .btn-active").text();
+        var academy = $("#add-user-modal-dialog .form-academy").val();
+        var major = $("#add-user-modal-dialog .select-major").text();
+        var classId = $("#add-user-modal-dialog .select-class").text();
+        var auth = $("#add-user-modal-dialog .select-auth").text();
+
+        if (id == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入学号/工号！</div>');
             return;
-        } else if (username.length < 2 || username.length > 20) {
-            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">用户名长度应为2-20！</div>');
+        }
+        if (password == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入密码！</div>');
             return;
-        } else if (password == "") {
-            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">密码不能为空！</div>');
+        }
+        if (password_confirm == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入确认密码！</div>');
             return;
-        } else if (password.length < 6 || password.length > 16) {
-            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">密码长度应为6-16！</div>');
+        }
+        if (password != password_confirm) {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">两次密码不一致！</div>');
             return;
-        } else if (rolename == "请选择角色") {
-            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请选择用户角色！</div>');
+        }
+        if (name == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入名字！</div>');
+            return;
+        }
+        if (sex == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请选择性别！</div>');
+            return;
+        }
+        if (academy == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请填写学院！</div>');
+            return;
+        }
+        if (major == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请填写专业！</div>');
+            return;
+        }
+        if (classId == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入班级！</div>');
             return;
         }
 
+        console.log( "id : " + id  + "password : " + password + "name : " + name + "sex : " + sex + "academy : " +academy + "major : " + major + "classId : " + classId);
+
         var btn_this = $(this);
+
+        console.log(btn_this);
+
         getUserData("/admin/user/add", {
-            username: username,
+            id: id,
             password: password,
-            auth: rolename
+            classId: classId,
+            name: name,
+            sex: sex,
+            major: major,
+            academy: academy,
+            auth: auth,
+            username: id
         }, function (result) {
             if (result == 'success') {
                 showMsg("添加用户成功!", 0, refreshCurrentPage);
-            } else if (result == '0') {
-                btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">添加用户失败！</div>');
             } else if (result == '-1') {
-                btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">输入信息有误！</div>');
+                btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">用户名已存在！</div>');
             } else if (result == '-2') {
                 alert(result);
-                btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">用户名已存在！</div>');
+                btn_this.siblings().eq(0).before('<div class="alert alert-danger" role="alert">输入信息有误！</div>');
             }
         });
     });
@@ -98,6 +206,17 @@ $(function () {
     });
 
 });
+
+function choseClassId() {
+    var that = this.event.target;//获取的
+    console.log(that);
+    $(".select-class").text(that.innerHTML);
+}
+/**
+ * @author: shixing
+ * @since : 1.0.0
+ * @function:
+ */
 
 /**
  * @author: shixing
@@ -168,12 +287,20 @@ function getUserPageDataAndParse(page, username, rolename) {
         //分页
         $(".page-nav .pagination li").remove();
         if (data.totalPages > 1) {
-            var paramStr ="";
-            paramStr += "," + username + "," + rolename ;
+            var paramStr = "";
+            if (username == null) {
+                username = "";
+            }
+            if (rolename == null) {
+                rolename = "";
+            }
+            paramStr += ",'" + username + "'";
+            paramStr += ",'" + rolename + "'";
+
             var prevPage = "<li><span aria-hidden='true' onclick=getUserPageDataAndParse(" + parseInt(data.currentPage - 1) + paramStr + ")>&laquo;</span></li>";
             $(".page-nav #user").append(prevPage);
 
-            for (var i = data.startPage; i <= data.endPage; i++) {
+            for (var i = data.startPage; i < data.endPage; i++) {
                 var pagenav = "";
                 if (data.currentPage == i) {
                     pagenav += "<li class='active'>";

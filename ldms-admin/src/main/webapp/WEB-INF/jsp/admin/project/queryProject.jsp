@@ -82,7 +82,7 @@ Time: 1:19
                     </div>
                 </div>
 
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-">
                     <button id="btn-search-project" type="button" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         查询
@@ -168,11 +168,13 @@ Time: 1:19
         <div class="modal fade" id="show-project-modal-dialog" style="margin-top: 5%">
             <div class="modal-dialog">
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">项目详情</h4>
                     </div>
+
                     <div class="modal-body" style="padding: 5px">
                         <table class="table table-striped">
                             <thead>
@@ -254,14 +256,15 @@ Time: 1:19
                             </div>
                         </div>
                     </div>
+
                     <div class="model-footer" style="padding: 5px">
                         <div class="btn-group single-width" role="group">
-                            <button type="button" class="btn btn-default col-md-4 col-xs-12 project-cancel">取消
-                            </button>
-                            <button type="button" class="btn btn-success col-md-4 col-xs-12 project-pass">通过
-                            </button>
-                            <button type="button" class="btn btn-danger  col-md-4 col-xs-12 project-refuse">拒绝
-                            </button>
+                            <%--<button type="button" class="btn btn-default col-md-4 col-xs-12 project-cancel">取消--%>
+                            <%--</button>--%>
+                            <%--<button type="button" class="btn btn-success col-md-4 col-xs-12 project-pass">通过--%>
+                            <%--</button>--%>
+                            <%--<button type="button" class="btn btn-danger  col-md-4 col-xs-12 project-refuse">拒绝--%>
+                            <%--</button>--%>
                         </div>
                     </div>
                 </div>
@@ -269,68 +272,7 @@ Time: 1:19
         </div>
     </div>
 
-    <!--通过确认-->
-    <div id="project-pass-modal-dialog" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">项目审核确认</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-item">
-                        <h4>确认审核通过该项目<span class="delete-username"></span>？</h4>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn project-pass-submit btn-primary btn-double">确认</button>
-                    <button class="btn btn-default btn-double" data-target="#project-pass-modal-dialog"
-                            data-toggle="modal">取消
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--拒绝确认-->
-    <div id="project-refuse-modal-dialog" class="modal fade">
-        <div class="modal-dialog alert">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">项目审核确认</h4>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-item">
-                        <h4>确认审核拒绝该项目<span class="delete-username"></span>？</h4>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button class="btn project-refuse-submit btn-primary btn-double">确认</button>
-                    <button class="btn btn-default btn-double" data-target="#project-refuse-modal-dialog"
-                            data-toggle="modal">取消
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-<!-- /.container-fluid -->
 </div>
-
-<%--<!-- jQuery -->--%>
-<%--<script src="${cacheUrl}/js/jquery/jQuery-2.2.0.min.js"></script>--%>
-<%--<!-- Bootstrap Core JavaScript -->--%>
-<%--<script src="${cacheUrl}/bootstrap/js/bootstrap.min.js"></script>--%>
-<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>--%>
-<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>--%>
 </body>
 </html>

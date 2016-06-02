@@ -31,13 +31,17 @@
         </div>
     </div>
 
+    <!--主体框-->
     <div id="page-wrapper">
         <div class="container-fluid">
-            <!-- 页面内容 -->
+
+            <!-- 头部内容 -->
             <div class="panel panel-default">
+
                 <div class="panel-heading"  id="panel-heading">
                     <h3 class="panel-title">学生管理</h3>
                 </div>
+
                 <div class="panel-body">
                     <div class="col-md-3">
                         <input type="text" class="form-control search-student-input" placeholder="输入选择信息">
@@ -55,7 +59,6 @@
                                 <li><a>学号</a></li>
                                 <li><a>班级</a></li>
                                 <li><a>姓名</a></li>
-                                <li><a>性别</a></li>
                                 <li><a>专业</a></li>
                                 <li><a>学院</a></li>
                             </ul>
@@ -78,6 +81,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-md-2">
                         <button id="btn-student-search" type="button" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -85,20 +89,13 @@
                         </button>
                     </div>
 
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary btn-lg"
-                                data-target="#add-user-modal-dialog" data-toggle="modal">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            添加用户
-                        </button>
-                    </div>
-
                 </div>
             </div>
 
+            <!-- 主题内容 -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">用户列表</h3>
+                    <h3 class="panel-title">学生列表</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
@@ -120,7 +117,7 @@
                 </div>
             </div>
 
-            <!--添加用户-->
+            <!--添加用户模态框-->
             <div class="modal fade" id="add-user-modal-dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -158,36 +155,46 @@
                     </div>
                 </div>
             </div>
-            <!--修改用户-->
+
+            <!--修改用户模态框-->
             <div class="modal fade" id="modify-user-modal-dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">修改用户</h4>
+                            <h4 class="modal-title">学生个人信息修改</h4>
                         </div>
                         <div class="modal-body">
+
                             <div class="form-group">
-                                <input type="text" class="form-username form-control" disabled="disabled">
+                                <input id="form-id" type="text" class="form-id form-control" disabled="disabled">
                             </div>
-                            <div class="dropdown form-item">
-                                <button class="btn single-size dropdown-toggle" type="button" id="roleDropdownMenu2"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <span class="select-name"></span>
-                                    <span class="caret"></span>
-                                </button>
-                                <div class="dropdown-menu select-role single-width" aria-labelledby="roleDropdownMenu2">
-                                </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-classId form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-name form-control">
                             </div>
 
                             <div class="form-item">
                                 <div class="btn-group single-width" role="group">
-                                    <button type="button" class="enable btn btn-triple">状态：</button>
-                                    <button type="button" class="btn btn-triple btn-state">正常</button>
-                                    <button type="button" class="btn btn-triple btn-state">锁定</button>
+                                    <button type="button" class="enable btn btn-triple">性别：</button>
+                                    <button type="button" class="btn btn-triple btn-state">男</button>
+                                    <button type="button" class="btn btn-triple btn-state">女</button>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-major form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-academy form-control">
+                            </div>
+
                             <button class="btn modify-user-submit btn-single">确认修改</button>
                         </div>
                     </div>
@@ -205,7 +212,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-item">
-                                <h4>确认删除用户<span class="delete-username"></span>？</h4>
+                                <h4 class="delete-user">确认删除用户<span class="delete-student-name"></span>(<span class="delete-student-id"></span>)？</h4>
                             </div>
                         </div>
                         <div class="modal-footer">

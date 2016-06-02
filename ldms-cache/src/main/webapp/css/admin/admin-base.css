@@ -1,18 +1,10 @@
-/*!
- * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-/* Global Styles */
-
 body {
-    background-color: #fff;
-    font-family: 微软雅黑;
-}
-
+     background-color: #fff;
+     min-height: 949px !important;
+ }
 @media (min-width: 768px) {
     body {
+
     }
 }
 
@@ -36,157 +28,74 @@ body {
     }
 }
 
-/* Top Navigation */
-
-.top-nav {
-    padding: 0 15px;
-}
-
-.top-nav > li {
-    display: inline-block;
-    float: left;
-}
-
-.top-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    line-height: 20px;
-    color: #999;
-}
-
-.top-nav > li > a:hover,
-.top-nav > li > a:focus,
-.top-nav > .open > a,
-.top-nav > .open > a:hover,
-.top-nav > .open > a:focus {
-    color: #fff;
-    background-color: #000;
-}
-
-.top-nav > .open > .dropdown-menu {
-    float: left;
-    position: absolute;
-    margin-top: 0;
-    border: 1px solid rgba(0, 0, 0, .15);
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-color: #fff;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
-
-.top-nav > .open > .dropdown-menu > li > a {
-    white-space: normal;
-}
-
-/* Side Navigation */
-
-.side-nav {
-    position: fixed;
-    top: 51px;
-    left: 225px;
-    width: 225px;
-    margin-left: -225px;
-    border: none;
-    border-radius: 0;
-    overflow-y: auto;
-    scrollbar-base-color: #222;
-    background-color: #222;
-    bottom: 0;
-    overflow-x: hidden;
-    padding-bottom: 40px;
-}
-
-.side-nav > li > a {
-    width: 225px;
-}
-
-.side-nav li a:hover,
-.side-nav li a:focus {
-    outline: none;
-    background-color: #000 !important;
-}
-
-.side-nav > li > ul {
-    padding: 0;
-}
-
-.side-nav > li > ul > li > a {
-    display: block;
-    padding: 10px 15px 10px 38px;
-    text-decoration: none;
-    color: #999;
-}
-
 .form-password,
 .form-username,
-.form-textarea {
+.form-textarea{
     width: 100%;
     height: 50px;
     border: 2px solid #cacaca;
     font-size: 18px;
 }
 
-.form-textarea {
+.form-textarea{
     resize: none;
 }
-
-.form-username:focus, .form-password:focus {
+.form-username:focus,.form-password:focus{
     box-shadow: #c7c7c7 3px 3px 3px;
 }
 
-.modal-body {
+.modal-body{
     background: #eaeaea none repeat scroll 0 0;
     border-radius: 0 0 4px 4px;
     padding: 25px 25px 30px;
     text-align: left;
 }
 
-.btn-single {
+.btn-single{
     width: 100%;
     height: 50px;
     color: #fff;
     font-size: 18px;
 }
 
-.single-size {
+.single-size{
     width: 100%;
     height: 50px;
     font-size: 18px;
     background-color: #fff;
 }
 
-.single-size-default {
+.single-size-default{
     width: 100%;
     height: 50px;
     font-size: 18px;
 }
 
-.single-width {
+.single-width{
     width: 100%;
 }
 
 .btn-single:hover,
 .btn-primary:hover,
 .label:hover,
-.current-item:hover {
+.current-item:hover{
     background-color: rgba(74, 175, 81, 0.76);
 }
 
-.message {
+.message{
     display: none;
 }
 
-.btn-double {
+.btn-double{
     width: 20%;
     height: 40px;
 }
 
-.btn-row {
+.btn-row{
     margin-top: 10px;
 }
 
-.btn-sm {
+.btn-sm{
     margin-right: 10px;
 }
 
@@ -197,83 +106,77 @@ th,
 .modal-title,
 .btn-row,
 .form-password,
+.form-password-confirm,
 .form-username,
+.form-name,
+.form-id,
+.form-academy,
+.form-major,
+.form-classId,
 .label,
 .btn-group,
 .side-nav,
-.panel-footer {
+.panel-footer{
     text-align: center;
 }
 
 .btn-primary,
-.page-nav .active > a,
-.page-nav .active > a:hover,
 .btn-single,
 .btn-active,
-.current-item {
+.current-item{
     background-color: #3dac4b;
 }
 
-.page-nav ul li a {
-    color: #3dac4b;
-}
-
-.container-fluid {
+.container-fluid{
     padding: 10px 80px;
 }
 
-.form-control, .md-high {
+.form-control,.md-high{
     height: 46px;
     font-size: 18px;
 }
 
-.single-height {
-    height: 46px;
+.single-height{
+    height:46px;
 }
 
-.page-nav .active > a,
-.page-nav .active > a:hover,
+.page-nav .active>a,
+.page-nav .active>a:hover,
 .btn-active,
 .btn-single:hover,
 .btn-primary:hover,
 .label:hover,
 .side-nav > li > ul > li > a:hover,
-.side-nav .active > a {
-    color: #fff;
+.side-nav .active>a{
+    color: #d4ffde;
 }
 
 .form-item,
-.row {
+.row{
     margin-bottom: 15px;
+    font-family: 微软雅黑;
+    font-size: 16px;
 }
 
-ul {
+ul{
     list-style: none;
 }
 
-.dropdown-menu {
-    padding: 10px;
-}
-
-.dropdown-menu .select-role li a {
-    background-color: #0d6aad;
-}
-
-.dropdown-menu .select-role {
-    background-color: #00a65a;
+.dropdown-menu{
+    padding:10px;
 }
 
 span,
 .label,
-a {
+a{
     cursor: pointer;
 }
 
-.label {
+.label{
     margin: 0px 5px;
 }
 
-.label-default {
+.label-default{
     height: 35px;
     font-size: 14px;
     margin: 3px 3px;
@@ -281,28 +184,53 @@ a {
     line-height: 35px;
 }
 
-.btn-triple {
+.btn-triple{
     width: 33%;
     height: 46px;
 }
 
-.collapse {
+.collapse{
     background-color: #3c3c3c;
 }
 
-.active {
-    background-color: #080808;
+.active{
+    background-color: #fcf6ff;
 }
 
-.select-role > li > a {
+.btn-group,tr td,li a,.panel-title,span{
     font-family: 微软雅黑;
-    text-align: center;
-    font-size: 14px;
 }
 
-#panel-heading {
-    text-align: center;
-    padding: 15px;
+.panel-title{
     font-size: 24px;
+    text-align: center;
+}
+
+.delete-user span{
+    font-family: 幼圆;
+}
+.delete-user .delete-teacher-name,
+.delete-user .delete-student-name{
+    font-size: 24px;
+    color: red;
+}
+
+.dropdown-down:hover{
+    padding-bottom: 100px;
+}
+.dropdown-menu li a:hover{
+    color: blue;
+}
+.dropdown-menu li a{
+    display: block;
+    text-align: center;
+}
+
+.alert{
+    font-size: 20px;
+    color: #ff96ba;
+}
+
+.form-control{
     font-family: 微软雅黑;
 }

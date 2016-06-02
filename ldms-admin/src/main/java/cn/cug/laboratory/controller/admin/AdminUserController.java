@@ -15,9 +15,16 @@
  */
 package cn.cug.laboratory.controller.admin;
 
+import cn.cug.laboratory.model.extend.UserExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
+import cn.cug.laboratory.model.persistent.Student;
+import cn.cug.laboratory.model.persistent.Teacher;
 import cn.cug.laboratory.model.persistent.User;
+import cn.cug.laboratory.service.StudentService;
+import cn.cug.laboratory.service.TeacherService;
 import cn.cug.laboratory.service.UserService;
+import cn.cug.laboratory.utils.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +40,15 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = {"/admin/user"})
 public class AdminUserController {
 
-    private Integer offset = 5;
+    private Integer offset = 8;
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private TeacherService teacherService;
+    @Autowired
+    private StudentService studentService;
+
 
     @RequestMapping("")
     public ModelAndView adminUser() {
@@ -46,9 +58,29 @@ public class AdminUserController {
     @RequestMapping(value = {"/add"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
-    String add(User user) {
-        userService.insertSelective(user);
-        return "success";
+    String add(User user, Student student, Teacher teacher) {
+        String id = user.getUsername();
+        String auth = user.getAuth();
+
+        if (id != null) {
+            //检测数据库中是否存在该用户
+            if (this.isExistUser(id)) {
+                return "-1";
+            }
+
+            //根据用户身份进行添加
+            if (!StringUtils.isEmpty(auth) && auth.equals("学生")) {
+                userService.insertSelective(user);
+                studentService.insertSelective(student);
+                return "success";
+            } else if (!StringUtils.isEmpty(auth) && auth.equals("教师")) {
+                userService.insertSelective(user);
+                teacherService.insertSelective(teacher);
+                return "success";
+            }
+
+        }
+        return "-2";
     }
 
     @RequestMapping(value = {"/delete"}, method = {RequestMethod.GET, RequestMethod.POST})
@@ -74,4 +106,20 @@ public class AdminUserController {
         PageModel<User> pm = userService.selectUserByUserNameAndAuth(page, offset, user);
         return pm;
     }
+
+
+    /**
+     * @author: shixing
+     * @function:判断数据库中是否存在该用户
+     * @since : 1.0.0
+     */
+    private boolean isExistUser(String id) {
+        if (userService.selectByPrimaryKey(id) != null ||
+                studentService.selectByPrimaryKey(id) != null ||
+                teacherService.selectByPrimaryKey(id) != null)
+            return true;
+        else
+            return false;
+    }
+
 }

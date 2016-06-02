@@ -32,7 +32,7 @@
     </dependencies>
 
     <build>
-        <finalName>ldms-cache</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

@@ -32,12 +32,13 @@ function showMsg(msg, type, callback) {
     }
 
     $("#msg-modal").modal('show');
+
     setTimeout(function () {
         $("#msg-modal").modal('hide');
         if (callback) {
             callback();
         }
-    }, 100000);
+    }, 2000);
 }
 
 $(function () {

@@ -15,15 +15,87 @@
  */
 package cn.cug.laboratory.controller.admin;
 
+import cn.cug.laboratory.model.extend.DeviceExtend;
+import cn.cug.laboratory.model.persistent.PageModel;
+import cn.cug.laboratory.service.DeviceService;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * @autor shixing
  * @since 1.0.0
  */
 @Controller
-@RequestMapping(value = {""})
+@RequestMapping(value = {"/admin/device"})
 public class AdminDeviceController {
+    private Integer offset = 5;
 
+    @Autowired
+    private DeviceService deviceService;
+
+    @RequestMapping("")
+    public ModelAndView home(){
+        return new ModelAndView("admin/device/device");
+    }
+
+    /**
+     * @author: shixing
+     * @fuction:进行分页查询设备资料
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/query/page"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    PageModel<DeviceExtend> queryDeviceInfoByPage(Integer page,
+                                                   DeviceExtend deviceExtend) {
+        PageModel<DeviceExtend> pm = deviceService.getDevicePageInfoByIdOrName(page,offset,deviceExtend);
+        return pm;
+    }
+
+    /**
+     * @author: shixing
+     * @function:修改设备状态
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/update/id"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    String updateDeviceById(DeviceExtend deviceExtend) {
+        deviceService.updateDeviceByPrimaryKey(deviceExtend.getId(),deviceExtend);
+        return "success";
+    }
+
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/insert"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    String insertDevice(DeviceExtend deviceExtend) {
+        deviceService.insertDeviceByPrimaryKey(deviceExtend);
+        return "success";
+    }
+
+    /**
+     * @author: shixing
+     * @function:修改设备状态
+     * @since : 1.0.0
+     */
+    @RequestMapping(value = {"/delete/id"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    String deleteDeviceById(DeviceExtend deviceExtend) {
+        deviceService.deleteByPrimaryKey(deviceExtend.getId());
+        System.out.println("232233");
+        return "success";
+    }
 }

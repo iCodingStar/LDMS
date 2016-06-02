@@ -2,9 +2,14 @@
 <sitemesh>
     <mapping path="/WEB-INF/jsp/teacher/*" decorator="/decorator/teacher/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/student/*" decorator="/decorator/student/decorator.jsp"/>
+
+    <!--admin-->
     <mapping path="/WEB-INF/jsp/admin/home.jsp" decorator="/decorator/admin/decorator.jsp"/>
-    <mapping path="/WEB-INF/jsp/admin/project/*" decorator="/decorator/admin/project/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/admin/device/device.jsp" decorator="/decorator/admin/device/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/admin/project/queryProject.jsp" decorator="/decorator/admin/project/query/decorator.jsp"/>
+    <mapping path="/WEB-INF/jsp/admin/project/checkProject.jsp" decorator="/decorator/admin/project/check/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/admin/user/*" decorator="/decorator/admin/user/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/admin/student/*" decorator="/decorator/admin/student/decorator.jsp"/>
     <mapping path="/WEB-INF/jsp/admin/teacher/*" decorator="/decorator/admin/teacher/decorator.jsp"/>
+
 </sitemesh>

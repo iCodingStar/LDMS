@@ -3,7 +3,7 @@
  */
 $(function () {
     //启动时就加载数据
-    getPageDataAndParse(1,null,null,null,1);
+    getPageDataAndParse(1,null,null,null,null);
     //选择特定的按钮
     $(".project-info-select li a,.project-state-select li a,.dropdown-menu span.label").on('click', function () {
         $(this).parents(".dropdown-menu").prev(".dropdown-toggle").find(".select-name").text($(this).text());
@@ -118,10 +118,11 @@ function getPageDataAndParse(page, id, teacherName, name, state) {
 
             if (totalPages > 1) {
                 var parameter = "," + id + "," + teacherName + "," + name + "," + state;
+
                 var prevPage = "<li><span aria-hidden='true' onclick= getPageDataAndParse(" + (currentPage - 1) + parameter + ") >&laquo;</span></li>";
                 $(".page-nav .pagination").append(prevPage);
 
-                for (var i = data.startPage; i <= data.endPage; i++) {
+                for (var i = data.startPage; i < data.endPage; i++) {
                     var pagenav = "";
                     if (data.currentPage == i) {
                         pagenav += "<li class='active'>";
@@ -157,7 +158,7 @@ function refreshCurrentPage() {
     if (currentPage == "") {
         currentPage = 1;
     }
-    getPageDataAndParse(currentPage);
+    getPageDataAndParse(currentPage,null,null,null,null);
 }
 
 /**

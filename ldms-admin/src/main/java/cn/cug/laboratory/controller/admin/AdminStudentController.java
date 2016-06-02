@@ -33,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = {"/admin/student"})
 public class AdminStudentController {
-    private Integer offset = 5;
+    private Integer offset = 8;
 
     @Autowired
     private StudentService studentService;
@@ -52,23 +52,47 @@ public class AdminStudentController {
     public
     @ResponseBody
     String add(Student student) {
+
         return "success";
     }
 
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
     @RequestMapping(value = {"/delete"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
     String delete(Student student) {
-        return "success";
+        if (student.getId() != null) {
+            studentService.deleteByPrimaryKey(student.getId());
+            return "success";
+        }
+        return "error";
     }
 
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
     @RequestMapping(value = {"/update"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
     String update(Student student) {
-        return "success";
+        if (student.getId() != null) {
+            studentService.updateByPrimaryKeySelective(student);
+            return "success";
+        }
+        return "error";
     }
 
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
     @RequestMapping(value = {"/query"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
@@ -77,6 +101,11 @@ public class AdminStudentController {
         return new Student();
     }
 
+    /**
+     * @author: shixing
+     * @function:
+     * @since : 1.0.0
+     */
     @RequestMapping(value = {"/query/page"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody

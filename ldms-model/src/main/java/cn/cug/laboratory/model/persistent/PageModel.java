@@ -63,20 +63,25 @@ public class PageModel<T> {
         }
         if (currentPage <= 1) {
             this.currentPage = 1;
-        } else if (currentPage > this.totalPages) {
+        } else if (currentPage >= this.totalPages) {
             this.currentPage = this.totalPages;
+        }else {
+            this.currentPage = currentPage;
+        }
+
+        if (this.currentPage <= 1) {
+            this.currentPage = 1;
         }
 
         //初始化起始点
         this.startPosition = (this.currentPage - 1) * offset;
 
         //初始化起始结束页面
-        if (totalPages <= 10) {
-            this.startPage = 1;
+        this.startPage = this.currentPage - this.currentPage % 10 + 1;
+        this.endPage = this.startPage + 10;
+
+        if (this.endPage >= this.totalPages){
             this.endPage = this.totalPages;
-        } else {
-            this.startPage = this.currentPage - this.currentPage % 10 + 1;
-            this.endPage = this.startPage + 10;
         }
     }
 

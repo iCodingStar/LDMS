@@ -3,6 +3,16 @@ package cn.cug.laboratory.model.persistent;
 public class Student {
     private String id;
 
+    private String name;
+
+    private String major;
+
+    private Integer classId;
+
+    private String academy;
+
+    private String sex;
+
     public Student(){}
     public Student(String id, String name, String major, Integer classId, String academy, String sex) {
         this.id = id;
@@ -13,16 +23,6 @@ public class Student {
         this.sex = sex;
     }
 
-    private String name;
-
-    private String major;
-
-    private Integer classId;
-
-
-    private String academy;
-
-    private String sex;
 
     public String getId() {
         return id;

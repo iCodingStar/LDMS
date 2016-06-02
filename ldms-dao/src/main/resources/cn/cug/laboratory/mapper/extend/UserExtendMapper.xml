@@ -48,7 +48,7 @@
         SELECT
         *
         FROM
-        USER
+        user
         <where>
             <include refid="basic_user_query_lists"></include>
         </where>
@@ -62,7 +62,7 @@
         SELECT
         *
         FROM
-        USER
+        user
         <where>
             <include refid="basic_user_query_lists_for_counts"></include>
         </where>
@@ -75,7 +75,7 @@
             SELECT
             *
             FROM
-            USER
+            user
             WHERE
             username=#{username}
             AND password = #{password};

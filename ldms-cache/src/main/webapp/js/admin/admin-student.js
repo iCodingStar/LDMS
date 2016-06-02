@@ -1,5 +1,5 @@
 $(function () {
-    // getStudentPageDataAndParse(1);
+    getStudentPageDataAndParse(1);
     $(".dropdown-menu li a,.dropdown-menu span.label").on('click', function () {
         $(this).parents(".dropdown-menu").prev(".dropdown-toggle").find(".select-name").text($(this).text());
     });
@@ -7,11 +7,11 @@ $(function () {
     $("#btn-student-search").on('click', function () {
         var input_info = $(".search-student-input").val();
         var choose_info = $(".search-student-info .select-name").text();
-        var sex = $(".search-student-sex .select-name").text();
+        var sex = $(".search-student-sex .select-name").text() + "";
 
         // alert(input_info + "---" + choose_info + "---" + sex);
 
-        var id, name, major, classId, academy, sex;
+        var id, name, major, classId, academy;
         if (choose_info == "学号") {
             id = input_info;
         }
@@ -34,10 +34,12 @@ $(function () {
     });
 
     $(".add-user-submit").on('click', function () {
-        var username = $("#add-user-modal-dialog .form-username").val().trim();
+        var name = $("#add-user-modal-dialog .form-username").val().trim();
         var password = $("#add-user-modal-dialog .form-password").val().trim();
         var rolename = $("#add-user-modal-dialog .select-name").text().trim();
+
         $(".modal-body .alert").remove();
+
         if (username == "") {
             $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入用户名！</div>');
             return;
@@ -74,28 +76,58 @@ $(function () {
         });
     });
 
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function：按钮状态改变
+     */
     $(".btn-state").on('click', function () {
         $(".btn-state.btn-active").removeClass("btn-active");
         $(this).addClass("btn-active");
     });
 
+    /**
+     * @author: shixing
+     * @since : 1.0.0
+     * @function:
+     */
     $(".modify-user-submit").on('click', function () {
-        var username = $(this).siblings().eq(0).find(".form-username").val();
-        var rolename = $(this).siblings().eq(1).find(".select-name").text();
-        var state = $(this).siblings().eq(2).find(".btn-active").text();
-        if (state == "正常") {
-            state = 1;
-        } else {
-            state = 0;
+        var id = $(this).siblings().eq(0).find(".form-id").val().trim();
+        var classId = $(this).siblings().eq(1).find(".form-classId").val().trim();
+        var name = $(this).siblings().eq(2).find(".form-name").val().trim();
+        var sex = $(this).siblings().eq(3).find(".btn-active").text().trim();
+        var major = $(this).siblings().eq(4).find(".form-major").val().trim();
+        var academy = $(this).siblings().eq(5).find(".form-academy").val().trim();
+
+        $(".modal-body .alert").remove();
+
+        if (classId == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入班级！</div>');
+            return;
+        } else if (name == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请输入名字！</div>');
+            return;
+        } else if (sex == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请选择性别！</div>');
+            return;
+        } else if (major == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请填写专业！</div>');
+            return;
+        } else if (academy == "") {
+            $(this).siblings().eq(0).before('<div class="alert alert-danger" role="alert">请填写学院！</div>');
+            return;
         }
 
-        getStudentData("modifyUser.do", {
-            username: username,
-            rolename: rolename,
-            state: state
+
+        getStudentData("/admin/student/update", {
+            id: id,
+            classId: classId,
+            name: name,
+            sex:sex,
+            major:major,
+            academy:academy
         }, function (result) {
-            if (result == '1') {
-                //$("#modify-user-modal-dialog").modal('hide');
+            if (result == 'success') {
                 showMsg("修改用户成功!", 0, refreshCurrentPage);
             } else {
                 $("#modify-user-modal-dialog .modal-body").children().eq(0).before('<div class="alert alert-danger" role="alert">修改信息出现错误,请重试！</div>');
@@ -104,15 +136,14 @@ $(function () {
     });
 
     $(".delete-user-submit").on('click', function () {
-        var username = $("#delete-user-modal-dialog .delete-username").text();
-        if (username == null) {
+        var id = $("#delete-user-modal-dialog .delete-student-id").text();
+        if (id == null) {
             return;
         }
-        getStudentData("deleteUser.do", {
-            username: username
+        getStudentData("/admin/student/delete", {
+            id: id
         }, function (result) {
-            //$("#delete-user-modal-dialog").modal('hide');
-            if (result == '1') {
+            if (result == 'success') {
                 showMsg("删除用户成功!", 0, refreshCurrentPage);
             } else {
                 showMsg("删除用户失败，请稍候重试!", 1);
@@ -160,24 +191,36 @@ function getStudentPageDataAndParse(page, id, name, sex, classId, major, academy
             $(".table").append(node);
         });
 
-        //按钮事件绑定
+        //按钮事件绑定:将当前表格数据显示到打开的模态框
         $(".modify-user-btn").on('click', function () {
-            var username = $(this).parent().siblings().eq(1).text();
-            var rolename = $(this).parent().siblings().eq(2).text();
-            var state = $(this).parent().siblings().eq(3).text();
-            $("#modify-user-modal-dialog").find(".form-username").val(username);
-            $(".btn-state.btn-active").removeClass("btn-active");
-            if (state == "正常") {
+
+            var id = $(this).parent().siblings().eq(0).text();
+            var classId = $(this).parent().siblings().eq(1).text();
+            var name = $(this).parent().siblings().eq(2).text();
+            var sex = $(this).parent().siblings().eq(3).text();
+            var major = $(this).parent().siblings().eq(4).text();
+            var academy = $(this).parent().siblings().eq(5).text();
+
+            $("#modify-user-modal-dialog").find(".form-id").val(id);
+            $("#modify-user-modal-dialog").find(".form-classId").val(classId);
+            $("#modify-user-modal-dialog").find(".form-name").val(name);
+            $("#modify-user-modal-dialog").find(".form-major").val(major);
+            $("#modify-user-modal-dialog").find(".form-academy").val(academy);
+
+            if (sex == "男") {
                 $(".btn-state").eq(0).addClass("btn-active");
+                $(".btn-state").eq(1).removeClass("btn-active");
             } else {
                 $(".btn-state").eq(1).addClass("btn-active");
+                $(".btn-state").eq(0).removeClass("btn-active");
             }
-            $("#modify-user-modal-dialog").find(".select-name").text(rolename);
         });
 
         $(".delete-user-btn").on('click', function () {
-            var username = $(this).parent().siblings().eq(1).text();
-            $(".delete-username").text(username);
+            var id = $(this).parent().siblings().eq(0).text();
+            var username = $(this).parent().siblings().eq(2).text();
+            $(".delete-student-id").text(id);
+            $(".delete-student-name").text(username);
         });
 
         //分页
@@ -185,8 +228,27 @@ function getStudentPageDataAndParse(page, id, name, sex, classId, major, academy
 
         if (data.totalPages > 1) {//
             var paramStr = "";
-            
-            paramStr = ","  + id + ","  + name + "," + classId + "," + major + "," + academy;
+
+            if (typeof(id) == "undefined") {
+                id = "";
+            }
+            if (typeof(name) == "undefined") {
+                name = "";
+            }
+            if (typeof(classId) == "undefined") {
+                classId = "";
+            }
+            if (typeof(major) == "undefined") {
+                major = "";
+            }
+            if (typeof(academy) == "undefined") {
+                academy = "";
+            }
+            if (typeof(sex) == "undefined") {
+                sex = "";
+            }
+
+            paramStr = ",'" + id + "','" + name + "','" + sex + "','" + classId + "','" + major + "','" + academy + "'";
 
             var prevPage = "<li><span aria-hidden='true' onclick=getStudentPageDataAndParse(" + parseInt(data.currentPage - 1) + paramStr + ")>&laquo;</span></li>";
             $(".page-nav .pagination").append(prevPage);
@@ -226,7 +288,6 @@ function refreshCurrentPage() {
 /**
  * @author: shixing
  * @since : 1.0.0
- * @function:使用ajax完成POST请求
  */
 function getStudentData(url, data, callback) {
     $.ajax({

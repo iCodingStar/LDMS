@@ -11,9 +11,9 @@
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="${cacheUrl}/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="${cacheUrl}/css/ldms.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -338,7 +338,7 @@
 
                 <li>
                     <a href="${pageContext.request.contextPath}/admin/project/">
-                        <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
+                        <i class="fa fa-book fa-lg" style="margin-right: 30px"></i>
                         <span>教学实验</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -356,19 +356,19 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/admin/device">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
                         <span>设备管理</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="${pageContext.request.contextPath}/admin/device" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
+                        </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-list fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申请</a>
                         </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-wrench fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备报修</a>
                         </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-cc-paypal fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申购</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
                         </li>
                     </ul>
                 </li>
@@ -384,7 +384,7 @@
                         </li>
                         <li><a href="${pageContext.request.contextPath}/admin/student/" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
                         </li>
-                        <li><a href="${pageContext.request.contextPath}/admin/teacher/" style="text-align: center"><i class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
+                        <li><a href="${pageContext.request.contextPath}/admin/teacher/" style="text-align: center"><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
                         </li>
                     </ul>
                 </li>

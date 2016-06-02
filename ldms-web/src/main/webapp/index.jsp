@@ -16,7 +16,6 @@
 
 --%>
 <%--
-<<<<<<< HEAD
   User: hxy
   Time:
 --%>
@@ -127,50 +126,3 @@
 </body>
 
 </html>
-
-=======
-  User: ShiXing
-  Time:
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>中国地质大学实验中心系统</title>
-    <c:out value="Hello World"></c:out>
-    <!--通过jstl标签循环便利数据-->
-    <c:forEach var="item" items="${itemsList}">
-        <tr>
-            <td>${item.name}</td>
-            <td>${item.price}</td>
-            <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-            <td>${item.detail}</td>
-            <td><a href="${pageContext.request.contextPath}/items/editItem.action?id=${item.id}">修改</a></td>
-        </tr>
-    </c:forEach>
-
-    <!-- Bootstrap -->
-    <link href="${cacheUrl}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <script>
-
-    </script>
-
-</head>
-<body>
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="${cacheUrl}/js/jquery/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="${cacheUrl}/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398

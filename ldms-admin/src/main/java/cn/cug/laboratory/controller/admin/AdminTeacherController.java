@@ -33,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = {"/admin/teacher"})
 public class AdminTeacherController {
-    private Integer offset = 1;
+    private Integer offset = 8;
 
     @Autowired
     private TeacherService teacherService;
@@ -69,7 +69,12 @@ public class AdminTeacherController {
     public
     @ResponseBody
     String delete(Teacher teacher) {
-        return "success";
+        if (teacher.getId() != null) {
+            teacherService.deleteByPrimaryKey(teacher.getId());
+            return "success";
+        }else{
+            return "error";
+        }
     }
 
     /**
@@ -81,7 +86,11 @@ public class AdminTeacherController {
     public
     @ResponseBody
     String update(Teacher teacher) {
-        return "success";
+        if (teacher.getId() != null){
+            teacherService.updateByPrimaryKeySelective(teacher);
+            return "success";
+        }
+        return "error";
     }
 
     /**

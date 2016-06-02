@@ -97,7 +97,7 @@
         <if test="pe.name != null and pe.name != ''">
             AND project.`name` like '%${pe.name}%'
         </if>
-        and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
+        and project.state = 1 and project.lab_id=lab.id and project.tea_id=teacher.id
         limit #{startPosition},#{offset}
     </sql>
 
@@ -206,7 +206,7 @@
     where tea_id= #{teaId,jdbcType=CHAR}
   </select>
 
-  <select id="selectByName" resultMap="GroupResultMap ">
+  <select id="selectByName" resultMap="GroupResultMap">
    select project.id,teacher.name 'tea_name',lab.name 'lab_name',project.name 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
     from project,teacher,lab
     where project.lab_id=lab.id and project.tea_id=teacher.id
@@ -214,6 +214,7 @@
     order by id
     limit #{startSite},#{pageNum}
   </select>
+
     <select id="selectMultipleInfoById" parameterType="java.lang.String"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
     SELECT

@@ -10,6 +10,7 @@
     <import resource="application-context-service.xml"/>
     <import resource="application-context-transaction.xml"/>
 
+    <!--URL配置文件-->
     <bean class="cn.cug.laboratory.web.HeldPropertyPlaceholderConfigurer">
         <property name="location" value="classpath:web-config.properties"/>
     </bean>

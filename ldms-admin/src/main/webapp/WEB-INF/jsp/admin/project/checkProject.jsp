@@ -270,15 +270,6 @@ Time: 1:19
     </div>
 
 </div>
-
-<!-- /.container-fluid -->
 </div>
-
-<%--<!-- jQuery -->--%>
-<%--<script src="${cacheUrl}/js/jquery/jQuery-2.2.0.min.js"></script>--%>
-<%--<!-- Bootstrap Core JavaScript -->--%>
-<%--<script src="${cacheUrl}/bootstrap/js/bootstrap.min.js"></script>--%>
-<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>--%>
-<%--<script type="text/javascript" src="${cacheUrl}/js/admin/admin-student.js"></script>--%>
 </body>
 </html>

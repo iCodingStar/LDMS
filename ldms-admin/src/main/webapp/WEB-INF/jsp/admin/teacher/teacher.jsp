@@ -44,6 +44,7 @@
                         <input type="text" class="form-control search-teacher-input" placeholder="输入选择信息">
                     </div>
 
+                    <!--教师信息选择-->
                     <div class="col-md-2">
                         <div class="btn-group">
                             <button class="btn search-teacher-info btn-default btn-lg md-high dropdown-toggle" type="button"
@@ -61,10 +62,10 @@
                         </div>
                     </div>
 
-
+                    <!---->
                     <div class="col-md-2">
                         <div class="btn-group">
-                            <button class="btn search-student-sex btn-default btn-lg md-high dropdown-toggle" type="button"
+                            <button class="btn search-teacher-sex btn-default btn-lg md-high dropdown-toggle" type="button"
                                     data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                 <sapn class="select-name">性别</sapn>
@@ -83,13 +84,13 @@
                         </button>
                     </div>
 
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary btn-lg"
-                                data-target="#add-user-modal-dialog" data-toggle="modal">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            添加用户
-                        </button>
-                    </div>
+                    <%--<div class="col-md-2">--%>
+                        <%--<button type="button" class="btn btn-primary btn-lg"--%>
+                                <%--data-target="#add-user-modal-dialog" data-toggle="modal">--%>
+                            <%--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>--%>
+                            <%--添加用户--%>
+                        <%--</button>--%>
+                    <%--</div>--%>
 
                 </div>
             </div>
@@ -106,6 +107,7 @@
                             <th>性别</th>
                             <th>专业</th>
                             <th>学院</th>
+                            <th>操作</th>
                         </tr>
                     </table>
 
@@ -154,36 +156,42 @@
                     </div>
                 </div>
             </div>
-            <!--修改用户-->
+
+            <!--修改用户模态框-->
             <div class="modal fade" id="modify-user-modal-dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">修改用户</h4>
+                            <h4 class="modal-title">教师个人信息修改</h4>
                         </div>
                         <div class="modal-body">
+
                             <div class="form-group">
-                                <input type="text" class="form-username form-control" disabled="disabled">
+                                <input id="form-id" type="text" class="form-id form-control" disabled="disabled">
                             </div>
-                            <div class="dropdown form-item">
-                                <button class="btn single-size dropdown-toggle" type="button" id="roleDropdownMenu2"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <span class="select-name"></span>
-                                    <span class="caret"></span>
-                                </button>
-                                <div class="dropdown-menu select-role single-width" aria-labelledby="roleDropdownMenu2">
-                                </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-name form-control">
                             </div>
 
                             <div class="form-item">
                                 <div class="btn-group single-width" role="group">
-                                    <button type="button" class="enable btn btn-triple">状态：</button>
-                                    <button type="button" class="btn btn-triple btn-state">正常</button>
-                                    <button type="button" class="btn btn-triple btn-state">锁定</button>
+                                    <button type="button" class="enable btn btn-triple">性别：</button>
+                                    <button type="button" class="btn btn-triple btn-state">男</button>
+                                    <button type="button" class="btn btn-triple btn-state">女</button>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-major form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-academy form-control">
+                            </div>
+
                             <button class="btn modify-user-submit btn-single">确认修改</button>
                         </div>
                     </div>
@@ -201,7 +209,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-item">
-                                <h4>确认删除用户<span class="delete-username"></span>？</h4>
+                                <h4 class="delete-user">确认删除用户<span class="delete-teacher-name"></span>(<span class="delete-teacher-id"></span>)？</h4>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -213,7 +221,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
         <!-- /.container-fluid -->

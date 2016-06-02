@@ -338,7 +338,7 @@
 
                 <li>
                     <a href="${pageContext.request.contextPath}/admin/project/">
-                        <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
+                        <i class="fa fa-book fa-lg" style="margin-right: 30px"></i>
                         <span>教学实验</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -358,19 +358,19 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/admin/device">
                         <i class="fa fa-desktop fa-lg" style="margin-right: 30px"></i>
                         <span>设备管理</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="${pageContext.request.contextPath}/admin/device" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
+                        </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-list fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申请</a>
                         </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-wrench fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备报修</a>
                         </li>
                         <li><a href="#" style="text-align: center"> <i class="fa fa-cc-paypal fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;设备申购</a>
-                        </li>
-                        <li><a href="#" style="text-align: center"><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备管理</a>
                         </li>
                     </ul>
                 </li>
@@ -389,7 +389,7 @@
                                 class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生管理</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/admin/teacher/" style="text-align: center"><i
-                                class="fa fa-user-secret fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
+                                class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师管理</a>
                         </li>
                     </ul>
                 </li>
@@ -527,6 +527,6 @@
 <script src="${cacheUrl}/bootstrap/js/app.min.js"></script>
 
 <script type="text/javascript" src="${cacheUrl}/js/admin/admin-base.js"></script>
-<script type="text/javascript" src="${cacheUrl}/js/admin/admin-project.js"></script>
+<script type="text/javascript" src="${cacheUrl}/js/admin/admin-check-project.js"></script>
 </body>
 </html>

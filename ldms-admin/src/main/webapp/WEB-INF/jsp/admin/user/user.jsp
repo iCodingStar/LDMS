@@ -21,9 +21,10 @@
     <div id="msg-modal" class="message modal">
         <div class="msg-dialog modal-dialog">
             <div class="modal-content">
-                <div class="message-body modal-body">
 
-                </div>
+            </div>
+            <div class="message-body modal-body">
+
             </div>
         </div>
     </div>
@@ -33,7 +34,7 @@
             <!-- 页面内容 -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">操作</h3>
+                    <h3 class="panel-title">用户管理</h3>
                 </div>
                 <div class="panel-body">
 
@@ -41,7 +42,7 @@
                         <input type="text" class="form-control search-input-username" placeholder="用户名">
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="btn-group">
                             <button class="btn search-role btn-default btn-lg md-high dropdown-toggle" type="button"
                                     data-toggle="dropdown"
@@ -57,14 +58,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <button id="btn-search-user" type="button" class="btn btn-primary btn-lg">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             查询
                         </button>
                     </div>
 
-                    <div class="col-md-1">
+                    <div class="col-md-3">
                         <button type="button" class="btn btn-primary btn-lg"
                                 data-target="#add-user-modal-dialog" data-toggle="modal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -100,37 +101,100 @@
             <div class="modal fade" id="add-user-modal-dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
+
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">添加用户</h4>
                         </div>
+
                         <div class="modal-body">
+
                             <div class="form-group">
-                                <input type="text" class="form-username form-control"
-                                       placeholder="用户名"
-                                       maxlength="11"
-                                       required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-password form-control"
-                                       placeholder="密码"
+                                <input type="text" class="form-id form-control"
+                                       placeholder="学号/工号"
                                        maxlength="11"
                                        required>
                             </div>
 
-                            <div class="dropdown form-item">
-                                <button class="btn single-size dropdown-toggle" type="button" id="roleDropdownMenu1"
+                            <div class="form-group">
+                                <input type="password" class="form-password form-control"
+                                       placeholder="请输入密码"
+                                       maxlength="11"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-password-confirm form-control"
+                                       placeholder="请重复输入密码"
+                                       maxlength="11"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-name form-control" placeholder="姓名">
+                            </div>
+
+                            <div class="form-item">
+                                <div class="btn-group single-width" role="group">
+                                    <button type="button" class="enable btn btn-triple">性别：</button>
+                                    <button type="button" class="btn btn-triple btn-state">男</button>
+                                    <button type="button" class="btn btn-triple btn-state">女</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-academy form-control" value="信息工程学院" disabled>
+                            </div>
+
+                            <div id="select-major" class="dropdown form-item">
+
+                                <button class="btn single-size dropdown-toggle" type="button"
+                                        id="roleDropdownMenuMajor"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <span class="select-name">请选择角色</span>
+                                    <span class="select-name select-major">请选择专业</span>
                                     <span class="caret"></span>
                                 </button>
+
+                                <div id="select-major-name" class="dropdown-menu select-role single-width"
+                                     aria-labelledby="roleDropdownMenuMajor">
+                                    <li><a>软件工程</a></li>
+                                    <li><a>遥感科学技术</a></li>
+                                    <li><a>地理信息科学</a></li>
+                                    <li><a>测绘科学技术</a></li>
+                                    <li><a>信息工程</a></li>
+                                </div>
+                            </div>
+
+                            <div class="dropdown form-item">
+                                <button class="btn single-size dropdown-toggle" type="button" id="roleDropdownMenuClass"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="select-name select-class">请选择班级</span>
+                                    <span class="caret"></span>
+                                </button>
+
+                                <div id="select-class" class="dropdown-menu select-role single-width"
+                                     aria-labelledby="roleDropdownMenuClass">
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="dropdown form-item">
+
+                                <button class="btn single-size dropdown-toggle" type="button" id="roleDropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="select-name select-auth">请选择角色</span>
+                                    <span class="caret"></span>
+                                </button>
+
                                 <div class="dropdown-menu select-role single-width" aria-labelledby="roleDropdownMenu1">
                                     <li><a>学生</a></li>
                                     <li><a>教师</a></li>
-                                    <li><a>管理员</a></li>
                                 </div>
                             </div>
+
                             <button class="btn btn-single add-user-submit">添加用户</button>
                         </div>
                     </div>
