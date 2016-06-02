@@ -1,17 +1,5 @@
 
 jQuery(document).ready(function() {
-	
-    /*
-        Fullscreen background
-    */
-<<<<<<< HEAD
-    // $.backstretch("${cacheUrl}/assets/login/img/backgrounds/1.jpg");
-=======
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
-    
-    /*
-        Form validation
-    */
     $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
     	$(this).removeClass('input-error');
     });

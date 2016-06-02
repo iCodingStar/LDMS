@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-1 col-md-offset-1" style="margin-left: 10px">
                     <button id="btn-search" type="button" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         查询
@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td>实验资料</td>
-                        <td id="files">信息工程学院设备管理细则.doc</td>
+                        <td id="files"><a id="lin"></a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -262,6 +262,7 @@
         } else if (project_state == "已完成") {
             state = 3;
         } else {
+            
             state = null;
         }
     }

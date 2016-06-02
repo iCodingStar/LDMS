@@ -50,15 +50,39 @@ public interface ProjectExtendMapper extends ProjectMapper {
     /**
      * @author: shixing
      * @function:查询项目信息
-     * @since : 1.0.0
      */
     List<ProjectExtend> selectByMultipleInfo(@Param("startPosition") Integer startPosition,
                                              @Param("offset") Integer offset,
                                              @Param("pe") ProjectExtend projectExtend);
-
-    List<ProjectExtend> selectProByMultipleInfo(@Param("startPosition") Integer startPosition,
+    /**
+     * @author: PP
+     * @function:查询项目信息
+     */
+    List<ProjectExtend> pp_selectByMultipleInfo(@Param("startPosition") Integer startPosition,
                                                 @Param("offset") Integer offset,
                                                 @Param("pe") ProjectExtend projectExtend);
+
+    /**
+     * @author: shixing
+     * @function:查询项目信息条数
+     * @since : 1.0.0
+     */
+    Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    /**
+     * @author: PP
+     * @function:查询项目信息条数
+     * @since : 1.0.0
+     */
+    Integer pp_selectByMultipleInfoCounts(ProjectExtend projectExtend);
+
+    /**
+     * @author: shixing
+     * @function:根据项目id查询项目详细信息
+     * @since : 1.0.0
+     */
+    ProjectExtend selectMultipleInfoById(String id);
+
 
     /**
      * @author: HXY
@@ -74,30 +98,11 @@ public interface ProjectExtendMapper extends ProjectMapper {
      */
     Integer getCounts(Project project);
 
-
-    /**
-     * @author: shixing
-     * @function:查询项目信息条数
-     * @since : 1.0.0
-     */
-    Integer selectByMultipleInfoCounts(ProjectExtend projectExtend);
-
-    Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend);
-
-    /**
-     * @author: shixing
-     * @function:根据项目id查询项目详细信息
-     * @since : 1.0.0
-     */
-    ProjectExtend selectMultipleInfoById(String id);
-
-
     /**
      * @author: HXY
      * @return
      */
     public String getLastId();
-
 
     public void setfilenameById(Project project);
 

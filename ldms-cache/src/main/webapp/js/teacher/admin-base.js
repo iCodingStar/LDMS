@@ -3,7 +3,7 @@
  */
 
 function showMsg(msg, type, callback) {
-
+    
     $(".modal").modal('hide');
 
     $(".message-body .alert").remove();

@@ -1,5 +1,10 @@
 package cn.cug.laboratory.utils;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,14 +15,17 @@ import java.util.Locale;
  */
 public class DateUtils {
     public static void main(String[] args) throws ParseException {
-        String strd = "Mon Dec 31 00:00:00 CST 2012";
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = df.parse(format(strd));
-        System.out.println(date);
-
-        java.sql.Date datet=new java.sql.Date((df.parse(format(strd))).getTime());
-        Date d=datet;
-        System.out.println(d.toString());
+//        String path=System.getProperty("usr.dir");
+//        File file1=new File(path);
+//
+//        if(!file1.exists())
+//            file1.mkdir();
+//
+//        String filename="a.txt";
+//
+//        MultipartFile infile=new MultipartFile("E:\\testfile\\testfile.docx");
+//        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(file1+filename)));
+//        stream.write(infile.getBytes());
     }
     public static String format(String str){
         return String.format("%tF", parse(str, "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US));

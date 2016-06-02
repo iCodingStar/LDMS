@@ -75,11 +75,7 @@ img { max-width: 100%; }
     color: #fff;
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
-<<<<<<< HEAD
-.btn-link-2:hover, .btn-link-2:focus, 
-=======
 .btn-link-2:hover, .btn-link-2:focus,
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
 .btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
 
 
@@ -104,11 +100,7 @@ img { max-width: 100%; }
 .top-content .description a {
 	color: #fff;
 }
-<<<<<<< HEAD
-.top-content .description a:hover, 
-=======
 .top-content .description a:hover,
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
@@ -157,11 +149,7 @@ img { max-width: 100%; }
 }
 
 .form-bottom form .input-error {
-<<<<<<< HEAD
-	border-color: #4aaf51;
-=======
 	border-color: #EE2C2C;
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
 }
 
 .social-login {
@@ -184,25 +172,11 @@ img { max-width: 100%; }
 @media (min-width: 768px) and (max-width: 991px) {}
 
 @media (max-width: 767px) {
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
 	.inner-bg { padding: 60px 0 110px 0; }
-
 }
 
 @media (max-width: 415px) {
-<<<<<<< HEAD
-	
-	h1, h2 { font-size: 32px; }
-
-}
-
-=======
 
 	h1, h2 { font-size: 32px; }
-
 }
->>>>>>> 29034534c8eb69d099f41bf09f110a2978e12398
+

@@ -1,6 +1,7 @@
 package cn.cug.laboratory.controller.student;
 
 import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.extend.ProjectOrderExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
 import cn.cug.laboratory.model.persistent.Project;
 import cn.cug.laboratory.model.persistent.Student;
@@ -30,7 +31,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/student")
 public class Studentcontroller {
-    private Integer offset = 2;
+    //分页，每页显示的条数
+    private Integer offset = 1;
 
     @Autowired
     private ProjectService projectService;
@@ -44,6 +46,11 @@ public class Studentcontroller {
     @Autowired
     private UserService userService;
 
+    /**
+     * 转到主页[查询已发布的实验]
+     * @author:PP
+     * @return
+     */
     @RequestMapping("/home")
     public ModelAndView home(HttpSession session) {
         User user=(User)session.getAttribute("user");
@@ -53,72 +60,141 @@ public class Studentcontroller {
         return mav;
     }
 
-    @RequestMapping("/order")
-    public ModelAndView order() {
-        ModelAndView mav = new ModelAndView("student/home");
-        return mav;
-    }
-
-//    @RequestMapping("queryproject")
-//    public @ResponseBody List<ProjectExtend> queryproject(@Param("search_value") String search_value) {
-//        System.out.println("here");
-//        List<ProjectExtend> list=projectService.selectByName(search_value,1,3).getRetuList();
-//        for(ProjectExtend projectExtend: list){
-//            System.out.println(projectExtend.toString());
-//        }
-//        return list;
+//    @RequestMapping(value = {"/queryproject"}, method = {RequestMethod.GET, RequestMethod.POST})
+//    public @ResponseBody List<ProjectExtend> queryProjectInfo(@Param("page") Integer currentPage,
+//                                         ProjectExtend projectExtend) {
+//        List<ProjectExtend> projectExtendList = projectService.pp_selectByMultipleInfo(currentPage, offset, projectExtend);
+//        return projectExtendList;
 //    }
 
-
-    @RequestMapping(value = {"/queryproject"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public @ResponseBody List<ProjectExtend> queryProjectInfo(@Param("page") Integer currentPage,
-                                         ProjectExtend projectExtend) {
-        List<ProjectExtend> projectExtendList = projectService.selectProByMultipleInfo(currentPage, offset, projectExtend);
-        return projectExtendList;
-    }
-
+    /**
+     * 分页实现查询已发布的项目
+     * @author:PP
+     * @param page
+     * @param projectExtend
+     * @return
+     */
     @RequestMapping(value = {"/queryproject/page"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public
-    @ResponseBody
-    PageModel<ProjectExtend> queryProjectInfoByPage(Integer page,
+    public @ResponseBody  PageModel<ProjectExtend> queryProjectInfoByPage(Integer page,
                                                     ProjectExtend projectExtend) {
-        PageModel<ProjectExtend> pm = projectService.getStuProjectInfoByPage(page, offset, projectExtend);
+        System.out.println("controller");
+        PageModel<ProjectExtend> pm = projectService.pp_getProjectInfoByPage(page, offset, projectExtend);
         return pm;
     }
 
+    /**
+     * 分页显示已预约的实验的成绩
+     * @author:PP
+     * @param page
+     * @param projectOrderExtend
+     * @return
+     */
+    @RequestMapping(value = {"/queryorderproject/page"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public @ResponseBody  PageModel<ProjectOrderExtend> queryOrderProjectInfoByPage(
+            HttpSession session,Integer page,ProjectOrderExtend projectOrderExtend) {
+//        System.out.println("controller");
+//        System.out.println(projectOrderExtend.toString());
+        User user=(User)session.getAttribute("user");
+        projectOrderExtend.setStuId(user.getUsername());
+        PageModel<ProjectOrderExtend> pm = projectOrderService.selectScore(page,offset,projectOrderExtend);
+        return pm;
+    }
+
+    /**
+     * 分页显示预约记录，做资料下载、退选等操作
+     * @author:PP
+     * @param page
+     * @param projectOrderExtend
+     * @return
+     */
+    @RequestMapping(value = {"/queryorderrecordproject/page"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public @ResponseBody  PageModel<ProjectOrderExtend> queryOrderRecordProjectInfoByPage(
+            HttpSession session,Integer page,ProjectOrderExtend projectOrderExtend) {
+//        System.out.println("controller");
+//        System.out.println(projectOrderExtend.toString());
+        User user=(User)session.getAttribute("user");
+        projectOrderExtend.setStuId(user.getUsername());
+        System.out.println("学生学号："+projectOrderExtend.toString());
+        PageModel<ProjectOrderExtend> pm = projectOrderService.selectByStuId(page,offset,projectOrderExtend);
+        return pm;
+    }
+
+
+    /**
+     * 预约按钮的实现
+     * @author:PP
+     * @param pro_id
+     * @param session
+     */
     @RequestMapping(value = {"/queryproject/orderbyid"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
     void orderProjectById(@Param("pro_id") String pro_id,HttpSession session) {
-        System.out.println("controller-orderbyid--");
+//        System.out.println("controller-orderbyid--");
         User user=(User)session.getAttribute("user");
-        Student student=studentService.selectByPrimaryKey(user.getUsername());
-        projectOrderService.insert(pro_id,student.getId(),0.0f);
+        projectOrderService.insert(pro_id,user.getUsername(),0.0f);
     }
 
+
+
+
+    /**
+     * 退选按钮的实现
+     * @author:PP
+     */
+    @RequestMapping(value = {"/queryorderproject/deleteorderbyid"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public
+    @ResponseBody
+    String deleteOrderById(@Param("proId") String proId,HttpSession session) {
+        User user=(User)session.getAttribute("user");
+        return projectOrderService.delete(user.getUsername(),proId).toString();
+    }
+
+
+
+    /**
+     * 更新密码
+     * @author:PP
+     * @param session
+     * @param oldPwd
+     * @param newPwd
+     * @return
+     */
     @RequestMapping(value = {"/updatePwd"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
     @ResponseBody
-    String updatePwd(HttpSession session,String oldPwd,String newPwd){
-        System.out.println("进入Controller函数--"+oldPwd+newPwd);
+    String updatePwd(HttpSession session,@Param("oldPwd") String oldPwd,@Param("newPwd") String newPwd){
         User user=(User)session.getAttribute("user");
-        Student student=studentService.selectByPrimaryKey(user.getUsername());
-        return userService.pp_updatePassword(student.getId(),oldPwd,newPwd).toString();
+        return userService.pp_updatePassword(user.getUsername(),oldPwd,newPwd).toString();
     }
 
-
+    /**
+     * 转到[查询已预约的实验]界面
+     * @author:PP
+     * @return
+     */
     @RequestMapping("record")
     public ModelAndView record() {
         ModelAndView mav = new ModelAndView("student/search_project_order_record");
         return mav;
     }
 
+    /**
+     * 转到[查询成绩]界面
+     * @author:PP
+     * @return
+     */
     @RequestMapping("score")
     public ModelAndView score() {
         ModelAndView mav = new ModelAndView("student/query_score");
         return mav;
     }
 
+    /**
+     * 转到[查看个人信息]界面
+     * @author:PP
+     * @return
+     */
     @RequestMapping("info")
     public ModelAndView info(HttpSession session) {
         ModelAndView mav = new ModelAndView("student/personal_info");
