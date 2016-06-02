@@ -44,16 +44,12 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private UserMapper userMapper;
 
+
     private DBUtils dbUtils;
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public Student selectByPrimaryKey(String id){
-        return studentMapper.selectByPrimaryKey(id);
-    }
+
+
+
 
     /**
      *
@@ -64,10 +60,11 @@ public class StudentServiceImpl implements StudentService {
      * @param academy
      * @param sex
      */
-    public void insert(String name,String major,Integer classId,String academy,String sex){
-        String lastID=studentMapper.selectLastId();
-        String ID=dbUtils.StringAddOne(lastID);
-        Student student=new StudentExtend(ID,name,major,classId,academy,sex);
+    public void insert(String name, String major, Integer classId, String academy, String sex) {
+        String lastID = studentMapper.selectLastId();
+        System.out.print(lastID);
+        String ID = dbUtils.StringAddOne(lastID);
+        Student student = new StudentExtend(ID, name, major, classId, academy, sex);
         studentMapper.insert(student);
         User user=new User(ID,"0","1");
         userMapper.insert(user);
@@ -104,6 +101,15 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.updateByPrimaryKeySelective(record);
     }
 
+    /**
+     * @author: shixing
+     * @function:根据id查询信息
+     * @since : 1.0.0
+     */
+    @Override
+    public Student selectByPrimaryKey(String id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
 
     @Override
     public PageModel<Student> selectMultiInfoByPage(Integer currentPage, Integer offset, Student student) {
@@ -112,5 +118,10 @@ public class StudentServiceImpl implements StudentService {
         List<Student> data = studentExtendMapper.getPageData(pm.getStartPosition(), offset, student);
         pm.setData(data);
         return pm;
+    }
+
+    @Override
+    public List<StudentExtend> getAllStudentByProId(String id) {
+        return studentMapper.getAlStudentByProid(id);
     }
 }

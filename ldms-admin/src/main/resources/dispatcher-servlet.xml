@@ -15,6 +15,13 @@
 
     <mvc:annotation-driven/>
 
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
     <!--配置视图解析器-->
@@ -36,10 +43,10 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <!--转换器-->
         <property name="converters">
-            <list>
+            <!--<list>-->
                 <!--日期类型转换-->
                 <bean class="cn.cug.laboratory.convertor.StringToDateConvertor"/>
-            </list>
+            <!--</list>-->
         </property>
     </bean>
 
@@ -48,6 +55,18 @@
         <!--设置上传最大文件大小为5M-->
         <property name="maxUploadSize">
             <value>5242880</value>
+        </property>
+    </bean>
+
+    <bean id="jackson_hmc" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="objectMapper">
+            <bean class="org.codehaus.jackson.map.ObjectMapper">
+                <property name="dateFormat">
+                    <bean class="java.text.SimpleDateFormat">
+                        <constructor-arg type="java.lang.String" value="yyyy-MM-dd"></constructor-arg>
+                    </bean>
+                </property>
+            </bean>
         </property>
     </bean>
 

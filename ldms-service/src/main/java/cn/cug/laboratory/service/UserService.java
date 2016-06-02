@@ -66,6 +66,9 @@ public interface UserService {
     public PageModel selectUserByUserNameAndAuth(Integer currentPage,
                                                  Integer offset,
                                                  User user);
+
+
+
     /**
      * @author: shixing
      * @function:根据用户名和密码查找用户
@@ -73,4 +76,6 @@ public interface UserService {
      */
     public User selectUserByUserNameAndPWD(User user);
 
+
+    public String getTeacherNameById(String name);
 }

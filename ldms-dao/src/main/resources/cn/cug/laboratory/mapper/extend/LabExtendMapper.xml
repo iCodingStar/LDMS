@@ -21,4 +21,11 @@
   <select id="getLabIdByName" resultType="java.lang.String">
     select id from lab where name=#{lab_name};
   </select>
+  <select id="getLabNameByid" resultType="java.lang.String">
+    select name from lab where id=#{lab_id};
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT * FROM lab;
+  </select>
 </mapper>

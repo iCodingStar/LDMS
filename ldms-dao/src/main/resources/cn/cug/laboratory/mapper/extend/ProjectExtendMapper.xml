@@ -34,7 +34,7 @@
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, lab_id, tea_id, name, start_time, end_time, capacity, left_capacity,state, credit, submit_time,
+    id, lab_id, tea_id, name, start_time, end_time, capacity,left_capacity, state, credit, submit_time,
     pass_time, devices, files
   </sql>
 
@@ -42,7 +42,6 @@
     description
   </sql>
 
-    <!-- 定义项目查询的sql片段，就是商品查询条件 -->
     <sql id="project_query_lists">
         <!---->
         <if test="pe.id != null and pe.id != ''">
@@ -64,7 +63,24 @@
         limit #{startPosition},#{offset}
     </sql>
 
-    <!-- 定义项目查询的sql片段，就是商品查询条件 -->
+    <!--HXY-->
+    <sql id="project_querybyteacehr_lists">
+        <!---->
+        <if test="pr.name != null and pr.name != ''">
+            AND name like '%${pr.name}%'
+        </if>
+        <if test="pr.teaId != null and pr.teaId != ''">
+            AND tea_id =#{pr.teaId}
+        </if>
+        <if test="pr.state == null">
+            AND 1 = 1
+        </if>
+        <if test="pr.state != null">
+            AND state = #{pr.state}
+        </if>
+        limit #{startPosition},#{offset}
+    </sql>
+
     <sql id="project_query_lists_for_counts">
         <!---->
         <if test="id != null and id != ''">
@@ -97,12 +113,11 @@
         <if test="pe.name != null and pe.name != ''">
             AND project.`name` like '%${pe.name}%'
         </if>
-        and project.state = 1 and project.lab_id=lab.id and project.tea_id=teacher.id
+        and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
         limit #{startPosition},#{offset}
     </sql>
 
-    <!-- 学生版：定义项目查询的sql片段，就是商品查询条件 -->
-    <sql id="stu_project_query_lists_for_counts">
+    <sql id="pp_project_query_lists_for_counts">
         <if test="id != null and id != ''">
             AND project.`id` = #{id}
         </if>
@@ -114,6 +129,52 @@
         </if>
         and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
     </sql>
+
+    <sql id="pp_project_query_lists">
+
+        <if test="pe.id != null and pe.id != ''">
+            AND project.`id` = #{pe.id}
+        </if>
+        <if test="pe.teacherName != null and pe.teacherName != ''">
+            AND teacher.`name` like '%${pe.teacherName}%'
+        </if>
+        <if test="pe.name != null and pe.name != ''">
+            AND project.`name` like '%${pe.name}%'
+        </if>
+        and project.state=1 and project.lab_id=lab.id and project.tea_id=teacher.id
+        limit #{startPosition},#{offset}
+    </sql>
+
+
+    <!-- 定义项目查询的sql片段，就是商品查询条件HXY -->
+    <sql id="project_querybyTeacher_lists_for_counts">
+        <!---->
+        <if test="teaId != null and teaId != ''">
+            AND tea_id = #{teaId,jdbcType=CHAR}
+        </if>
+        <if test="name != null and name != ''">
+            AND name like '%${name}%'
+        </if>
+        <if test="state == null">
+            AND 1 = 1
+        </if>
+        <if test="state != null">
+            AND state = #{state}
+        </if>
+    </sql>
+
+    <select id="getinfo"
+            parameterType="cn.cug.laboratory.model.persistent.Project"
+            resultMap="BaseResultMap"
+    >
+        SELECT
+        *
+        FROM
+        project
+        <where>
+            <include refid="project_querybyteacehr_lists"></include>
+        </where>
+    </select>
 
     <select id="selectByMultipleInfo"
             parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
@@ -153,7 +214,7 @@
         )AS counttable
     </select>
 
-    <select id="selectProByMultipleInfo"
+    <select id="pp_selectByMultipleInfo"
             parameterType="cn.cug.laboratory.model.extend.ProjectExtend"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
         SELECT
@@ -167,27 +228,48 @@
         project.left_capacity 'leftCapacity'
         from project,teacher,lab
         <where>
-            <include refid="stu_project_query_lists"></include>
+            <include refid="pp_project_query_lists"></include>
         </where>
     </select>
 
-    <select id="selectProByMultipleInfoCounts"
+    <select id="pp_selectByMultipleInfoCounts"
             resultType="java.lang.Integer">
-        SELECT COUNT(*)
-        FROM project,teacher,lab
+        SELECT
+        COUNT(*)
+        FROM
+        project,
+        teacher,
+        lab
         <where>
-            <include refid="stu_project_query_lists_for_counts"></include>
+            <include refid="pp_project_query_lists_for_counts"></include>
         </where>
     </select>
 
-  <select id="selectByTeaId" resultMap="GroupResultMap" >
-   select project.id,teacher.`name` 'tea_name',lab.`name` 'lab_name',project.`name` 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
-    from project,teacher,lab
-    where project.lab_id=lab.id and project.tea_id=teacher.id
-      and tea_id= #{teaId,jdbcType=CHAR}
-    order by id
-    limit #{startSite},#{pageNum}
-  </select>
+    <select id="getCounts" resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        (
+        SELECT
+        tea_id,name,state
+        FROM
+        project
+        <where>
+            <include refid="project_querybyTeacher_lists_for_counts"></include>
+        </where>
+        )AS counttable
+    </select>
+
+    <select id="selectByTeaId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from project
+        where tea_id= #{teaId,jdbcType=CHAR}
+        order by id
+        limit #{currentPage},#{pageShowRecords}
+    </select>
 
     <!--<select id="selectByTeaId" resultMap="ResultMapWithBLOBs">-->
         <!--select-->
@@ -206,14 +288,14 @@
     where tea_id= #{teaId,jdbcType=CHAR}
   </select>
 
-  <select id="selectByName" resultMap="GroupResultMap">
-   select project.id,teacher.name 'tea_name',lab.name 'lab_name',project.name 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity
-    from project,teacher,lab
-    where project.lab_id=lab.id and project.tea_id=teacher.id
-     and  project.name = #{name,jdbcType=VARCHAR}
-    order by id
-    limit #{startSite},#{pageNum}
-  </select>
+  <!--<select id="selectByName" resultMap="GroupResultMap">-->
+   <!--select project.id,teacher.name 'tea_name',lab.name 'lab_name',project.name 'project_name',project.start_time,project.end_time,project.capacity,project.left_capacity-->
+    <!--from project,teacher,lab-->
+    <!--where project.lab_id=lab.id and project.tea_id=teacher.id-->
+     <!--and  project.name = #{name,jdbcType=VARCHAR}-->
+    <!--order by id-->
+    <!--limit #{startSite},#{pageNum}-->
+  <!--</select>-->
 
     <select id="selectMultipleInfoById" parameterType="java.lang.String"
             resultType="cn.cug.laboratory.model.extend.ProjectExtend">
@@ -237,22 +319,21 @@
         AND teacher.`id` = project.`tea_id`
     </select>
 
-    <!--<select id="selectByName" resultMap="ResultMapWithBLOBs">-->
-        <!--select-->
-        <!--<include refid="Base_Column_List"/>-->
-        <!--,-->
-        <!--<include refid="Blob_Column_List"/>-->
-        <!--from project-->
-        <!--where name = #{name,jdbcType=VARCHAR}-->
-        <!--order by id-->
-        <!--limit #{startSite},#{pageNum}-->
-    <!--</select>-->
+    <select id="selectByName" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from project
+        where name = #{name,jdbcType=VARCHAR}
+        order by id
+        limit #{startSite},#{pageNum}
+    </select>
 
     <select id="selectCountByName" resultType="java.lang.Integer">
     select count(*)
-    from project,teacher,lab
-    where project.lab_id=lab.id and project.tea_id=teacher.id
-     and  project.name = #{name,jdbcType=VARCHAR}
+    from project
+    where name = #{name,jdbcType=VARCHAR}
   </select>
 
 
@@ -267,4 +348,18 @@
     set left_capacity=left_capacity+1
     where id= #{id}
   </select>
+
+    <select id="getLastId" resultType="java.lang.String">
+        select id
+    from project
+    ORDER BY id desc
+    limit 1
+    </select>
+
+    <update id="setfilenameById">
+        UPDATE project
+        set files=#{files}
+        where id=#{id};
+    </update>
+
 </mapper>

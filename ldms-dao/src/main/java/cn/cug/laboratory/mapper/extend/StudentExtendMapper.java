@@ -1,8 +1,8 @@
 package cn.cug.laboratory.mapper.extend;
 
 import cn.cug.laboratory.mapper.StudentMapper;
+import cn.cug.laboratory.model.extend.StudentExtend;
 import cn.cug.laboratory.model.persistent.Student;
-import cn.cug.laboratory.model.persistent.Teacher;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -29,4 +29,6 @@ public interface StudentExtendMapper extends StudentMapper{
 
     public Integer getTotalRecords(@Param("s") Student student);
 
+
+    List<StudentExtend> getAlStudentByProid(@Param("id") String id);
 }

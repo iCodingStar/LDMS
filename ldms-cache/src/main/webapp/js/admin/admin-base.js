@@ -28,7 +28,10 @@ function showMsg(msg, type, callback) {
             break;
         case 1:
             $(".message-body").append('<div class="alert alert-danger" role="alert"  style="font-size: 20px;font-family: 微软雅黑">' + msg + '</div>');
-            break
+            break;
+        case 2:
+            $(".message-body").append('<div class="alert alert-info" role="alert"  style="font-size: 20px;font-family: 微软雅黑">' + msg + '</div>');
+            break;
     }
 
     $("#msg-modal").modal('show');

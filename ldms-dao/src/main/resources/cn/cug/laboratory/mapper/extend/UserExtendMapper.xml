@@ -14,7 +14,8 @@
     from user
     WHERE username=#{username,jdbcType=CHAR} and password=#{password,jdbcType=CHAR}
   </select>
-    <update id="updatePassword">
+
+  <update id="updatePassword">
     update user
     set password = #{newPwd}
     where username = #{stuId}

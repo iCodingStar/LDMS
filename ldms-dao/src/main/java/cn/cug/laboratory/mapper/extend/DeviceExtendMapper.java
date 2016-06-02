@@ -5,8 +5,12 @@ import cn.cug.laboratory.model.extend.DeviceExtend;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import cn.cug.laboratory.model.persistent.Device;
+
+import java.util.List;
 
 public interface DeviceExtendMapper extends DeviceMapper{
+    public List<Device> getAll();
 
     /**
      * @author: shixing
@@ -24,4 +28,5 @@ public interface DeviceExtendMapper extends DeviceMapper{
      * @since : 1.0.0
      */
     Integer getTotalRecords(@Param("de") DeviceExtend deviceExtend);
+    public Integer queryLeftById(String id);
 }

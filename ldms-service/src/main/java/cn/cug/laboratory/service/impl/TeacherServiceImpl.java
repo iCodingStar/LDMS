@@ -72,4 +72,10 @@ public class TeacherServiceImpl implements TeacherService {
         pm.setData(data);
         return pm;
     }
+
+
+    @Override
+    public Teacher getTeacherByUsername(String username) {
+        return teacherExtendMapper.selectByPrimaryKey(username);
+    }
 }
