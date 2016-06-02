@@ -97,7 +97,7 @@ desired effect
             <!-- search form (Optional) -->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
-                    <input type="text" name="q" id="search-input"  class="form-control" placeholder="搜索">
+                    <input type="text" name="q" class="form-control" placeholder="搜索">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -111,7 +111,7 @@ desired effect
                 <li class="header"></i>学生系统主菜单</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="">
-                    <a href="/student/home">
+                    <a href="/student/order">
                         <i class="fa fa-crosshairs fa-lg" style="margin-right: 30px"></i>
                         <span>预约实验</span>
                         <i class="fa fa-angle-right pull-right"></i>

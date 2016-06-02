@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td>实验资料</td>
-                        <td id="files">信息工程学院设备管理细则.doc</td>
+                        <td id="files"><a id="lin"></a></td>
                     </tr>
                     </tbody>
                 </table>

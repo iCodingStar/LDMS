@@ -1,12 +1,54 @@
 package cn.cug.laboratory.mapper.extend;
 
 import cn.cug.laboratory.mapper.ProjectOrderMapper;
+import cn.cug.laboratory.model.extend.ProjectExtend;
+import cn.cug.laboratory.model.extend.ProjectOrderExtend;
 import cn.cug.laboratory.model.persistent.ProjectOrder;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface ProjectOrderExtendMapper extends ProjectOrderMapper{
+    /**
+     * 通过学生ID和实验ID获取实验记录的ID
+     * @author：PP
+     * @return
+     */
+    String selectProOrderIDByMultiInfo(@Param("stuId") String stuId,@Param("proId") String proId);
+
+
+    /**
+     * @author: PP
+     * @function:查询已预约的项目成绩信息
+     */
+    List<ProjectOrderExtend> pp_selectOrderScore(@Param("startPosition") Integer startPosition,
+                                            @Param("offset") Integer offset,
+                                            @Param("pe") ProjectOrderExtend projectOrderExtend);
+
+    /**
+     * @author: PP
+     * @function:查询已预约的项目信息条数
+     * @since : 1.0.0
+     */
+    Integer pp_selectOrderScoreCounts(ProjectOrderExtend projectOrderExtend);
+
+    /**
+     * @author: PP
+     * @function:查询已预约的项目记录信息
+     */
+    List<ProjectOrderExtend> pp_selectOrderRecord(@Param("startPosition") Integer startPosition,
+                                                 @Param("offset") Integer offset,
+                                                 @Param("pe") ProjectOrderExtend projectOrderExtend);
+
+    /**
+     * @author: PP
+     * @function:查询已预约的项目记录信息条数
+     * @since : 1.0.0
+     */
+    Integer pp_selectOrderRecordCounts(ProjectOrderExtend projectOrderExtend);
+
+
+
     /**
      *
      * @return
