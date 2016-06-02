@@ -11,6 +11,134 @@
     id, pro_id, stu_id, score
   </sql>
 
+
+  <sql id="pp_score_query_lists">
+    <if test="pe.stuId != null and pe.stuId != ''">
+      AND project_order.`stu_id` = #{pe.stuId}
+    </if>
+    <if test="pe.id != null and pe.id != ''">
+      AND project.`id` = #{pe.id}
+    </if>
+    <if test="pe.teacherName != null and pe.teacherName != ''">
+      AND teacher.`name` like '%${pe.teacherName}%'
+    </if>
+    <if test="pe.proName != null and pe.proName != ''">
+      AND project.`name` like '%${pe.proName}%'
+    </if>
+    and project_order.score>0.0 and project_order.pro_id=project.id and project.tea_id=teacher.id
+    limit #{startPosition},#{offset}
+  </sql>
+
+  <sql id="pp_project_query_lists_for_counts">
+    <if test="stuId != null and stuId != ''">
+      AND project_order.`stu_id` = #{stuId}
+    </if>
+    <if test="proId != null and proId != ''">
+      AND project_order.`pro_id` = #{proId}
+    </if>
+    <if test="proName != null and proName != ''">
+      AND project.`name` like '%${proName}%'
+    </if>
+    <if test="teacherName != null and teacherName != ''">
+      AND teacher.`name` like '%${teacherName}%'
+    </if>
+    and project_order.score>0.0 and project_order.pro_id=project.id and project.tea_id=teacher.id
+  </sql>
+
+  <select id="pp_selectOrderScoreCounts"
+          resultType="java.lang.Integer">
+    SELECT
+    COUNT(*)
+    from project_order,project,teacher
+    <where>
+      <include refid="pp_project_query_lists_for_counts"></include>
+    </where>
+  </select>
+
+  <select id="pp_selectOrderScore"
+          parameterType="cn.cug.laboratory.model.extend.ProjectOrderExtend"
+          resultType="cn.cug.laboratory.model.extend.ProjectOrderExtend">
+    SELECT
+    project_order.`pro_id` 'proId',
+    teacher.`name` 'teacherName',
+    project.`name` 'proName',
+    project_order.`score`
+    from project_order,project,teacher
+    <where>
+      <include refid="pp_score_query_lists"></include>
+    </where>
+  </select>
+
+  <sql id="pp_record_query_lists">
+
+    <if test="pe.stuId != null and pe.stuId != ''">
+      AND project_order.`stu_id` = #{pe.stuId}
+    </if>
+    <if test="pe.id != null and pe.id != ''">
+      AND project.`id` = #{pe.id}
+    </if>
+    <if test="pe.teacherName != null and pe.teacherName != ''">
+      AND teacher.`name` like '%${pe.teacherName}%'
+    </if>
+    <if test="pe.proName != null and pe.proName != ''">
+      AND project.`name` like '%${pe.proName}%'
+    </if>
+    and project_order.pro_id=project.id and project.tea_id=teacher.id
+    limit #{startPosition},#{offset}
+  </sql>
+
+  <sql id="pp_record_query_lists_for_counts">
+    <if test="stuId != null and stuId != ''">
+      AND project_order.`stu_id` = #{stuId}
+    </if>
+    <if test="proId != null and proId != ''">
+      AND project_order.`pro_id` = #{proId}
+    </if>
+    <if test="proName != null and proName != ''">
+      AND project.`name` like '%${proName}%'
+    </if>
+    <if test="teacherName != null and teacherName != ''">
+      AND teacher.`name` like '%${teacherName}%'
+    </if>
+    and project_order.pro_id=project.id and project.tea_id=teacher.id
+  </sql>
+
+  <select id="pp_selectOrderRecordCounts"
+          resultType="java.lang.Integer">
+    SELECT
+    COUNT(*)
+    from project_order,project,teacher
+    <where>
+      <include refid="pp_record_query_lists_for_counts"></include>
+    </where>
+  </select>
+
+  <select id="pp_selectOrderRecord"
+          parameterType="cn.cug.laboratory.model.extend.ProjectOrderExtend"
+          resultType="cn.cug.laboratory.model.extend.ProjectOrderExtend">
+    SELECT
+    project_order.`id` 'id',
+    project_order.`pro_id` 'proId',
+    teacher.`name` 'teacherName',
+    project.`name` 'proName',
+    project.start_time 'startTime',
+    project.end_time 'endTime',
+    project.files 'files'
+    from project_order,project,teacher
+    <where>
+      <include refid="pp_record_query_lists"></include>
+    </where>
+  </select>
+
+  <select id="selectProOrderIDByMultiInfo"
+          resultType="java.lang.String">
+    SELECT id
+    from project_order
+    where stu_id=#{stuId}
+      and pro_id=#{proId}
+  </select>
+
+
   <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
   <select id="selectLastId" resultType="java.lang.String">
     select id

@@ -1,5 +1,6 @@
 package cn.cug.laboratory.service.impl;
 
+import cn.cug.laboratory.mapper.ProjectMapper;
 import cn.cug.laboratory.mapper.extend.ProjectExtendMapper;
 import cn.cug.laboratory.model.extend.ProjectExtend;
 import cn.cug.laboratory.model.persistent.PageModel;
@@ -20,10 +21,10 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
-    private ProjectExtendMapper projectMapper;
+    private ProjectMapper projectMapper;
 
     @Autowired
-    ProjectExtendMapper projectExtendMapper;
+   private ProjectExtendMapper projectExtendMapper;
 
     /**
      * @param id
@@ -34,43 +35,6 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     /**
-     * @param teaId
-     * @param pageNo
-     * @param pageNum
-     * @return
-     */
-//    //pageNo表示第几页，从1开始，pageNum表示每页的记录数目
-//    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum) {
-//        int startSite = (pageNo - 1) * pageNum;
-//        List<Project> projectList = projectMapper.selectByTeaId(teaId, startSite, pageNum);
-//        int projectCount = projectMapper.selectCountByTeaId(teaId);
-//        return new RetuValueClass<Project>(projectList, projectCount);
-//    }
-
-
-//    public RetuValueClass<Project> selectByTeaId(String teaId, int pageNo, int pageNum) {
-//        int startSite = (pageNo - 1) * pageNum;
-//        List<Project> projectList = projectMapper.selectByTeaId(teaId, startSite, pageNum);
-//        int projectCount = projectMapper.selectCountByTeaId(teaId);
-//        return new RetuValueClass<Project>(projectList, projectCount);
-//    }
-
-    /**
-     * @param name
-     * @param pageNo
-     * @param pageNum
-     * @return
-     */
-    public RetuValueClass<Project> selectByName(String name, int pageNo, int pageNum) {
-        int startSite = (pageNo - 1) * pageNum;
-        List<Project> projectList = projectExtendMapper.selectByName(name, startSite, pageNum);
-        int projectCount = projectExtendMapper.selectCountByTeaId(name);
-        return new RetuValueClass<Project>(projectList, projectCount);
-    }
-
-
-
-    /**
      * @author: shixing
      * @function:查询记录条数
      * @since : 1.0.0
@@ -79,35 +43,19 @@ public class ProjectServiceImpl implements ProjectService {
     public Integer selectByMultipleInfoCounts(ProjectExtend projectExtend) {
         return projectExtendMapper.selectByMultipleInfoCounts(projectExtend);
     }
-
-
+    /**
+     * @author: shixing
+     * @function:查询记录数据
+     * @since : 1.0.0
+     */
     @Override
     public List<ProjectExtend> selectByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
         return projectExtendMapper.selectByMultipleInfo(currentPage, offset, projectExtend);
     }
-
-
-
-
-    @Override
-    public ProjectExtend selectMultipleInfoById(String id) {
-        return projectExtendMapper.selectMultipleInfoById(id);
-    }
-    @Override
-    public List<ProjectExtend> selectProByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
-        return null;
-    }
-
-    @Override
-    public Integer selectProByMultipleInfoCounts(ProjectExtend projectExtend) {
-        return null;
-    }
-
-
-
     /**
      * @author: shixing
      * @function:分页查询项目信息
+     * @return:存放着List和Count数据
      * @since : 1.0.0
      */
     @Override
@@ -124,22 +72,66 @@ public class ProjectServiceImpl implements ProjectService {
         return pm;
     }
 
+
+    /**
+     * @author: PP
+     * @function:查询记录数据
+     * @since : 1.0.0
+     */
+    @Override
+    public List<ProjectExtend> pp_selectByMultipleInfo(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
+        return projectExtendMapper.pp_selectByMultipleInfo(currentPage, offset, projectExtend);
+    }
+    /**
+     * @author: PP
+     * @function:查询记录条数
+     */
+    @Override
+    public Integer pp_selectByMultipleInfoCounts(ProjectExtend projectExtend) {
+        return projectExtendMapper.pp_selectByMultipleInfoCounts(projectExtend);
+    }
+    /**
+     * @author: PP
+     * @function:分页查询项目信息
+     * @return:存放着List和Count数据
+     * @since : 1.0.0
+     */
+    @Override
+    public PageModel<ProjectExtend> pp_getProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
+        System.out.println("ProjectServiceImpl");
+        //获取总的记录数
+        Integer totalRecords = projectExtendMapper.pp_selectByMultipleInfoCounts(projectExtend);
+        System.out.println(totalRecords);
+        //创建PageModel对象
+        PageModel<ProjectExtend> pm = new PageModel<>(currentPage, offset, totalRecords);
+        //获取当前页面数据
+        List<ProjectExtend> data = projectExtendMapper.pp_selectByMultipleInfo(pm.getStartPosition(), offset, projectExtend);
+        for (ProjectExtend pExtend:data
+             ) {
+            System.out.println(pExtend.toString());
+        }
+        //设置数据
+        pm.setData(data);
+        //返回页面
+        return pm;
+    }
+
+
+    @Override
+    public ProjectExtend selectMultipleInfoById(String id) {
+        return projectExtendMapper.selectMultipleInfoById(id);
+    }
+
     @Override
     public void updateProjectStateById(Project project) {
         projectMapper.updateByPrimaryKeySelective(project);
     }
 
-    @Override
-    public PageModel<ProjectExtend> getStuProjectInfoByPage(Integer currentPage, Integer offset, ProjectExtend projectExtend) {
-        return null;
-    }
-
-
     /**
      * @author:HXY
      * @param currentPage
      * @param offset
-     * @param project
+     * @param project，传入的参数不同
      * @return
      */
     @Override
