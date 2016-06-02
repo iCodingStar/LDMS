@@ -262,6 +262,7 @@
         } else if (project_state == "已完成") {
             state = 3;
         } else {
+            
             state = null;
         }
     }
