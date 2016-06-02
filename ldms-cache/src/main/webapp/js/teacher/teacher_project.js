@@ -520,8 +520,8 @@ function getPageDataAndParse(page,id, name, state) {
                     $("#startTime").text(new Date(data.startTime).Format("yyyy-MM-dd hh:mm:ss"));
                     $("#endTime").text(new Date(data.endTime).Format("yyyy-MM-dd hh:mm:ss"));
                     $("#passTime").text(new Date(data.passTime).Format("yyyy-MM-dd hh:mm:ss"));
-                    $("#files").text("");
-                    $("#files").append("<a href='<%=request.getSession().getContextPath("/")%>/upload/P1605009/index.jsp'>资料下载</a>")
+                    $("#files a").text(data.files);
+                    $("#lin").attr("href","/upload/"+data.id+"/"+data.files);
                     $("#show-project-modal-dialog").modal('show');
                 });
 

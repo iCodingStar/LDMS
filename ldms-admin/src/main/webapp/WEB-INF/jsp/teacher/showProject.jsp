@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td>实验资料</td>
-                        <td id="files"></td>
+                        <td id="files"><a id="lin"></a></td>
                     </tr>
                     </tbody>
                 </table>

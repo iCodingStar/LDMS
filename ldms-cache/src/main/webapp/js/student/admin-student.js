@@ -242,7 +242,6 @@ function getProPageDataAndParse(page, pro_id, tea_name, pro_name) {
                 var parameter = "," + pro_id + "," + tea_name + "," + pro_name ;
                 var prevPage = "<li><span aria-hidden='true' onclick= getProPageDataAndParse(" + (currentPage-1) + parameter + ") >&laquo;</span></li>";
                 $(".page-nav .pagination").append(prevPage);
-                currentPage
 
                 for (var i = data.startPage; i <= data.endPage; i++) {
                     var pagenav = "";
@@ -361,9 +360,9 @@ function getRecordOrderProPageDataAndParse(page, pro_id, tea_name, pro_name) {
                     +"<td>"+item.proName+"</td>"
                     +"<td>"+item.startTime+"</td>"
                     +"<td>"+item.endTime+"</td>"
-                    +"<td><button type='button' class='btn btn-primary btn-sm download-files'>"
+                    +"<td><a><button type='button' class='btn btn-primary btn-sm download-files'>"
                     +"资料下载"
-                    +"</button></td>"
+                    +"</a></button></td>"
                     +"<td><button type='button' class='btn btn-primary btn-sm delete-order-btn'>"
                     +"退选"
                     +"</button></td>"
@@ -397,6 +396,7 @@ function getRecordOrderProPageDataAndParse(page, pro_id, tea_name, pro_name) {
 
             //[资料下载]按钮事件绑定
             $(".download-files").on('click', function () {
+                console.log($(this))
                    showMsg("该项功能正在建设中...",2);
                 }
             );
