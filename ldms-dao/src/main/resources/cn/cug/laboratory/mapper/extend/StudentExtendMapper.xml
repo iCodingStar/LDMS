@@ -10,7 +10,7 @@
     <result column="sex" property="sex" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, major, class_id, academy, sex
+    id, name, major, class_id 'classId', academy, sex
   </sql>
   <!--读取数据表中最后一行记录的ID，VARCHAR（11）-->
   <select id="selectLastId" resultType="java.lang.String">

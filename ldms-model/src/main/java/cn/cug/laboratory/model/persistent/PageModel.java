@@ -15,6 +15,8 @@
  */
 package cn.cug.laboratory.model.persistent;
 
+import lombok.Data;
+
 import java.util.List;
 
 import static javafx.scene.input.KeyCode.T;
@@ -24,6 +26,7 @@ import static javafx.scene.input.KeyCode.T;
  * @since 1.0.0
  */
 
+@Data
 public class PageModel<T> {
     private Integer currentPage = 1;//当前页码
     private Integer startPosition = 0;//起始记录位置
@@ -35,10 +38,6 @@ public class PageModel<T> {
     private List<T> data = null;//数据
 
     public PageModel() {
-    }
-
-    public Integer getCurrentPage() {
-        return currentPage;
     }
 
     public PageModel(Integer currentPage, Integer offset, Integer totalRecords) {
@@ -85,63 +84,4 @@ public class PageModel<T> {
         }
     }
 
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public Integer getStartPosition() {
-        return startPosition;
-    }
-
-    public void setStartPosition(Integer startPosition) {
-        this.startPosition = startPosition;
-    }
-
-    public Integer getOffset() {
-        return offset;
-    }
-
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
-    public Integer getStartPage() {
-        return startPage;
-    }
-
-    public void setStartPage(Integer startPage) {
-        this.startPage = startPage;
-    }
-
-    public Integer getEndPage() {
-        return endPage;
-    }
-
-    public void setEndPage(Integer endPage) {
-        this.endPage = endPage;
-    }
-
-    public Integer getTotalPages() {
-        return totalPages;
-    }
-
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
-    }
-
-    public Integer getTotalRecords() {
-        return totalRecords;
-    }
-
-    public void setTotalRecords(Integer totalRecords) {
-        this.totalRecords = totalRecords;
-    }
-
-    public List<T> getData() {
-        return data;
-    }
-
-    public void setData(List<T> data) {
-        this.data = data;
-    }
 }
