@@ -11,8 +11,8 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${jdbcUrl}" />
-        <property name="username" value="${jdbcUsername}" />
-        <property name="password" value="${jdbcPassword}" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
 
         <property name="maxActive" value="${maxActive}" />
         <property name="initialSize" value="${initialSize}" />
