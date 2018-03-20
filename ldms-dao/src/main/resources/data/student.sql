@@ -19,6 +19,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Table structure for student
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
+
 CREATE TABLE `student` (
   `id` varchar(20) NOT NULL,
   `name` varchar(20) NOT NULL,

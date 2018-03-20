@@ -2,6 +2,7 @@
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     2016/5/18 10:38:35                           */
 /*==============================================================*/
+USE ldms;
 
 DROP TABLE IF EXISTS device;
 
@@ -208,3 +209,4 @@ ALTER TABLE project_order
 REFERENCES project (id)
   ON DELETE RESTRICT
   ON UPDATE RESTRICT;
+

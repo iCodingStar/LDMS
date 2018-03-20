@@ -22,7 +22,7 @@ import java.util.Properties;
 /**
  * 该类将持有通过Configurer加载的所有属性
  *
- * @author Xiaolong Zuo
+ * @author ShiXing
  * @since 1.0.0
  */
 public class ConfigurerPropertiesHolder {

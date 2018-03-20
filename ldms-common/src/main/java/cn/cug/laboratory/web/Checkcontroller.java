@@ -10,5 +10,5 @@ import javax.servlet.http.HttpSession;
 public interface Checkcontroller {
 
     @ModelAttribute
-    public void checksesion(HttpSession session);
+    void checksesion(HttpSession session);
 }
