@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>Laboratory-devices-management-system</display-name>
+
     <!-- spring -->
     <context-param>
         <param-name>contextConfigLocation</param-name>

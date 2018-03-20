@@ -11,7 +11,8 @@
     <import resource="application-context-transaction.xml"/>
 
     <bean class="cn.cug.laboratory.web.HeldPropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:admin-config-deploy.properties"/>
+        <!--<property name="location" value="classpath:admin-config-deploy.properties"/>-->
+        <property name="location" value="classpath:admin-config.properties"/>
     </bean>
 
     <!-- Annotation Config -->
